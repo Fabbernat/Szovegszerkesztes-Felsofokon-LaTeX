@@ -1,0 +1,167 @@
+% V 2024 09 30
+% magyar LaTeX article sablon
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hulipsum}
+\usepackage{fancybox}
+%opening
+\title{Úsztatott objektumok elhelyezése}
+\author{Virágh János}
+%
+\begin{document}
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+
+\vspace*{0.1in}
+\noindent Az alábbi, vakszöveggel kitöltött dokumentumban öt úsztatott ábrát és egy úsztatott táblázatot helyezünk el. Figyeljük meg a használt paramétereket, kísérletezzünk!
+\section{Bevezetés}
+\hulipsum[2-4]
+
+\textbf{Hová kerül a következő (első) ábra?!}
+
+%%%% Próbáljuk ki az összes változatot:
+%\begin{figure}
+\begin{figure}[h] % here
+%\begin{figure}[t] % top
+%\begin{figure}[b] % bottom
+\caption{Az első úsztatott objektum - felirat a kép fölött!}
+% 
+\centering
+\shadowbox{ % hogy jobban látsszon
+\begin{minipage}{12cm}
+{\color{red}
+\Huge
+\begin{bfseries}  Az {\color{blue}első} szép
+\begin{itemize}
+   \item táblázat,
+   \item grafikon,
+   \item fotó,
+   \item vagy akármi\dots
+ \end{itemize}
+\end{bfseries}
+}
+\end{minipage}
+}%shadowbox vége
+\end{figure}
+
+\hulipsum[1-3]
+
+\textbf{Hová kerül a következő (második) ábra?!}
+
+%%%% Próbáljuk ki az összes változatot:
+%\begin{figure}
+\begin{figure}[h] % here
+%\begin{figure}[t] % top
+%\begin{figure}[b] % bottom
+% 
+\centering
+\shadowbox{ % hogy jobban látsszon
+	\begin{minipage}{12cm}
+		{\color{red}
+			\Huge
+			\begin{bfseries}  A {\color{blue}második} szép
+				\begin{itemize}
+					\item táblázat,
+					\item grafikon,
+					\item fotó,
+					\item vagy akármi\dots
+				\end{itemize}
+			\end{bfseries}
+		}
+	\end{minipage}
+}%shadowbox vége
+\caption{A második úsztatott objektum - felirat a kép alatt!}
+\end{figure}
+
+\hulipsum[1]
+
+\section{Tárgyalás}
+
+\hulipsum[10-11]
+
+\textbf{Hová kerül a következő (harmadik) ábra?!}
+
+%%%% Próbáljuk ki az összes változatot:
+%\begin{figure}
+\begin{figure}[h] % here
+%\begin{figure}[t] % top
+%\begin{figure}[b] % bottom
+\centering
+\shadowbox{
+\begin{minipage}{12cm}
+{\color{red}
+    \Huge
+    \begin{bfseries}  A {\color{blue}harmadik} szép
+        \begin{itemize}
+            \item táblázat,
+            \item grafikon,
+            \item fotó,
+            \item vagy akármi\dots
+        \end{itemize}
+    \end{bfseries}
+}
+\end{minipage}
+}%shadowbox vége
+\caption{A harmadik úsztatott objektum - felirat a kép alatt!}
+\end{figure}
+
+\section{Befejezés}
+
+\hulipsum[3-5]
+
+\textbf{Hová kerül tigrisünk, a következő negyedik ábra?!}
+
+%%%% Próbáljuk ki az összes változatot:
+%\begin{figure}
+\begin{figure}[h] % here
+%\begin{figure}[t] % top
+%\begin{figure}[b] % bottom
+\centering
+\caption{Kedvenc tigrisünk - felirat a kép fölött!}
+\includegraphics[scale=0.25]{tiger.pdf}
+\end{figure}
+%
+\hulipsum[5-8]
+
+\textbf{Hová kerül a tükrözött tigris, a következő ötödik ábra?!}
+
+%\vspace*{1em}
+%%%% Próbáljuk ki az összes változatot:
+%\begin{figure}
+\begin{figure}[h] % here
+%\begin{figure}[t] % top
+%\begin{figure}[b] % bottom
+\centering
+\reflectbox{\includegraphics[scale=0.15]{tiger.pdf}}
+\caption{Tigrisünk tükörben - felirat a kép alatt!}
+\end{figure}
+%
+\hulipsum[5-8]
+
+\textbf{Hová kerül a következő táblázat?!}
+
+%%%% Próbáljuk ki az összes változatot:
+\begin{table}
+%\begin{table}[p] % here
+%\begin{table}[t] % top
+%\begin{table}[b] % bottom
+%\begin{table}[h]
+\centering
+\caption{Egyszerű $3\times3$-as táblázat - felirat a tábla fölött!}	
+	\begin{tabular}{|rcr|}
+		\hline
+		100 & 2 & 3 \\
+		4 & 50 & 6 \\
+		70 & 8 & 9 \\
+		\hline
+	\end{tabular}
+\end{table}
+%
+\hulipsum[5-6]
+\end{document}

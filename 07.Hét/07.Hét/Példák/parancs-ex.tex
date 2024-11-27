@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage[a4paper,width=19cm,height=28cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{ifthen}
+
+\title{Új parancsok (makrók) definiálása \LaTeX-ben}
+\author{Virágh János}
+\parindent=0pt
+\begin{document}
+
+\maketitle
+
+\section{Példák}
+
+\begin{itemize}
+\item Definiáljuk az új \verb|\TTIK| parancsot (valójában csak rövidítést ;)
+
+\verb|\newcommand{\TTIK}{Szegedi Tudományegyetem Természettudományi és Infornatikai Kar}|
+\newcommand{\TTIK}{Szegedi Tudományegyetem Természettudományi és Infornatikai Kar}
+
+Teszteljük is a \verb|\TTIK| parancsunkat:
+
+\verb|A \TTIK{} programtervező matematikus hallgatói \dots|
+
+A \TTIK{} programtervező matematikus hallgatói \dots
+
+\item Definiáljuk az új \verb|\hello| 1 paraméteres parancsot a következő módon:
+
+\verb|\newcommand{\hello}[1]{Helló #1!}|
+\newcommand{\hello}[1]{Helló #1!\\}
+
+Teszteljük is a \verb|\hello| parancsunkat:
+
+\verb|\hello{Józsi}|
+
+\hello{Józsi}
+\item Definiáljuk az új \verb!\helloa! 1 paraméteres parancsot az előzőhöz hasonló módon, egy alapértelmezett argumentum megadásával:
+
+\verb|\newcommand{\helloa}[1][Sanyi]{Helló #1!\\}|
+\newcommand{\helloa}[1][Sanyi]{Helló #1!\\}
+
+Teszteljük is a \verb!\helloa! parancsunkat:
+
+\verb|\helloa|
+
+\helloa\\
+
+\verb|\helloa[Béla]|
+
+\helloa[Béla]
+
+\item Definiáljuk az új \verb!\kiir! 2 paraméteres parancsot:
+\vspace*{-1em}
+\begin{verbatim}
+\newcounter{hanyszor}%
+\newcommand{\kiir}[2]{%
+	\setcounter{hanyszor}{#1}%
+	\whiledo{\thehanyszor > 0}%
+		{ #2\hspace*{1em}\addtocounter{hanyszor}{-1} }
+}
+\end{verbatim}
+\newcounter{hanyszor}%
+\newcommand{\kiir}[2]{%
+	\setcounter{hanyszor}{#1}%
+	\whiledo{\thehanyszor > 0}%
+		{ #2\hspace*{1em}\addtocounter{hanyszor}{-1} }
+}
+Teszteljük is a \verb|\kiir| parancsunkat:
+
+\verb|\kiir{5}{Szia!}|
+
+\kiir{5}{Szia!}\\
+\verb|\kiir{8}{Viszlát!}|
+
+\kiir{8}{Viszlát!}\\
+\end{itemize}
+
+\end{document}

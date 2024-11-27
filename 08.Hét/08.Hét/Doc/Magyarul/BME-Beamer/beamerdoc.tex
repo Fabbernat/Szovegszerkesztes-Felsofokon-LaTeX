@@ -1,0 +1,1049 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usetheme{Montpellier}
+\usefonttheme{default}
+\usecolortheme{dolphin}
+
+\usepackage[latin2]{inputenc}
+\usepackage{helvet}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\def\magyarOptions{hyphenation=huhyphn}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+
+%\usepackage{ae,aecompl}
+\setbeamercolor{block title}{bg=Blue,fg=White}
+\setbeamercolor{block body}{bg=Periwinkle!10,fg=Black}
+\setbeamercolor{block title example}{bg=OliveGreen, fg=White}
+\setbeamercolor{block body example}{fg= blue,bg= blue!5}
+
+\setbeamercolor{block title alerted}{bg=BrickRed, fg=White}
+\setbeamercolor{block body alerted}{fg= Black,bg= Red!5}
+
+
+\usepackage{listings}
+
+\lstset{%
+  basicstyle=\small\ttfamily,
+  language=[LaTeX]{TeX}
+}
+
+
+\newsavebox{\codebox}% For storing listings
+
+\makeatother
+
+\newtheorem{tetel}{Tétel}
+\newtheorem{kovet}[tetel]{Következmény}
+\newtheorem{defi}[tetel]{Definíció}
+
+\title{Prezentáció készítés Latex-ben}
+\subtitle{Beamer}
+\author{Izsó Tamás}
+\institute{BME-HIT}
+\date
+
+
+\begin{document}
+
+
+\section[Tartalomjegyzék]{}
+\frame{\tableofcontents}
+
+\section{Alapok}
+\subsection{Alkotó}
+
+\begin{frame}{A Beamer alkotója}
+\begin{center}
+\includegraphics[width=3cm]{abra/till_tantau.jpg}
+\vskip 2ex
+Till Tantau
+\end{center}
+\vskip 2ex 
+2010. áprilisában a munkát Joseph Wright és Vedran Miletic vette át.
+\end{frame}
+%
+\section{Beamer tulajdonsága}
+
+\begin{frame}[fragile]{Beamer tulajdonsága}
+Elõny:
+\begin{itemize}
+	\item A Latex parancsokat ismeri.
+	\item pdf alapú prezentációkat lehet készíteni, amit bármely operációs rendszer alatt meg lehet jeleníteni.
+	\item Dinamikus effekteket és kitakarásokat lehet létrehozni.
+	\item A diák kinézetét rugalmasan lehet változtatni, nagyon sok elõre definiált stílus (támák) közül választhatunk. 
+\end{itemize}
+Hátrány:
+\begin{itemize}
+	\item Ismerni kell a Latex-et.
+	\item A diák elkészítése munkaigényesebb a PowerPoint-nál.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{További információk}
+\begin{itemize}
+	\item \url{https://www.hartwork.org/beamer-theme-matrix/} 
+	\item \url{http://deic.uab.es/~iblanes/beamer_gallery/}
+	\item \url{http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}
+\end{itemize}
+\end{frame}
+
+\section{Dokumentumosztály szerkezete}
+
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+......
+\begin{document}
+\begin{frame}{Fólia 1}
+......
+\end{frame}
+
+\begin{frame}{Fólia 2}
+......
+\end{frame}
+
+\end{document}
+\end{lstlisting}
+\end{lrbox}
+
+\begin{frame}[fragile]{A fájl felépítése}
+\usebox{\codebox}
+\end{frame}
+
+
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+\documentclass{beamer}
+....
+\usepackage[latin2]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\def\magyarOptions{hyphenation=huhyphn}
+.....
+\begin{document}
+....
+\end{document}
+\end{lstlisting}
+\end{lrbox}
+
+\begin{frame}[fragile]{Magyar nyelvû dokumentum készítés}
+\usebox{\codebox}
+\vskip 2ex
+
+utf8 kódolás esetén \lstinline|\usepackage[utf8]{inputenc}| parancsot kell használni.
+\end{frame}
+
+\section{Beamer opciók}
+
+\begin{frame}[fragile]{Beamer opciók}
+\begin{itemize}
+	\item Alapértelmezett oldalméret $128mm \times 96mm$, ami ($4 : 3$) arányt jelent. Akinek a monitora ($16 : 9$) arányú, az használja a \\
+	\lstinline|\documentclass[aspectratio=169]{beamer}| paramétert.
+		\item Font méret 11pt. A következõ betûméretek adhatók meg: 8pt 9pt 10pt 12pt 14pt 17pt 20pt \\
+		pl: \lstinline|\documentclass[14pt]{beamer}|
+		\item Betutípus: álló, normál, groteszk. Megváltoztatása: \\
+		\lstinline|\usefonttheme{serif}| \\
+		\lstinline|\usepackage{times}| 
+	\item Keret  tartalma középre van igazítva. Lehetséges opciók: t (fent), b (lent) \\
+			pl: \lstinline|\documentclass[t]{beamer}|
+	\item Automatikusan betöltõdõ csomagok: graphicx, amsthm, xcolor, enumerate, hyperref. \\ 
+	Letiltása:	\lstinline|\documentclass[noamsthm]{beamer}|
+\end{itemize}
+\end{frame}
+
+\section{Egyszerû Szöveg megjelenése}
+
+\begin{frame}[fragile]{Normál szöveg megjelenése}
+A szöveg balra zárt, így nincsenek szóelválasztások.
+\vskip 1ex
+Ez egy hosszú szöveg, amely demonstrálja, hogy minden bekezdés a margótól azonos távolságra kezdõdik, és nincs elválasztás. A sorok vége viszont összevissza végzõdik. Persze ezt egy kis trükkel  meg lehet szüntetni. 
+\end{frame}
+
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+\bgroup
+\begin{frame}
+\setlength{\rightskip}{20pt}
+
+\begin{frame}[fragile]{Szöveg elválasztása}
+babla ...
+\end{frame}
+\egroup
+\end{lstlisting}
+\end{lrbox}
+
+\begin{frame}[fragile]{Sorkizárt szöveg elválasztással}
+\usebox{\codebox}
+\end{frame}
+
+
+\bgroup
+\setlength{\rightskip}{20pt}
+\begin{frame}[fragile]{Szöveg elválasztása}
+A szöveg balra zárt, így nincsenek szóelválasztások.
+\vskip 1ex
+Ez egy hosszú szöveg, amely demonstrálja, hogy minden bekezdés a margótól azonos távolságra kezdõdik, és nincs elválasztás. A sorok vége viszont összevissza végzõdik. Persze ezt a egy kis trükkel meg  meg lehet szüntetni. 
+\end{frame}
+\egroup
+
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+\begin{frame}[opció]{cím}{alcím}
+Keret tartalma
+\end{frame}
+
+vagy
+
+\begin{frame}[opció]
+\frametitle{cím}
+\framesubtitle{alcím}
+Keret tartalma
+\end{frame}
+\end{lstlisting}
+\end{lrbox}
+
+\section{Keretek}
+
+\begin{frame}[fragile]{Keretek}
+A kereteket a következõképpen lehet megadni:
+\vskip 2ex
+\usebox{\codebox}
+\end{frame}
+
+\begin{frame}[fragile]{Keret opciók}
+\begin{itemize}
+	\item Keret tartalmának az elhelyezése. Lehetséges értékek 
+\textbf{[t]} (top), \textbf{[b]} (bottom), \textbf{[c]} (center).
+
+\item A keretben a fejléc, lábléc és az oldalsávok nem jelennek meg a \textbf{[plain]} hatására.
+
+\item Keret kicsinyítése \textbf{[shrink=20]} (százalékban). A kicsinyítés alapértéke 0\%.
+
+\item  Verbatim szöveg vagy kód nem írható a keretbe, ha nem adjuk meg a \textbf{[fragile]} opciót.
+
+\item \textbf{[squeeze]} opció megszünteti a listák térközeit.
+
+\item \textbf{[allowframebreaks=kitöltés]} A kitöltés mértéke $[0 - 1]$érték, 
+alapértéke 1. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Keretek}
+\begin{itemize}
+	\item A prezentáció keretek \lstinline{frame}-k sorozatából áll.
+	\item Egy \lstinline{frame}-bõl egy vagy több diakép is készülhet.
+	\begin{itemize}
+		\item Ha nem fér rá egy diára, és használtuk a \lstinline|\begin{frame}[allowframebreaks]{Cím}| opciót, akkor automatikusan több diakép keletkezik.
+		\item Használjuk a \lstinline{\pause} parancsot vagy az overlay módot.
+	\end{itemize}
+\end{itemize}
+\vskip 4ex
+A következõ két dia egy  \textbf{[allowframebreaks]} opcióval megadott frame-bõl keletkezett. 
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Gondolatok a programok megértésérõl}
+Életemben sok olyan programozási tanfolyamot láttam, amelyek
+hasonlatosak voltak az átlagos gépjármûvezetõi tanfolyamokhoz, ahol
+t.i. az ember nem azt tanulja meg, hogyan érhet el céljához a
+gépkocsival, hanem azt, hogyan kell a kocsival bánni.
+\vskip 2ex
+Véleményem szerint a program önmagában sohasem végcél. A program célja,
+hogy bizonyos számításokat váltson ki, és ezeknek a számításoknak a célja valamely
+meghatározott eredmény elérése. Bár a programozó által elõállított végtermék a
+program, foglalkozásának igazi tárgyai azok a lehetséges számítások, melyek a
+program hatására létrejöhetnek, és melyeknek az elvégzése már a gépre hárul.
+Például ha a programozó azt állítja, hogy programja helyes, akkor állítása valójában
+a program által kiváltható számítások halmazára vonatkozik.
+\vskip 2ex
+Az a tény, hogy a teljes tevékenységi lánc végsõ szakasza, az áttérés a statikus
+programszövegrõl a dinamikus programvégrehajtásra, a gép feladata marad, újabb
+bonyodalmat okoz. Bizonyos értelemben nehezebb programot írni, mint egy matematikai
+elméletet felállítani. Mind a matematikai elmélet, mind a program strukturált,
+idõtlen objektumok. De míg a matematikai elméletnek önmagában is értelme
+van, addig a programnak csak a végrehajtása ad értelmet.
+\end{frame}
+
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+\begin{frame}{Példa}{}
+Elsõ sor.\par\pause
+Második sor.\par\pause
+Harmadik sor.
+\end{frame}
+\end{lstlisting}
+\end{lrbox}
+
+
+\begin{frame}[fragile]{A $\backslash$pause parancs}
+A kereteket a következõképpen lehet megadni:
+\vskip 2ex
+\usebox{\codebox}
+\vskip 2ex
+A példa kinézete:
+\end{frame}
+
+\begin{frame}{A $\backslash$pause parancs}
+Elsõ sor.\par\pause
+Második sor.\par\pause
+Harmadik sor.
+\end{frame}
+
+\section{Blokkok}
+
+\begin{frame}{Blokkok}
+\begin{columns}
+\begin{column}[]{.4\textwidth}
+\begin{theorem}
+$\backslash$\texttt{begin\{theorem\}}\\
+...\\
+$\backslash$\texttt{end\{theorem\}} 
+\end{theorem}
+
+\begin{definition}
+$\backslash$\texttt{begin\{definition\}}\\
+...\\
+$\backslash$\texttt{end\{definition\}} 
+\end{definition}
+
+
+\begin{example}
+$\backslash$\texttt{begin\{example\}}\\
+...\\
+$\backslash$\texttt{end\{example\}} 
+\end{example}
+\end{column}
+%% new column
+\begin{column}[]{.4\textwidth}
+\begin{corollary}
+$\backslash$\texttt{begin\{corollary\}}\\
+...\\
+$\backslash$\texttt{end\{corollary\}} 
+\end{corollary}
+
+\begin{proof}
+$\backslash$\texttt{begin\{proof\}}\\
+...\\
+$\backslash$\texttt{end\{proof\}} 
+\end{proof}
+
+
+\begin{lemma}
+$\backslash$\texttt{begin\{lemma\}}\\
+...\\
+$\backslash$\texttt{end\{lemma\}} 
+\end{lemma}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Blokkok}
+\begin{block}{Sima blokk}
+$\backslash$\texttt{begin\{block\}\{Sima blokk\}}\\
+...\\
+$\backslash$\texttt{end\{block\}} 
+\end{block}
+
+\begin{alertblock}{Figyelmeztetés}
+$\backslash$\texttt{begin\{alertblock\}\{Figyelmeztetés\}}\\
+...\\
+$\backslash$\texttt{end\{alertblock\}} 
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Blokkok színeinek a megváltoztatása}
+\begin{adjustbox}{width=1\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+% szinek nevének az elérése
+\documentclass[xcolor=dvipsnames]{beamer}
+. . . 
+\setbeamercolor{block title}{bg=Blue,fg=White}
+\setbeamercolor{block body}{bg=Periwinkle!10,fg=Black}
+
+\setbeamercolor{block title example}{bg=OliveGreen, fg=White}
+\setbeamercolor{block body example}{fg= blue,bg= blue!5}
+
+\setbeamercolor{block title alerted}{bg=BrickRed, fg=White}
+\setbeamercolor{block body alerted}{fg= Black,bg= Red!5}
+\end{lstlisting}
+\end{adjustbox}
+\end{frame}
+
+\section{Listák}
+
+\begin{frame}[fragile,shrink=20]{Lista környezetek}
+\begin{block}{Itemize}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.48\linewidth}
+\vskip -2ex
+\begin{lstlisting}[escapeinside=||]
+\begin{itemize}
+   \item elsõ tétel
+   \item második tétel
+\end{itemize} 
+\end{lstlisting} 
+\end{minipage} 
+&
+\begin{minipage}[t]{0.48\linewidth}
+\begin{itemize}
+   \item elsõ tétel
+   \item második tétel
+\end{itemize} 
+\end{minipage}
+\end{tabular}
+\end{block}
+
+\begin{block}{Enumerate}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.48\linewidth}
+\vskip -2ex
+\begin{lstlisting}[escapeinside=||]
+\begin{enumerate}
+   \item elsõ tétel
+   \item második tétel
+\end{enumerate} 
+\end{lstlisting} 
+\end{minipage} 
+&
+\begin{minipage}[t]{0.48\linewidth}
+\begin{enumerate}
+   \item elsõ tétel
+   \item második tétel
+\end{enumerate} 
+\end{minipage}
+\end{tabular}
+\end{block}
+
+\begin{block}{Description}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.48\linewidth}
+\vskip -2ex
+\begin{lstlisting}[escapeinside=||]
+\begin{description}
+   \item[alma] elsõ tétel
+   \item[körte] második tétel
+\end{description} 
+\end{lstlisting} 
+\end{minipage} 
+&
+\begin{minipage}[t]{0.48\linewidth}
+\begin{description}
+   \item[alma] elsõ tétel
+   \item[körte] második tétel
+\end{description} 
+\end{minipage}
+\end{tabular}
+\end{block}
+\end{frame}
+
+\section{Kitakarások (overlay)}
+
+\begin{frame}[fragile]{pause parancs}
+\setbeamercovered{transparent}
+A $\backslash$pause parancs nem nagyon rugalmas. Nemcsak listáknál, hanem szövegnél vagy matematikai képletnél is lehet használni.
+\vskip 5ex
+
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.4\linewidth}
+\begin{adjustbox}{width=1\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+\begin{enumerate}
+\item Shown from first slide on.
+\pause
+\item Shown from second slide on.
+\pause
+\item Shown from third slide on.
+\pause
+\item Shown from fourth slide on.
+\end{enumerate}
+\end{lstlisting} 
+\end{adjustbox}
+\end{minipage} 
+&
+\begin{minipage}[t]{0.48\linewidth}
+\vskip -7.5ex
+\begin{enumerate}
+\item Shown from first slide on.
+\pause
+\item Shown from second slide on.
+\pause
+\item Shown from third slide on.
+\pause
+\item Shown from fourth slide on.
+\end{enumerate}
+\end{minipage} 
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\begin{itemize}
+\item Az overlay megadás \textcolor{blue}{\textbf{<}} és \textcolor{blue}{\textbf{>}} között történik. Ezzel tudjuk szabályozni, hogy mely szövegek vagy ábrák legyenek kitakarva, és melyek legyenek láthatóak.
+\item A \textcolor{blue}{\textbf{<}} és \textcolor{blue}{\textbf{>}} között lévõ információval szabályozzuk, hogy a frame melyik eleme melyik dián vagy diákon jelenjen meg.
+  \begin{itemize}
+	\item $<$2$>$ csak a második dián látható
+	\item $<$1-$>$ elsõ diától végig látható
+	\item $<$1-3$>$ 1, 2 és a 3 dián látható
+	\item $<$-4$>$ csak az elsõ négy dián látható
+	\item $<$-3,5-6,8-$>$ a 4 és a 7 dián kívül minden dián látható.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Overlay megadás}
+\begin{block}{Példa}
+\begin{lstlisting}[escapeinside=||]
+\begin{enumerate}
+\item<1-> Elsõ diától látható
+\item<2-> Második diától látható
+\item<4> Csak a 4. dián látható
+\item<3,5-> 3. dián és 5-tõl. végig látható
+\end{enumerate}
+\end{lstlisting} 
+\end{block}
+
+\begin{block}{Eredmény}
+\begin{enumerate}
+\item<1-> Elsõ diától látható
+\item<2-> Második diától látható
+\item<4> Csak a 4. dián látható
+\item<3,5-> 3. dián és 5-tõl. végig látható
+\end{enumerate}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+A beamer-ben az overlay kezelésére a \textcolor{blue}{\textbf{beamerpauses}} számláló szolgál, amelyre a 
+\textcolor{blue}{\textbf{<}} és \textcolor{blue}{\textbf{>}} között a \textcolor{blue}{\textbf{+}} jellel hivatkozni lehet. 
+\begin{itemize}
+	\item A keret elején az értéke 1 
+	\item Minden \textcolor{blue}{\textbf{>}} után eggyel nõ.
+	\item Egész értéket lehet hozzáadni \textcolor{blue}{\textbf{< +($\pm$ n)} >} .
+\end{itemize}
+
+\begin{block}{Példa}
+Ha a beamerpauses értéke 3, és a következõ kifejezések egyike következi, akkor
+\begin{enumerate}
+\item $<$+(3)> = <6>
+\item $<$+(-1)> = <2>
+\item $<$+(0)> = <+> = <3>
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Overlay megadás}
+A \textcolor{blue}{\textbf{beamerpauses}} elõzõ értékére a  \textcolor{blue}{\textbf{$.$}}-tal (ponttal) hivatkozhatunk. Ha a \textcolor{blue}{\textbf{beamerpauses}} értékére ponttal hivatkozunk, akkor a \textcolor{blue}{\textbf{beamerpauses}} értéke nem nõ \textcolor{blue}{\textbf{>}} jel után.
+
+\begin{block}{Példa}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.5\linewidth}
+\vskip -1ex
+\begin{lstlisting}[escapeinside=||]
+\begin{itemize}
+\item<+-> 1. listaelem
+\item<.-> 2. listaelem
+\item<+-> 3. listaelem
+\item<.-> 4. listaelem
+\end{itemize}
+\end{lstlisting} 
+\end{minipage}
+&
+\begin{minipage}[t]{0.4\linewidth}
+\begin{itemize}
+\item<+-> 1. listaelem
+\item<.-> 2. listaelem
+\item<+-> 3. listaelem
+\item<.-> 4. listaelem
+\end{itemize}
+\end{minipage}
+\end{tabular}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+Elõzõ példával ekvivalens megoldás, ahol a láthatóság vezérlését számokkal adtuk meg. A nem látható sorok is szürkén megjelennek.
+\vskip 2ex
+
+\begin{block}{Példa}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.6\linewidth}
+\vskip -1ex
+\begin{lstlisting}[escapeinside=||]
+\begin{frame}[fragile]{Ovr}
+\setbeamercovered{transparent}
+\begin{itemize}
+\item<1-> 1. listaelem
+\item<1-> 2. listaelem
+\item<2-> 3. listaelem
+\item<2-> 4. listaelem
+\end{itemize}
+|\textbf{$\backslash$end}|{frame}
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}[t]{0.4\linewidth}
+\vskip 4ex
+\begin{itemize}
+\item<1-> 1. listaelem
+\item<1-> 2. listaelem
+\item<2-> 3. listaelem
+\item<2-> 4. listaelem
+\end{itemize}
+\end{minipage}
+\end{tabular}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+A \textcolor{blue}{\textbf{$\backslash$uncover<>}} parancs hatására a megadott szöveg csak az elõírt diákon fog megjelenni, máshol csak foglalja a helyet. A nem látható szövegre a  transparent érték hatással van, tehát halványan látszik.
+
+\begin{block}{Példa}
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|begin{frame}[fragile]{Overlay megadás}
+|$\backslash$|setbeamercovered{transparent=20}
+|$\backslash$|uncover<1>{Ez az elso dia, }
+|$\backslash$|uncover<2>{ez pedig a második.}
+|$\backslash$|end{frame}
+\end{lstlisting} 
+\end{block}
+
+\begin{block}{Eredmény}
+\uncover<1>{Ez az elso dia, }
+\uncover<2>{ez pedig a második.}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+A \textcolor{blue}{\textbf{$\backslash$visible<>}} parancs hatására a megadott szöveg csak az elõírt diákon fog megjelenni, máshol csak foglalja a helyet. A nem látható szövegre a  transparent érték \textit{nincs} hatással.
+
+\begin{block}{Példa}
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|begin{frame}[fragile]{Overlay megadás}
+|$\backslash$|setbeamercovered{transparent=20}
+|$\backslash$|visible<1>{Ez az elso dia, }
+|$\backslash$|visible<2>{ez pedig a második.}
+|$\backslash$|end{frame}
+\end{lstlisting} 
+\end{block}
+
+\begin{block}{Eredmény}
+\visible<1>{Ez az elso dia, }
+\visible<2>{ez pedig a második.}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+A \textcolor{blue}{\textbf{$\backslash$invisible<>}} parancs hatására a megadott szöveg az elõírt diákon \textit{nem} fog megjelenni, csak foglalja a helyet. A nem látható szövegre a  transparent érték \textit{nincs} hatással.
+
+\begin{block}{Példa}
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|begin{frame}[fragile]{Overlay megadás}
+|$\backslash$|setbeamercovered{transparent=20}
+|$\backslash$|invisible<1>{Ez az elso dia, }
+|$\backslash$|invisible<2>{ez pedig a második.}
+|$\backslash$|end{frame}
+\end{lstlisting} 
+\end{block}
+
+\begin{block}{Eredmény}
+\invisible<1>{Ez az elso dia, }
+\invisible<2>{ez pedig a második.}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+A \textcolor{blue}{\textbf{$\backslash$only<>}} parancs hatására a megadott szöveg csak az elõírt diákon fog megjelenni, ahol viszont nem jelenik meg, ott \textsl{nem foglalja} a helyet. A nem látható szövegre a  transparent érték \textit{nincs} hatással.
+
+\begin{block}{Példa}
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|begin{frame}[fragile]{Overlay megadás}
+|$\backslash$|setbeamercovered{transparent=20}
+|$\backslash$|only<1>{Ez az elso dia, }
+|$\backslash$|only<2>{ez pedig a második.}
+|$\backslash$|end{frame}
+\end{lstlisting} 
+\end{block}
+
+\begin{block}{Eredmény}
+\only<1>{Ez az elso dia, }
+\only<2>{ez pedig a második.}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+A \textcolor{blue}{\textbf{$\backslash$alt<>\{szöveg1\}\{szöveg2\}}} parancs hatására a megadott diákra a szöveg1, a többire a szöveg2 kerül. Csak az egyik szöveg fog megjelenni, a másik \textsl{nem foglalja} a helyet.
+
+\begin{block}{Példa}
+\begin{adjustbox}{width=1\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|alt<1>{Ez az 1. dia elsõ sora.}{Ez a többi dián az elsõ sor.} \\
+|$\backslash$|alt<2>{Ez pedig a 2. dia második sora.}{Ez pedig a többi dia második sora.}
+\end{lstlisting} 
+\end{adjustbox}
+\end{block}
+
+\begin{block}{Eredmény}
+\alt<1>{Ez az 1. dia elsõ sora.}{Ez a többi dián az elsõ sor.} \\
+\alt<2>{Ez pedig a 2. dia második sora.}{Ez pedig a többi dia második sora.}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+A \textcolor{blue}{\textbf{$\backslash$temporal<spec>\{szöveg-elõtte\}\{szöveg\}\{szöveg-utána\}}} parancs hatására a megadott diák elõtt  a szöveg-elõtte, a megadott diákra a szöveg, a megadott diák után pedig a szöveg-utána fog megjelenni.
+
+\begin{block}{Példa}
+\begin{adjustbox}{width=1\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|temporal<1>{Szöveg1 elõtte}{Szöveg1}{Szöveg1 utána} \\
+|$\backslash$|temporal<2>{Szöveg2 elõtte}{Szöveg2}{Szöveg2 utána} \\
+|$\backslash$|temporal<2>{Szöveg3 elõtte}{Szöveg3}{Szöveg3 utána} \\
+\end{lstlisting} 
+\end{adjustbox}
+\end{block}
+
+\begin{block}{Eredmény}
+\temporal<1>{Szöveg1 elõtte}{Szöveg1}{Szöveg1 utána} \\ 
+\temporal<2>{Szöveg2 elõtte}{Szöveg2}{Szöveg2 utána} \\ 
+\temporal<3>{Szöveg3 elõtte}{Szöveg3}{Szöveg3 utána} \\ 
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+Figyelemfelkeltõ sorokat az \textcolor{blue}{\textbf{$\backslash$alert<spec>}} parancs segítségével hozhatunk létre. A hatására a megadott diákon a felírat piros színnel, máshol normálisan fog megjelenni.
+
+\begin{block}{Példa}
+\begin{adjustbox}{width=0.9\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|alert{Alert az összes dián} \\
+|$\backslash$|alert<2>{Alert a 2. dián} \\
+|$\backslash$|alert<1,3>{Alert az 1-es és 3-as dián} \\
+|$\backslash$|alert<-2,4>{Alert az 1,2 és 4-as dián} \\
+\end{lstlisting} 
+\end{adjustbox}
+\end{block}
+
+\begin{block}{Eredmény}
+\alert{Alert az összes dián} \\
+\alert<2>{Alert a 2. dián} \\
+\alert<1,3>{Alert az 1-es és 3-as dián} \\
+\alert<-2,4>{Alert az 1,2 és 4-as dián} \\
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+Overlay parancsokat nem csak a szöveg tartalmára, hanem a szöveg tulajdonságának megváltoztatására is lehet használni.
+
+\begin{block}{Példa}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.6\linewidth}
+\vskip -1ex
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|textbf<2>{Sample}\\
+|$\backslash$|textit<2>{Sample}\\
+|$\backslash$|textsl<2>{Sample}\\
+|$\backslash$|alert<2>{Sample}\\
+|$\backslash$|textrm<2>{Sample}\\
+|$\backslash$|textsf<2>{Sample}\\
+|$\backslash$|color<2>{green}{Sample}\\
+|$\backslash$|structure<2>{Sample}
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}[t]{0.4\linewidth}
+%\vskip 4ex
+\textbf<2>{Sample}\\
+\textit<2>{Sample}\\
+\textsl<2>{Sample}\\
+\alert<2>{Sample}\\
+\textrm<2>{Sample}\\
+\textsf<2>{Sample}\\
+\color<2>{green}{Sample}\\
+\structure<2>{Sample}
+\end{minipage}
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Overlay megadás}
+\setbeamercovered{transparent}
+Továbbá a blokkok láthatóságát is lehet vezérelni.
+
+\begin{block}{Példa}
+\begin{tabular}{ l c }
+\begin{minipage}[t]{0.5\linewidth}
+\vskip -1ex
+\begin{lstlisting}[escapeinside=||]
+|$\backslash$|begin{tetel}<1->
+Létezik végtelen halmaz.
+|$\backslash$|end{tetel}
+
+|$\backslash$|begin{proof}<3->
+Következik a kiválasztási axiómából.
+|$\backslash$|end{proof}
+
+|$\backslash$|begin{example}<2->
+A természetes számok halmaza végtelen.
+|$\backslash$|end{example}
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}[t]{0.4\linewidth}
+\begin{tetel}<1->
+Létezik végtelen halmaz.
+\end{tetel}
+
+\begin{proof}<3->
+Következik a kiválasztási axiómából.
+\end{proof}
+
+\begin{example}<2->
+A természetes számok halmaza végtelen.
+\end{example}
+\end{minipage}
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Overlay megadás}
+Képletek megjelenítése:
+
+\vskip 2ex
+\begin{adjustbox}{width=1\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+\begin{theorem}<1->
+	\[
+	\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\Pi}
+	\]
+\end{theorem}
+
+\begin{proof}<2->
+\begin{align*}
+\uncover<2->{\left(\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\Pi}\right)^2 
+  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-x^2+y^2} dx dy } \\
+	
+\uncover<3->{&=\int_{0}^{2\Pi} \int_{0}^{\infty} e^{-r^2} r 
+  dr d\theta } \\ 
+
+\uncover<4->{&= 2 \Pi \int_{0}^{\infty} r e^{-r^2} dr = \Pi}
+\end{align*}
+\end{proof}
+\end{lstlisting}
+\end{adjustbox}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Overlay megadás}
+
+\begin{theorem}<1->
+	\[
+	\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\Pi}
+	\]
+\end{theorem}
+
+\begin{proof}<2->
+\begin{align*}
+\uncover<2->{\left(\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\Pi}\right)^2 &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-x^2+y^2} dx dy } \\
+\uncover<3->{&=\int_{0}^{2\Pi} \int_{0}^{\infty} e^{-r^2} r  dr d\theta } \\ 
+\uncover<4->{&= 2 \Pi \int_{0}^{\infty} r e^{-r^2} dr = \Pi}
+\end{align*}
+\end{proof}
+\end{frame}
+
+\begin{frame}[fragile,shrink=20]{Ugráló sorok}
+\begin{lstlisting}[escapeinside=||]
+\only<1->{
+ Adatok:
+\begin{itemize}
+\setlength\itemsep{0.1em}
+   \item 1 merevlemez 3 db kétoldalas lemez
+   \item 1 oldal 20000 sáv
+   \item 1 sáv 1000 szektor
+   \item 1 szektor 500 byte
+   \item seek idõ 4 ms
+   \item 1 szektor átlagos olvasása 10ms
+|$\backslash$|end{itemize}
+}
+ \only<2-4>{(a) Milyen gyorsan forog a lemez? \vskip 1ex}
+
+ \only<3-4>{  4 + x / 2 + x / 1000   = 10ms }
+
+ \only<4-4>{ x  = \frac{6000}{501}ms ; \frac{1}{x}  =  
+     \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}}= 
+     \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}} 
+             \times 60000 \frac{\text{ms}}{\text{perc}}= 
+     5010 \frac{\text{fordulat}}{\text{perc}}}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Ugráló sorok - dia kinézet}
+ \only<1->{
+ Adatok:
+\begin{itemize}
+\setlength\itemsep{0.1em}
+   \item 1 merevlemez 3 db kétoldalas lemez
+   \item 1 oldal 20000 sáv
+   \item 1 sáv 1000 szektor
+   \item 1 szektor 500 byte
+   \item seek idõ 4 ms
+   \item 1 szektor átlagos olvasása 10ms
+\end{itemize}
+}
+ \only<2-4>{(a) Milyen gyorsan forog a lemez? \vskip 1ex}
+
+ \only<3-4>{ $ 4 + x / 2 + x / 1000 $  = 10ms }
+
+ \only<4-4>{ $x  = \frac{6000}{501}ms$ ; $\frac{1}{x} =  \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}}= \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}} \times 60000 \frac{\text{ms}}{\text{perc}}= 5010 \frac{\text{fordulat}}{\text{perc}}$}
+\end{frame}
+
+\begin{frame}[fragile,shrink=20]{Ugráló sorok megszüntetése}
+\begin{lstlisting}[escapeinside=||]
+\begin{overlayarea}{\textwidth}{1\textheight}
+\only<1->{
+ Adatok:
+\begin{itemize}
+\setlength\itemsep{0.1em}
+   \item 1 merevlemez 3 db kétoldalas lemez
+   \item 1 oldal 20000 sáv
+   \item 1 sáv 1000 szektor
+   \item 1 szektor 500 byte
+   \item seek idõ 4 ms
+   \item 1 szektor átlagos olvasása 10ms
+\end{itemize}
+}
+ \only<2-4>{(a) Milyen gyorsan forog a lemez? \vskip 1ex}
+
+ \only<3-4>{ $ 4 + x / 2 + x / 1000 $  = 10ms }
+
+ \only<4-4>{ $x  = \frac{6000}{501}ms$ ; $\frac{1}{x}  =  
+     \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}}= 
+     \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}} 
+             \times 60000 \frac{\text{ms}}{\text{perc}}= 
+     5010 \frac{\text{fordulat}}{\text{perc}}$}
+ \end{overlayarea}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Ugráló sorok megszüntetése}
+\begin{overlayarea}{\textwidth}{1\textheight}
+ \only<1->{
+ Adatok:
+\begin{itemize}
+\setlength\itemsep{0.1em}
+   \item 1 merevlemez 3 db kétoldalas lemez
+   \item 1 oldal 20000 sáv
+   \item 1 sáv 1000 szektor
+   \item 1 szektor 500 byte
+   \item seek idõ 4 ms
+   \item 1 szektor átlagos olvasása 10ms
+\end{itemize}
+}
+ \only<2-4>{(a) Milyen gyorsan forog a lemez? \vskip 1ex}
+
+  \only<3-4>{ $ 4 + x / 2 + x / 1000 $  = 10ms }
+
+ \only<4-4>{ $x  = \frac{6000}{501}ms$ ; $\frac{1}{x} =  \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}}= \frac{501}{6000} \frac{\text{fordulat}}{\text{ms}} \times 60000 \frac{\text{ms}}{\text{perc}}= 5010 \frac{\text{fordulat}}{\text{perc}}$}
+\end{overlayarea}
+\end{frame}
+
+
+\begin{frame}[fragile]{Nem fér ki a szöveg, mert túl széles}
+A shrink opcióval a teljes keretet át tudjuk méretezni, de részeket nem. A problémát megoldhatjuk az adjustbox csomag segítségével.
+
+\begin{block}{LaTex kód}
+\begin{adjustbox}{width=0.9\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+\begin{block}{Példa}
+\begin{lstlisting}[escapeinside=||]
+\alert<1>{Ez egy nagyon hosszú sor ami nem fér ki} \\
+\alert<2>{Ez egy másik nagyon hosszú sor ami nem fér ki} \\
+\alert<3>{És itt a harmadik nagyon hosszú sor ami nem fér ki} 
+|$\backslash$|end{lstlisting} 
+\end{block}
+\end{lstlisting} 
+\end{adjustbox}
+\end{block}
+
+\begin{block}{Eredmény}
+\begin{lstlisting}[escapeinside=||]
+\alert<1>{Ez egy nagyon hosszú sor ami nem fér ki} \\
+\alert<2>{Ez egy másik nagyon hosszú sor ami nem fér ki} \\
+\alert<3>{És itt a harmadik nagyon hosszú sor ami nem fér ki} 
+\end{lstlisting} 
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Nem fér ki a szöveg, mert túl széles}
+A shrink opcióval a teljes keretet át tudjuk méretezni, de részeket nem. A problémát megoldhatjuk az adjustbox csomag segítségével.
+
+\begin{block}{LaTex kód}
+\begin{adjustbox}{width=0.9\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+\begin{block}{Példa}
+\begin{adjustbox}{width=0.9\textwidth} 
+\begin{lstlisting}[escapeinside=II]
+\alert<1>{Ez egy nagyon hosszú sor ami nem fér ki} \\
+\alert<2>{Ez egy másik nagyon hosszú sor ami nem fér ki} \\
+\alert<3>{És itt a harmadik nagyon hosszú sor ami nem fér ki} 
+|$\backslash$|end{lstlisting} 
+\end{adjustbox}
+\end{block}
+\end{lstlisting} 
+\end{adjustbox}
+\end{block}
+
+\begin{block}{Eredmény}
+\begin{adjustbox}{width=0.9\textwidth} 
+\begin{lstlisting}[escapeinside=||]
+\alert<1>{Ez egy nagyon hosszú sor ami nem fér ki} \\
+\alert<2>{Ez egy másik nagyon hosszú sor ami nem fér ki} \\
+\alert<3>{És itt a harmadik nagyon hosszú sor ami nem fér ki} 
+\end{lstlisting} 
+\end{adjustbox}
+\end{block}
+\end{frame}
+
+\begin{frame}{Feladat}
+\begin{itemize}
+	\item Készítsen egy 3 diából álló prezetációt.
+	\item Az elsõ dián használjon lista környezetet.
+	\item A második dián használjon blokkokat.
+	\item A harmadik diára írjon matematikai képleteket.
+	\item A listaelemek láthatóságát adja meg.
+	\item Változtassa meg a keret méretét
+	\item Nézze meg hogyan változik a keret, ha használja a plain opciót.
+	\item \url{https://www.hartwork.org/beamer-theme-matrix/} vagy a \url{http://deic.uab.es/~iblanes/beamer_gallery/} honlapok alapján változtassa meg a prezentáció kinézetét.
+\end{itemize}
+\end{frame}
+
+
+\end{document}

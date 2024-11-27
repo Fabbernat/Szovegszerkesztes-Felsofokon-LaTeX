@@ -1,0 +1,295 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Fedora 40) (preloaded format=pdflatex 2024.11.25)  25 NOV 2024 13:12
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**snapshot+layout-demo.tex
+(./snapshot+layout-demo.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/share/texlive/texmf-dist/tex/latex/snapshot/snapshot.sty
+Package: snapshot 2020/06/17 v2.14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2023/02/13 3.86 The Babel package
+\babel@savecnt=\count193
+\U@D=\dimen141
+\l@unhyphenated=\language4
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count194
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-hungarian/magyar.ldf
+Language: magyar 2019/01/14 v1.5c Magyar (Hungarian) support for babel
+Package babel Info: Making ` an active character on input line 2819.
+\c@footnote@add=\count195
+\c@footnote@ch=\count196
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/hu/babel-magyar.tex
+Package babel Info: Importing font and identification data for magyar
+(babel)             from babel-hu.ini. Reported on input line 11.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/layout.sty
+Package: layout 2021-03-10 v1.2e Show layout parameters
+\oneinch=\count197
+\cnt@paperwidth=\count198
+\cnt@paperheight=\count199
+\cnt@hoffset=\count266
+\cnt@voffset=\count267
+\cnt@textheight=\count268
+\cnt@textwidth=\count269
+\cnt@topmargin=\count270
+\cnt@oddsidemargin=\count271
+\cnt@evensidemargin=\count272
+\cnt@headheight=\count273
+\cnt@headsep=\count274
+\cnt@marginparsep=\count275
+\cnt@marginparwidth=\count276
+\cnt@marginparpush=\count277
+\cnt@footskip=\count278
+\fheight=\count279
+\ref@top=\count280
+\ref@hoffset=\count281
+\ref@voffset=\count282
+\ref@head=\count283
+\ref@body=\count284
+\ref@foot=\count285
+\ref@margin=\count286
+\ref@marginwidth=\count287
+\ref@marginpar=\count288
+\Interval=\count289
+\ExtraYPos=\count290
+\PositionX=\count291
+\PositionY=\count292
+\ArrowLength=\count293
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count294
+\Gm@cntv=\count295
+\c@Gm@tempcnt=\count296
+\Gm@bindingoffset=\dimen142
+\Gm@wd@mp=\dimen143
+\Gm@odd@mp=\dimen144
+\Gm@even@mp=\dimen145
+\Gm@layoutwidth=\dimen146
+\Gm@layoutheight=\dimen147
+\Gm@layouthoffset=\dimen148
+\Gm@layoutvoffset=\dimen149
+\Gm@dimlist=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count297
+\l__pdf_internal_box=\box51
+)
+(./snapshot+layout-demo.aux)
+\openout1 = `snapshot+layout-demo.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=418.25368pt
+* \textheight=591.5302pt
+* \oddsidemargin=17.3571pt
+* \evensidemargin=17.3571pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+LaTeX Info: Redefining \cal on input line 497.
+LaTeX Info: Redefining \mit on input line 498.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 14.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 14.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 14.
+
+One-sided document style.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+9.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 19.
+ [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): invalid entry for `pcrr8rn': SlantFont/ExtendFont can be used only with emb
+edded Type1 fonts
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rpxpplb' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rpxpplbi' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rpxpplbo' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rpxpplr' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rpxpplri' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rpxpplro' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxphvb' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxphvbo' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxphvr' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxphvro' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxptmb' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxptmbi' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxptmbo' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxptmr' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxptmri' already exists, duplicates ignored
+
+
+pdfTeX warning: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.ma
+p): fontmap entry for `rtxptmro' already exists, duplicates ignored
+}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+[2] (./snapshot+layout-demo.aux)
+\snap@out=\write3
+\openout3 = `snapshot+layout-demo.dep'.
+
+
+Dependency list written on snapshot+layout-demo.dep.
+ ) 
+Here is how much of TeX's memory you used:
+ 3467 strings out of 477970
+ 60548 string characters out of 5838655
+ 1866388 words of memory out of 6000000
+ 23684 multiletter control sequences out of 15000+600000
+ 519161 words of font info for 47 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 57i,11n,62p,274b,363s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/cm-super/sftt0800.pfb>
+Output written on snapshot+layout-demo.pdf (2 pages, 133395 bytes).
+PDF statistics:
+ 52 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

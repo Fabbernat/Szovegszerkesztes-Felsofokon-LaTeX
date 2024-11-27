@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{graphicx}
+%
+\usepackage{caption}
+% caption név módosítás:
+\addto\captionsmagyar{%
+	\def\figurename{Kép}}
+%caption kinézet módosítás:
+\captionsetup[figure]{labelformat=default,
+%labelsep = none    % nincs
+labelsep = colon   % : 
+%labelsep = period  % .
+%labelsep = quad    % nagyobb hely
+}
+\title{Magyarítás módosítások}
+\author{Virágh János}
+\begin{document}
+\maketitle
+
+Ha nem tetszik a Babel magyar opciója által felkínált kinézet, a preambulumban átállíthatjuk pl. az ábra aláírásokat így: 
+\begin{verbatim}
+%
+\usepackage{caption}
+% caption név módosítás:
+\addto\captionsmagyar{%
+	\def\figurename{Kép}}
+%caption kinézet módosítás:
+\captionsetup[figure]{labelformat=default,
+	%labelsep = none    % nincs
+	labelsep = colon   % : 
+	%labelsep = period  % .
+	%labelsep = quad    % nagyobb hely
+}
+\end{verbatim}
+Ezek után így néz ki egy úsztatott ábra a kedvenc oroszlánunkról:
+\begin{figure}
+\centering	
+\includegraphics[scale=0.5]{Lion.pdf}
+\caption{A kedvenc oroszlánunk}
+\end{figure}
+\end{document}

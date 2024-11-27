@@ -1,0 +1,13 @@
+latexdef -l -p graphicx
+latexdef  -p graphicx -f rotatebox
+latexdef  -p graphicx -f -e figure
+latexdef  -h
+latexdef     parindent
+latexdef  -v parindent
+latexdef -c [a4paper]{book} -v parindent
+latexdef -c [a4paper]{book} -v paperwidth
+latexdef   -v parskip
+latexdef    parskip
+latexdef  -E list
+latexdef  -E enumerate
+latexdef -l -p ifthen

@@ -1,0 +1,73 @@
+% magyar LaTeX article sablon
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+
+% opening
+\title{A \texttt{filecontents} környezet használata}
+\author{Virágh János}
+%
+\parindent 0pt
+
+\begin{document}
+	
+\maketitle
+
+Először kiíratjuk a 
+
+\verb!\begin{filecontents}!
+	
+\dots
+
+\verb!\end{filecontents}!
+
+környezet tartalmát, egy mondóka szövegét a \texttt{mondóka1.tex} nevű fájlba.
+
+\begin{filecontents}{mondóka1.tex}
+\begin{verse}
+Egy - megérett a meggy\\
+Kettő - csipkebokor vessző\\
+Három - majd haza várom\\
+Négy  - biz oda nem mégy\\
+Öt - leesett a köd\\
+Hat - hasad a pad\\
+Hét - dörög az ég\\
+Nyolc - üres a polc\\
+Kilenc - kis Ferenc\\
+Tíz - tiszta víz
+\end{verse}
+\end{filecontents}
+
+\vspace*{1em}
+Ha a környezet *-os változatát használjuk, figyeljük meg, hogy ez nem ír kommentár fejlécet a generált \texttt{mondóka2.tex} fájl elejére.
+
+\begin{filecontents*}{mondóka2.tex}
+\begin{verse}
+Egy - megérett a meggy\\
+Kettő - csipkebokor vessző\\
+Három - majd haza várom\\
+Négy  - biz oda nem mégy\\
+Öt - leesett a köd\\
+Hat - hasad a pad\\
+Hét - dörög az ég\\
+Nyolc - üres a polc\\
+Kilenc - kis Ferenc\\
+Tíz - tiszta víz
+\end{verse}
+\end{filecontents*}
+
+\pagebreak[4]
+
+Most visszaolvassuk  a \verb!\input{mondóka1.tex}! paranccsal a fájl tartalmát, és megformáztatjuk a \LaTeX-hel. Persze ennek így nincs sok értelme, az olvasást inkább másik fájlokban/projektekben végezzük. :)
+
+\input{mondóka1.tex}
+
+Ugyanezt elvégezhetjük a  \verb!\include{mondóka2.tex}! paranccsal is. Ez a parancs új oldalt kezd!
+
+\include{mondóka2.tex}
+
+Ezekkel a környezetekkel természetesen nem csak LaTeX kódokat írathatunk ki, hanem tetszőleges szöveges információt, például PostScript kódot, C programot, stb.
+
+\end{document}

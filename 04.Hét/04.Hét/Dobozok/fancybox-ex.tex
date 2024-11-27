@@ -1,0 +1,55 @@
+% magyar LaTeX article sablon
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+\usepackage{fancybox}
+
+%\usepackage{color}
+%\usepackage[monochrome]{color}
+\usepackage[dvipsnames]{color}
+
+%opening
+\title{!!! ide jön a cím}
+\author{!!! ide jön a szerző}
+
+\begin{document}
+%%% Ha az itemize belsejében lenne, csak lokálisan lenne definiált!
+\definecolor{lila}{named}{Magenta}
+\definecolor{halványzöld}{rgb}{0.25,0.75,0.2}
+\definecolor{ciánkék}{cmyk}{1,0,0,0}
+\definecolor{világosszürke}{gray}{0.5}
+%%%
+
+További szép színes dobozok a  \verb!fancybox! csomag segítségével:
+
+\begin{itemize}
+    \item a \LaTeX{} saját \verb!fbox! keretezett dobozával:\\
+    \noindent\fbox{
+        \begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+                    A \textcolor{lila}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}}
+        \end{minipage}
+    }
+    \item a \verb!fancybox! csomag  \verb!shadowbox! árnyékolt dobozával:\\
+
+    \noindent\shadowbox{
+        \begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+                    A \textcolor{blue}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}}
+        \end{minipage}
+    }
+    \item a \verb!fancybox! csomag  \verb!doublebox! dupla keretes dobozával:\\
+    \noindent\doublebox{
+        \begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+                    A \textcolor{green}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}}
+        \end{minipage}
+    }
+    \item a \verb!fancybox! csomag  \verb!ovalbox! ovális dobozával:\\
+    \noindent\ovalbox{
+        \begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+                    A \textcolor{cyan}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}}
+        \end{minipage}
+    }
+\end{itemize}
+\end{document}

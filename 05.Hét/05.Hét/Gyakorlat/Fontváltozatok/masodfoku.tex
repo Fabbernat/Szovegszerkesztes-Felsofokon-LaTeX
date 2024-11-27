@@ -1,0 +1,38 @@
+% magyar LaTeX article sablon 
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+% válasszunk fontot:
+% alapból a CM fontokat kapjuk
+%\usepackage{lmodern} % hasonlít az alapértelmezetthez
+%
+%\usepackage{times}
+%\usepackage{stix2}   % hasonlít a times-hoz
+%
+%\usepackage{palatino}
+%
+\usepackage{fourier}
+%
+%opening
+\title{A másodfokú egyenlet}
+\date{}
+\begin{document}
+%\maketitle
+\section*{A másodfokú egyenlet}
+Az $ax^2 + bx + c = 0$ \textit{általános másodfokú egyenlet} megoldhatóságára a következő állítások igazak:
+\begin{itemize}
+	\item ha $a\neq 0$, akkor a megoldás az 
+	$$
+	x_{12} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+	$$
+	\textit{megoldóképlet} segítségével írható föl. A $D = \sqrt{b^2 - 4ac}$ \emph{diszkrimináns} értékétől függően három aleset lehetséges:
+	\begin{enumerate}
+		\item ha $D<0$, az egyenletnek két különböző, konjugált komplex gyöke van;
+	     \item ha $D=0$, az egyenletnek egyetlen, kétszeres multiplicitású valós gyöke van;
+	     \item ha $D>0$, az egyenletnek két különböző valós gyöke van;
+	\end{enumerate}
+	\item ha $a=0$, az egyenlet elfajult, és a $b,c$ együtthatók értékétől függően $0,1$ vagy végtelen sok valós gyöke van.	
+\end{itemize}
+
+\end{document}

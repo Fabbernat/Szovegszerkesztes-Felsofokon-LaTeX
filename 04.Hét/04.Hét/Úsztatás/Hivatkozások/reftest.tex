@@ -1,0 +1,87 @@
+% V 2024 09 29
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{caption}
+\usepackage{newfloat}
+\usepackage{graphicx}
+
+\title{Hivatkozások használata}
+\author{Virágh János}
+
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\verb!\Az{\ref!-fel és \verb!\az{\pageref!-fel hivatkozva:\\ \Az{\ref{sec-something}}.~szakaszban \az{\pageref{sec-something}}.~oldalon bevezetjük a \textellipsis
+
+\verb!\Aref!-fel és \verb!\apageref!-fel hivatkozva:\\ \Aref{sec-something}.~szakaszban \apageref{sec-something}.~oldalon bevezetjük a \textellipsis
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+
+\section{Első szekció}\label{sec-something}
+\begin{itemize}
+\item 
+\verb!\Az{\ref!-fel és  \verb!\az{\pageref!-fel hivatkozva:
+\begin{verbatim}
+\Az{\ref{sec-somethingelse}}.~szekció 
+\az{\pageref{sec-somethingelse}}.~oldalon kezdődik.
+\end{verbatim}	
+\Az{\ref{sec-somethingelse}}.~szekció \az{\pageref{sec-somethingelse}}.~oldalon kezdődik.
+\item 
+\verb!\Az{\ref!-fel és  \verb!\az{\pageref!-fel hivatkozva:
+\begin{verbatim}
+ \Az{\ref{fig:lion1}}.~ábrán \az{\pageref{fig:lion1}}.~oldalon 
+ egy öreg oroszlánt látunk a \TeX{} tanulmányozása közben.	
+\end{verbatim}			
+ \Az{\ref{fig:lion1}}.~ábrán \az{\pageref{fig:lion1}}.~oldalon egy öreg oroszlánt látunk a \TeX{} tanulmányozása közben.
+\item 
+\verb!\Aref!-fel és \verb!\apageref!-fel hivatkozva:
+\begin{verbatim}
+\Aref{fig:lion1}.~ábrán \apageref{fig:lion1}.~oldalon 
+egy öreg oroszlánt látunk a \TeX{} tanulmányozása közben.	
+\end{verbatim}	
+ \Aref{fig:lion1}.~ábrán \apageref{fig:lion1}.~oldalon egy öreg oroszlánt látunk a \TeX{} tanulmányozása közben.
+\end{itemize}
+Néhány jólismert \TeX{} formátum:
+\begin{enumerate}
+\item Plain \TeX
+\item \label{popular} \LaTeX
+\item Con\TeX t\footnote{Con\TeX t: egyszerűen a legjobb\label{fn-best}}
+\end{enumerate}
+%
+\begin{itemize}
+\item
+\verb!\az{\ref!-fel és  \verb!\az{\pageref!-fel hivatkozva:\\ Az előző listából a legelterjedtebb \az{\ref{popular}}.~formátum, bár egyesek nem így gondolják, lásd \az{\ref{fn-best}}.~lábjegyzetet \az{\pageref{fn-best}}.~oldalon.
+\item
+\verb!\aref!-fel és \verb!\apageref!-fel hivatkozva:\\ Az előző listából a legelterjedtebb \aref{popular}.~formátum, bár egyesek nem így gondolják, lásd \aref{fn-best}.~lábjegyzetet \apageref{fn-best}.~oldalon.
+\end{itemize}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{Lion}
+\caption{Kedvenc oroszlánunk}
+\label{fig:lion1}
+\end{figure}
+
+\section{Második szekció}\label{sec-somethingelse}
+\begin{itemize}
+\item	
+\verb!\Az{\ref!-fel hivatkozva:\\ \Az{\ref{fig:lion2}}.~ábrán a tükörben egy öreg oroszlánt látunk a \TeX{} tanulmányozása közben.
+\item
+\verb!\Aref!-fel hivatkozva:\\ \Aref{fig:lion2}.~ábrán  a tükörben egy öreg oroszlánt látunk a \TeX{} tanulmányozása közben.
+\end{itemize}
+%
+\begin{figure}[htbp]
+\centering
+\reflectbox{\includegraphics[scale=0.25]{Lion}}
+\caption{Kedvenc oroszlánunk a tükörben}
+\label{fig:lion2}
+\end{figure}
+\end{document}

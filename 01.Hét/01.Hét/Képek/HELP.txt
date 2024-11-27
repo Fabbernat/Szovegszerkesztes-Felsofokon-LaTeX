@@ -1,0 +1,41 @@
+
+$ locate pdflatex|grep bin
+/usr/bin/pdflatex
+/usr/bin/pdflatex-dev
+
+$ (find / -name pdflatex |grep bin) 2>/dev/null
+/usr/bin/pdflatex
+
+$ which pdflatex
+/usr/bin/pdflatex
+
+$ echo RTFM
+RTFM
+
+$ apropos pdflatex
+pdflatex (1)         - PDF output from TeX
+pdflatex-dev (1)     - release candidate LaTeX testing
+
+$ man pdflatex
+PDFTEX(1)                                       General Commands Manual                                       PDFTEX(1)
+
+NAME
+       pdftex - PDF output from TeX
+
+SYNOPSIS
+       pdftex [options] [&format] [file|\commands]
+
+DESCRIPTION
+       Run  the  pdfTeX  typesetter  on file, usually creating file.pdf.  If the file argument has no extension, ".tex"
+       will be appended to it.  Instead of a filename, a set of pdfTeX commands can be given, the first of  which  must
+       start  with a backslash.  With a &format argument pdfTeX uses a different set of precompiled commands, contained
+       in format.fmt; it is usually better to use the -fmt format option instead.
+
+       pdfTeX is a version of TeX, with the e-TeX extensions, that can create PDF files as well as DVI files.
+
+       In DVI mode, pdfTeX can be used as a complete replacement for the TeX engine.
+
+       The typical use of pdfTeX is with a pregenerated formats for which PDF output has been enabled.  The pdftex com‐
+       mand uses the equivalent of the plain TeX format, and the pdflatex command uses the equivalent of the LaTeX for‐
+       mat.  To generate formats, use the -ini switch.
+                        ...

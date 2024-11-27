@@ -1,0 +1,62 @@
+\documentclass{beamer} %Az article helyett beamer
+\mode<presentation> %A pdf megjelenítőnek szól, hogy ez prezentáció. Nem fontos, de ártani nem árthat.
+\usetheme{Warsaw}	%Lehetőségek: 
+%AnnArbor Boadilla    default    Ilmenau     Marburg     Singapore
+%Antibes  boxes       Dresden    JuanLesPins Montpellier Szeged
+%Bergen   CambridgeUS Frankfurt  Luebeck     PaloAlto    Warsaw
+%Berkeley Copenhagen  Goettingen Madrid      Pittsburgh 
+%Berlin   Darmstadt   Hannover   Malmoe      Rochester
+
+%A fenti listából nagyon sok hasonló, és csak apró dolgokban tér el.
+
+\usecolortheme[RGB={100,0,150}]{structure} % az alapszín megadása
+
+\usepackage[T1]{fontenc}
+\usepackage [utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage {amsmath}
+\usepackage {amssymb}
+\usepackage {amsthm}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\newtheorem{tetel}{Tétel}
+\newtheorem{defi}{Definíció}
+\newtheorem{lem}[tetel]{Lemma}
+
+\title{Minta beamer fájl}
+\author{Szerző}
+\date{Mai dátum}
+\begin{document}
+\frenchspacing
+
+
+%%%%%%%%%%%% FRAME %%%%%%%%%%%%  <- olvashatóbbá teszi a kódot.
+
+\begin{frame}  % Új dia nyitása
+	\maketitle
+\end{frame} % dia vége
+
+%%%%%%%%%%%% FRAME %%%%%%%%%%%%
+
+\begin{frame}  % Új dia nyitása
+	\tableofcontents % tartalomjegyzék
+\end{frame} % dia vége
+
+%%%%%%%%%%%% FRAME %%%%%%%%%%%%
+
+\section{Tételek}
+\subsection{Pythagoras}
+\begin{frame}
+  \frametitle{Példa középre igazításra} % A dia címe
+  \begin{tetel}[Pythagoras]
+	 Derékszögű háromszögben a befogók hosszának négyzetösszege megegyezik az átfogó hosszának négyzetével, azaz
+	 \[ a^2+b^2=c^2. \]
+  \end{tetel}
+
+\end{frame}
+
+%%%%%%%%%%%% FRAME %%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,18 @@
+Itt kereshetünk a CTAN-on tézis-sablonokat:
+    https://ctan.org/search?phrase=thesis
+
+SZTE sablonok:
+    https://github.com/jelasity/szte-cs-phdthesis-template
+    https://www.inf.u-szeged.hu/hallgatoknak/diplomamunka-szakdolgozat/szerkezeti-es-formai-kovetelmenyek
+
+ELTE sablonok:
+    https://ctan.org/pkg/elteikthesis?lang=en
+    https://github.com/shdnx/ELTE-LaTeX-Thesis-Base
+
+EKF csomag (Tómács Tibor):
+    https://ctan.org/pkg/thesis-ekf
+
+Egy szép, klasszikus (Tufte stílusú) angol sablon:
+    https://ctan.org/pkg/classicthesis
+
+

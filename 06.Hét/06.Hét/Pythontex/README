@@ -1,0 +1,15 @@
+## Fordítás és megjelenítés a PythonTeX használatakor
+
+A `pythontex-ex1.pdf` fájlt így állítottuk elő 3 lépésben a LaTeX forrásfájlból:
+
+```
+$ pdflatex pythontex-ex1.tex
+$ pythontex pythontex-ex1.tex
+$ pdflatex pythontex-ex1.tex
+```
+A kapott eredmény megtekintése:
+```
+$ okular pythontex-ex1.pdf
+```
+
+Ezt a három lépést kell végrehajtani más, PythonTeX-et használó forrásfájlok esetében is.

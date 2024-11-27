@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage[dvipsnames]{color}
+%\usepackage{graphicx}
+\usepackage{mathtools,amsthm,amssymb}
+
+\theoremstyle{hu-plain}
+\newtheorem{tetel}{tétel}
+\newtheorem{kovet}[tetel]{következmény}
+\newtheorem{defi}[tetel]{definíció}
+
+%\newtheoremstyle{fancythm}{3ex}{3ex}{\slshape}{0pt}%
+%{\color{red}\slshape\bfseries}{.}{2ex}%
+%{\thmnumber{#2}\thmname{. #1}\thmnote{ (#3)}}
+
+\newtheoremstyle{redthm}{3ex}{3ex}{}{0pt}%
+{\color{red}\bfseries}{.}{2ex}%
+{\thmnumber{#2}\thmname{. #1}\thmnote{ (#3)}}
+
+\theoremstyle{redthm}
+\newtheorem{csicsastetel}[tetel]{tétel}
+
+%opening
+\title{!!! ide jön a cím}
+\author{!!! ide jön a szerző}
+
+\begin{document}
+
+\begin{csicsastetel}[Euler formula]
+\[
+e^{ix} = \cos x + i \sin x
+\]
+\end{csicsastetel}
+
+\theoremstyle{hu-plain}
+
+\begin{tetel}[koszinusz-tétel]
+Tetszőleges háromszögben érvényes a
+\begin{equation}
+c^2 = a^2 + b^2 -2ab\cos \gamma
+\end{equation}
+összefüggés, ahol $\gamma$ a $c$ oldallal szemközti szöget jelöli.
+\end{tetel}
+
+\begin{defi}
+A háromszöget derékszögűnek nevezzük, ha van derékszöge. ;-)
+\end{defi}
+\begin{kovet}
+Tetszőleges derékszögű háromszögben az átfogó négyzete egyenlő
+a befogók négyzetösszegével, azaz
+\begin{equation}
+c^2 = a^2 + b^2\text{.}
+\end{equation}
+\end{kovet}
+
+\end{document}

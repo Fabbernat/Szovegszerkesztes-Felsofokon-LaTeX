@@ -1,0 +1,70 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage [utf8]{inputenc}
+\usepackage[magyar]{babel}
+%%% Válasszunk ezekből témát!
+\usetheme{Warsaw}
+%\usetheme{Oxygen}
+%\usetheme{Manhattan}
+%%%%%%%%%%%%%%%
+\title{Beamer téma demó}
+\author{Virágh János}
+%%%
+\begin{document}
+%%%
+\begin{frame}
+\titlepage
+\end{frame}
+%%%
+\begin{frame}
+\frametitle{Tartalomjegyzék}
+\tableofcontents
+\end{frame}
+%%%
+\section{Listák, egyebek}
+%%%
+\begin{frame}
+\frametitle{Lista + \texttt{pause}}
+\begin{itemize}
+\item Első elem \pause
+\item Második elem \pause
+\item Stb.
+\end{itemize}
+\end{frame}
+%%% Válasszuk ki a tartalom igazítását:
+\begin{frame}[t]{Többhasábos tördelés}
+%\begin{frame}[c]{Többhasábos tördelés}
+%\begin{frame}[b]{Többhasábos tördelés}
+%%% 			
+A legfontosabb gyümölcsfajták felsorolása
+\vspace*{1em}
+\begin{columns} % több oszlopos tördelés
+\begin{column}{.3\textwidth}
+	Bogyósok
+	\begin{itemize}
+	\item ribizli
+	\item málna
+	\item szeder
+	\end{itemize}
+\end{column}
+\begin{column}{.3\textwidth}
+	Csonthéjasok
+	\begin{itemize}
+	\item dió
+	\item mogyoró
+	\item mandula
+	\end{itemize}
+\end{column}
+\begin{column}{.3\textwidth}
+	Kabakosok
+	\begin{itemize}
+	\item sárgadinnye
+	\item görögdinnye
+	\item sütőtök
+	\end{itemize}
+\end{column}
+\end{columns}
+%\vfill
+\end{frame}
+
+\end{document}

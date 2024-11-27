@@ -1,0 +1,21 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{graphicx,url}
+\begin{document}
+A következő kép innen tölthető le:
+\begin{center}
+\url{https://tibortomacs.github.io/latex-tutorial-hu/lion.pdf}
+\end{center}
+Ez az oroszlán ma már a \LaTeX\ szimbólumává vált. A szélessége legyen
+5\,cm!
+\begin{center}
+\includegraphics[width=5cm]{Képek/lion}
+\end{center}
+Gyakorlásképpen forgassuk el:
+\begin{center}
+\includegraphics[width=5cm,origin=c,angle=90]{Képek/lion}
+\includegraphics[width=5cm,origin=c,angle=-90]{Képek/lion}
+\end{center}
+\end{document}

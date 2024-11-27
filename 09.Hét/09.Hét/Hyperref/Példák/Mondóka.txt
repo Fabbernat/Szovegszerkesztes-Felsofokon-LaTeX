@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+
+\title{A rhyme from Mother Goose}
+
+\newcommand{\pea}{Pease porridge}
+\newcommand{\heiss}{hot}
+\newcommand{\kalt}{cold}
+\newcommand{\pot}{in the pot nine days old}
+\newcommand{\some}{Some like it}
+
+\begin{document}
+
+\maketitle
+
+\begin{verse} 
+\pea{} \heiss,\\ 
+\pea{} \kalt,\\ 
+\pea{} \pot.\\ 
+\some{} \heiss,\\ 
+\some{} \kalt,\\ 
+\some{} \pot.  
+\end{verse}
+
+\end{document}

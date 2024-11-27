@@ -1,0 +1,105 @@
+% Jennifer Pan, August 2011
+
+\documentclass{beamer}    % Beamer is the class
+
+\usetheme{Warsaw}         % Can use a variety of themes, e.g.,  Copenhagen, Szeged (google for others)
+\usecolortheme{seahorse}  % Can variety of colors for each theme, e.g., crane, seahorse (google for others)
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{url}
+
+\title{Title of Document}
+\subtitle{Sub-Title of Document (if you have one)}
+\author{Your Name}
+\date{The Date (if blank then today's date)}
+
+\begin{document}
+
+\frame{\titlepage}          % Create the title page
+
+\begin{frame}               % Each frame is a new slide
+\frametitle{Overview}       % The title that goes at the top of a slide, "Overview" b/c this is a summary of sections slide
+\tableofcontents            % Creating the table of contents (will fill with the names of each section and subsection)
+\end{frame}                 % Don't forget to end the frame!
+
+\section{Section 1: Title of my first section} %Creating a section, so this appears in the table of contents
+\begin{frame}
+\frametitle{Title of my slide (Section 1, Slide 1)}
+\pause            % Add these pauses if you don't want the whole page to show immediately, this pause means only the title shows initially
+Some text that doesn't have a bullet\\
+\bigskip
+\pause
+More text without a bullet to set up a list:
+\begin{itemize}              % All the normal latex stuff works, e.g., enumerate
+\pause
+\item Bullet 1
+\pause
+\item Bullet 2
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Title of my slide (Section 1, Slide 2)}
+This slide has no pauses, so everything appears all at the same time:
+\begin{itemize}
+\item Bullet 1
+\item Bullet 2
+\end{itemize}
+\bigskip
+You can have two lists on a page:
+\begin{itemize}
+\item Bullet 1
+\item Bullet 2
+\end{itemize}
+\end{frame}
+
+\section{Section 2: Title of my second section} %Creates another section, so this also appears in the table of contents
+\begin{frame}
+\frametitle{Title of my slide (Section 2, Slide 1)}
+\pause
+You can put in equations and math like you would normally do.
+\begin{equation*}
+\begin{aligned}
+\pause
+\mbox{Proposal parameter: } & g_{p} = \mathbf{g'}\mathbf{w}_{gp}+ \zeta_p \\
+\pause
+\mbox{Consensus parameter: } & b^*_p = -\mathbf{b'}\mathbf{w}_{bp} - \omega^*_p \\
+\pause
+\mbox{Voter parameter: } & x_v = \mathbf{x'}\mathbf{w}_{xv} \\
+\pause
+\mbox{Shock parameter: } & c_v = \mathbf{c'}\mathbf{w}_{cv} \mbox{, where } c_v = -E{\{\epsilon_{vp}\}} \\
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Title of my slide (Section 2, Slide 2)}
+\pause
+More math
+\begin{equation*}
+\epsilon_{vp} < g_p x_v - b^*_p
+\end{equation*}
+\pause
+More:
+\begin{equation*}
+\eta_{vp} < (\mathbf{g'}\mathbf{w}_{gp})(\mathbf{x'}\mathbf{w_{xv}}) + (\mathbf{b'}\mathbf{w_{bp}})
+  + (\mathbf{c'}\mathbf{w_{cv}}) + \zeta_p(\mathbf{x'}\mathbf{w_{xv}}) + \omega^*_p
+\end{equation*}
+\end{frame}
+
+\section{Section 3: Title of my third section}
+\begin{frame}
+\frametitle{Title of my slide (Section 3, Slide 1)}
+That's it! \\
+\bigskip
+To do more fancy things with timing and transitions, check out: \\
+\begin{itemize}
+\item \url{http://www.uncg.edu/cmp/reu/presentations/Charles Batts - Beamer Tutorial.pdf} \\
+\item \url{http://faq.ktug.or.kr/wiki/uploads/beamer_guide.pdf} \\
+\end{itemize}
+\end{frame}
+
+\end{document}

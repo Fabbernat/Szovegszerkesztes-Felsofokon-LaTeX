@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\begin{document}
+\obeylines\thispagestyle{empty}
+\let~\textbackslash
+\newcommand{\asciitilde}{\raisebox{-.5\height}{\textasciitilde}}
+\newcommand{\mymyself}{{\let~\asciitilde
+\renewcommand{\{}{\textbackslash\textbraceleft}
+\renewcommand{\}}{\textbackslash\textbraceright}
+\renewcommand{\asciitilde}{\textbackslash asciitilde}
+\renewcommand{\mymyself}{\textbackslash mymyself}\myself}}
+\newcommand{\myself}{
+~documentclass\{article\}
+~usepackage[T1]\{fontenc\}
+~begin\{document\}
+~obeylines~thispagestyle\{empty\}
+~let\asciitilde~textbackslash
+~newcommand\{~asciitilde\}\{~raisebox\{-.5~height\}\{~textasciitilde\}\}
+~newcommand\{~mymyself\}\{\{~let\asciitilde~asciitilde
+~renewcommand\{~\{\}\{~textbackslash~textbraceleft\}
+~renewcommand\{~\}\}\{~textbackslash~textbraceright\}
+~renewcommand\{~asciitilde\}\{~textbackslash asciitilde\}
+~renewcommand\{~mymyself\}\{~textbackslash mymyself\}~myself\}\}
+~newcommand\{~myself\}\{\mymyself\}
+~myself
+~end\{document\}}
+\myself
+\end{document}

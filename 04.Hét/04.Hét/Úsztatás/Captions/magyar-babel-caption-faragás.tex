@@ -1,0 +1,41 @@
+% magyar LaTeX article sablon 2
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf} %%% így használjuk most
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+\usepackage{fancybox}
+
+%\usepackage{color}
+%\usepackage[monochrome]{color}  %%% ekkor fekete-fehér lesz minden
+\usepackage[dvipsnames]{color}
+
+\usepackage{graphicx}
+
+%opening
+\title{!!! ide jön a cím}
+\author{!!! ide jön a szerző}
+
+\begin{document}
+
+\begin{verbatim}
+
+Ha nem tetszik a Babel magyar által felkínált ábra kifejezés:
+\usepackage[magyar]{babel}
+\addto\captionsmagyar{%
+    \def\figurename{Képek}}
+Caption módosítás:
+\usepackage{caption}
+ \usepackage{caption}
+ \captionsetup[figure]{labelformat=default,
+    labelsep=space}
+labelsep = none (nincs)
+labelsep = colon ( : )
+labelsep = period (.)
+labelsep = space (üres karakter)
+labelsep = quad (nagyobb space)
+labelsep = newline (új sor
+
+\end{verbatim}
+\end{document}

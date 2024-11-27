@@ -1,0 +1,2 @@
+a tételszerű környezetek tipográfiája hibás (pl. Tétel 1 jelenik meg 1. tétel. helyett)
+    Frissítés a magyar.ldf 1.5-ös verziójára (a letöltést lásd fent). A theorem vagy ntheorem csomagok használatakor a csomagok és a babel csomag betöltése után, de még az első \newtheorem parancs elé el kell helyezni a \theoremstyle{magyar-plain} hívást. 

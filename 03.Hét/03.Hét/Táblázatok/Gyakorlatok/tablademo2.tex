@@ -1,0 +1,88 @@
+% V 2024. 09. 23.
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+\usepackage{xcolor}
+\usepackage{wrapfig,booktabs}
+\author{Virágh János}
+\title{Példák a \texttt{tabular} környezet használatára II.}
+\parindent 0pt
+\begin{document}
+\maketitle	
+
+Az alábbiakban táblázatok folyó szövegbe ágyazására mutatunk példát a {\color{blue}\texttt{wrapfig}} csomag {\color{blue}\texttt{wraptable}} parancsának segítségével. A {\color{blue}\texttt{hulipsum}} csomaggal generáltatunk vakszöveget a táblázatok köré. Az első példa  forráskódja:
+\begin{verbatim}
+A három tárgyból írt tesztek pontszámait \az{\ref{wrap-table}}~táblázat tartalmazza.
+A minimális pontszám mindhárom tárgyból $50$ pont volt.
+\begin{wraptable}{r}{6cm}
+	\centering
+	\caption{Eredmények}
+	\label{wrap-table}
+	\begin{tabular}{| l|c|c|c|}
+		\hline Név	& Matek & Föci & Kémia\\
+		\hline A. Adél & 80 & 68 & 60\\
+		\hline B. Béla & 72& 62 & 66\\
+	    \hline C. Cecil & 75 & 70 & 71\\
+		\hline
+	\end{tabular}
+\end{wraptable}
+\hulipsum[2]
+\end{verbatim}
+
+A kiszedett szöveg:
+
+A három tárgyból írt tesztek pontszámait \az{\ref{wrap-table}}~táblázat tartalmazza.
+A minimális pontszám mindhárom tárgyból $50$ pont volt.
+\begin{wraptable}{r}{6cm}
+	\centering
+	\caption{Eredmények}
+	\label{wrap-table}
+	\begin{tabular}{| l|c|c|c|}
+		\hline Név	& Matek & Föci & Kémia\\
+		\hline A. Adél & 80 & 68 & 60\\
+		\hline B. Béla & 72& 62 & 66\\
+		\hline C. Cecil & 75 & 70 & 71\\
+		\hline
+	\end{tabular}
+\end{wraptable}
+\hulipsum[1]
+
+\pagebreak[4]
+
+A következő példában szereplő  \ref{wrap-tab:1}.~táblázat  a {\color{blue}\texttt{booktab}} csomag parancsaival készült, és ezt ágyaztuk be a {\color{blue}\texttt{wraptable}} környezetbe.
+
+A forráskód:
+
+\begin{verbatim}
+\hulipsum[1]	
+\begin{wraptable}{c}{5.5cm}
+	\caption{Szöveggel körbefolyatott csinos tábla}\label{wrap-tab:1}
+	\begin{tabular}{ccc}\\
+		\toprule  
+		Fejléc1 & Fejléc2 & Fejléc3 \\\midrule
+		2 &3 & 5\\  \midrule
+		2 &3 & 5\\  \midrule
+		2 &3 & 5\\  \bottomrule
+	\end{tabular}
+\end{wraptable} 
+\hulipsum[1]
+\end{verbatim}
+
+A kiszedett szöveg:
+
+\hulipsum[1]
+\begin{wraptable}{l}{5.5cm}
+	\caption{Szöveggel körbefolyatott csinos tábla}\label{wrap-tab:1}
+	\begin{tabular}{ccc}\\
+		\toprule  
+		Fejléc1 & Fejléc2 & Fejléc3 \\\midrule
+		2 &3 & 5\\  \midrule
+		2 &3 & 5\\  \midrule
+		2 &3 & 5\\  \bottomrule
+	\end{tabular}
+\end{wraptable} 
+\hulipsum[1] 
+
+\end{document}

@@ -1,0 +1,6 @@
+\psfrag {\\tex[t][t]{$t$}}[t][t]%
+        {$t$}%
+\psfrag {\\tex[B][B]{$\\sin\(t\)$, $\\cos\(t\)$}}[B][B]%
+        {$\sin(t)$, $\cos(t)$}%
+\psfrag {\\tex[B][B]{Plot of $\\sin\(t\)$ and $\\cos\(t\)$}}[B][B]%
+        {Plot of $\sin(t)$ and $\cos(t)$}%

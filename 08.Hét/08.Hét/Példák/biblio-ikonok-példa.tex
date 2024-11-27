@@ -1,0 +1,37 @@
+\documentclass{beamer}
+
+\begin{document}
+
+\begin{frame}[fragile]
+A forrás:	
+\begin{verbatim}
+\begin{thebibliography}{9}	
+\setbeamertemplate{bibliography item}[online]
+\bibitem{A} Ez egy online webes hivatkozás
+\setbeamertemplate{bibliography item}[book]
+\bibitem{B} Ez egy könyvre való hivatkozás
+\setbeamertemplate{bibliography item}[article]
+\bibitem{C} Ez egy cikkre való hivatkozás
+\setbeamertemplate{bibliography item}[triangle]
+\bibitem{D} A hivatkozásunk elé egy háromszög ikont teszünk
+\setbeamertemplate{bibliography item}[text]
+\bibitem{E} Ilyen a hagyományos bibliográfiai sorszámozás
+\end{thebibliography}
+\end{verbatim}
+\end{frame}
+\begin{frame}
+	Az eredmény:
+	\begin{thebibliography}{9}
+		\setbeamertemplate{bibliography item}[online]
+		\bibitem{A} Ez egy online webes hivatkozás
+		\setbeamertemplate{bibliography item}[book]
+		\bibitem{B} Ez egy könyvre való hivatkozás
+		\setbeamertemplate{bibliography item}[article]
+		\bibitem{C} Ez egy cikkre való hivatkozás
+		\setbeamertemplate{bibliography item}[triangle]
+		\bibitem{D} A hivatkozásunk elé egy háromszög ikont teszünk
+		\setbeamertemplate{bibliography item}[text]
+		\bibitem{E} Ilyen a hagyományos bibliográfiai sorszámozás
+	\end{thebibliography}
+\end{frame}
+\end{document}

@@ -1,0 +1,86 @@
+% magyar LaTeX article sablon 
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+
+%opening
+\title{Új fontváltó parancsok definiálása}
+\author{Virágh János}
+\parindent=0pt
+
+\begin{document}
+
+\maketitle
+
+\section{Bevezetés}
+Az itt leírtak csak a \texttt{latex} és a \texttt{pdflatex} fordító esetében igazak! Vannak olyan \LaTeX{} csomagok, például a \texttt{times, palatino, utopia}, melyekkel \emph{az egész dokumentumra} beállíthatjuk az alapértelmezett betűkészleteket.
+
+De ezek egyrészt hivatalosan elavultak, másrészt nem segítenek, ha csak bizonyos szövegrészekre alkalmaznánk más fontokat. 
+A \texttt{psnfss2e.pdf} fájl tartalmazza a sztenderd PostScript fájlok \LaTeX-ben használható elnevezését. Ezeket írhatjuk a \verb!\fontfamily! parancs argumentumába. 
+
+Néhány példa:
+
+ A következő paragrafust Times (\texttt{ptm}) fonttal szedi ki a \LaTeX.
+
+\verb!{\fontfamily{ptmr} \selectfont árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}!:
+
+{\fontfamily{ptmr} \selectfont  árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}
+
+ Most a Times dőlt változatát használjuk:
+
+\verb!{\fontfamily{ptm} \selectfont \itshape árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}!
+
+{\fontfamily{ptm} \selectfont \itshape árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}
+
+ A következő paragrafust Utopia (\texttt{put}) fonttal szedi ki a \LaTeX:
+ 
+\verb!{\fontfamily{put} \selectfont  árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}! 
+
+{\fontfamily{put} \selectfont  árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}
+
+ Most az Utopia dőlt változatát használjuk:
+
+\verb!{\fontfamily{put} \selectfont \itshape árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}! 
+
+{\fontfamily{put} \selectfont \itshape árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP\par}
+
+\section{Új parancs definiálása}
+Némi írást megspórolhatunk, ha bevezetjük a következő parancsot:
+
+\verb!\newcommand{\setFontStyle}[2]{{\fontfamily{#1}\selectfont #2\par}}!
+
+\newcommand{\setFontStyle}[2]{{\fontfamily{#1}\selectfont #2\par}}
+
+ A parancs hatása: Times (\texttt{ptm}) fonttal szedi ki a \LaTeX
+
+ \verb!\setFontStyle{ptm}{}{árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP}!
+ 
+\setFontStyle{ptm}{}{árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP}
+
+\section{Új környezet definiálása}
+Minimális változtatással egy új \emph{környezetet} is definiálhatunk, ami áttekinthetőbbé teszi a forrásfájlt.
+
+\verb!\newenvironment{setFontStyleenv}[2]{\fontfamily{#1}\selectfont #2}{\par}!
+
+\newenvironment{setFontStyleenv}[2]{\fontfamily{#1}\selectfont #2}{\par}
+
+Három példa (Times Roman, Italics és SmallCaps):
+
+\begin{setFontStyleenv}{ptm}{\upshape}
+	árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP
+\end{setFontStyleenv}
+
+\begin{setFontStyleenv}{ptm}{\itshape}
+árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP
+\end{setFontStyleenv}
+
+\begin{setFontStyleenv}{ptm}{\scshape}
+	árvíztűrő tükörfúrógép ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP
+\end{setFontStyleenv}
+
+
+Használhattuk volna a biztonság kedvéért a\verb!\normalfont! parancsot a végén, az eredeti beállításokhoz való visszatérésre.
+
+\end{document}

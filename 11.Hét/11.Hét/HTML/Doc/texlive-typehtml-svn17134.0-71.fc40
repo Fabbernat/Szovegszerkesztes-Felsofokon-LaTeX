@@ -1,0 +1,21 @@
+Name        : texlive-typehtml
+Epoch       : 11
+Version     : svn17134.0
+Release     : 71.fc40
+Architecture: noarch
+Install Date: 2024. máj. 14., kedd, 17:36:57 CEST
+Group       : Unspecified
+Size        : 34221
+License     : LPPL-1.3c
+Signature   : RSA/SHA256, 2024. jan. 27., szombat, 13:53:34 CET, Key ID 0727707ea15b79cc
+Source RPM  : texlive-2023-71.fc40.src.rpm
+Build Date  : 2024. jan. 27., szombat, 07:31:55 CET
+Build Host  : buildvm-ppc64le-08.iad2.fedoraproject.org
+Packager    : Fedora Project
+Vendor      : Fedora Project
+URL         : http://tug.org/texlive/
+Bug URL     : https://bugz.fedoraproject.org/texlive
+Summary     : Typeset HTML directly from LaTeX
+Description :
+Can handle almost all of HTML2, and most of the math fragment
+of the draft HTML3.

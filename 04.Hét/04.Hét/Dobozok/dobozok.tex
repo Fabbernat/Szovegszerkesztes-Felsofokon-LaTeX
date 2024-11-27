@@ -1,0 +1,158 @@
+% V 2024 09 29
+%
+% Ezt a forrásfájlt a lualatex-hel lefordítva - a menüben:
+% Eszközök/Parancsok/LuaLaTeX - 
+% olyan outputot kapunk, amiben látszanak az egyes dobozok, amikből a LaTeX összerakta az oldalt.
+% Ehhez kell a lua-visual-debug csomag.
+% A kék színű vonalak az alapsorokat jelölik. 
+%
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{fancybox}
+\usepackage{lua-visual-debug}
+\parindent=0pt
+\parskip=2ex
+%opening
+\title{Dobozok dobozok hátán}
+\author{Virágh János}
+%
+\begin{document}
+\maketitle
+
+\subsection*{A \LaTeX\ tördelési algoritmusa}
+
+A \LaTeX\ a forrásfájlból olvasott karaktersorozatot darabokra (betűkre, szavakra) tördeli, ezeket a darabokat megfelelő méretű (többnyire láthatatlan) dobozokba pakolja, s ezen dobozok tologatásával próbálja kirakni a „lehető legszebb” oldalképet. Eközben a \LaTeX{} több különféle üzemmódban dolgozik. A kézikönyv leírása szerint 6 ilyen üzemmód van:
+\begin{itemize}
+\item a két paragrafus (vertikális) mód, amikor az inputot sorokra, majd a sorokat oldalakra tördeli a \LaTeX{}, ilyen a belső és a külső paragrafus mód;
+\item az LR (left-to-right, horizontális) mód két változata;
+\item a két matematikai mód, a normál (szövegközi) és a kiemelt (kiemelt formulák szedésére).
+\end{itemize}
+Bizonyos parancsok csak  bizonyos üzemmódokban - a matematikai parancsok például csak a matamatikaiban - használhatók. A kézikönyv leírása szerint:
+\noindent\rule{\linewidth}{1pt}
+\begin{itemize}
+   \item Paragraph mode is what \LaTeX{} is in when processing ordinary text. It breaks the input text into lines and breaks the lines into pages. This is the mode \LaTeX{} is in most of the time.
+
+   \item LR mode (for left-to-right mode; in plain TeX this is called restricted horizontal mode) is in effect when \LaTeX{} starts making a box with an \mbox command. As in paragraph mode,
+     LaTeX’s output is a string of words with spaces between them. Unlike in paragraph mode, in LR mode \LaTeX{} never starts a new line, it just keeps going from left to right.
+     (Although \LaTeX{} will not complain that the LR box is too long, when it is finished and next tries to put that box into a line, it could very well complain that the finished LR box
+     won’t fit there.)
+
+   \item Math mode is when \LaTeX{} is generating an inline mathematical formula.
+
+   \item Display math mode is when \LaTeX{} is generating a displayed mathematical formula. (Displayed formulas differ somewhat from inline ones. One example is that the placement
+     of the subscript on \verb!\int!  differs in the two situations.)
+
+  \item  Vertical mode is when \LaTeX{} is building the list of lines and other material making the output page. This is the mode \LaTeX{} is in when it starts a document.
+
+   \item Internal vertical mode is in effect when \LaTeX{} starts making a \verb!\vbox!. This is the vertical analogue of LR mode.
+\end{itemize}
+For instance, if you begin a \LaTeX{} article with \verb!‘Let \( x \) be ...’! then these are the modes: first \LaTeX{} starts every document in vertical mode, then it reads the ‘L’ and switches to paragraph mode, then the next switch happens at the \verb!‘\(’! where \LaTeX{} changes to math mode, and then when it leaves the formula it pops back to paragraph mode.
+
+Paragraph mode has two subcases. If you use a \verb!\parbox! command or a \verb!minipage! then \LaTeX{} is put into paragraph mode. But it will not put a page break here. Inside one of these boxes, called a parbox, \LaTeX{} is in inner paragraph mode. Its more usual situation, where it can put page breaks, is outer paragraph mode (see Page breaking).
+
+\noindent\rule{\linewidth}{1pt}
+
+A dobozok olyan részei a dokumentumnak, melyeket egy egységként kezel a \LaTeX{}, tartalmuk nem törhető meg. A továbbiakban olyan parancsokat ismertetünk, amelyekkel mi magunk készíthetünk dobozokba zárt szövegeket (vagy más objektumokat) -- ha úgy tetszik, ezzel segítve, illetve irányítva a \LaTeX{} munkáját.
+\begin{itemize}
+    \item LR dobozok (egysoros doboz)
+    \item Bekezdésdobozok
+    \item Vonaldoboz - erről már volt szó korábban
+\end{itemize}
+
+\subsection*{LR dobozok}
+\begin{itemize}
+    \item \verb|\makebox[doboz szélessége][szöveg pozíciója]{szöveg}|
+    \item \verb|\framebox[doboz szélessége][szöveg pozíciója]{szöveg}|
+    \item \verb|\mbox{szöveg} = \makebox{szöveg}|
+    \item \verb|\fbox{szöveg} = \framebox{szöveg}|
+    \item \verb|\raisebox{emelés}[magasság][szélesség]{szöveg}| 
+\end{itemize}
+
+\subsection*{Bekezdésdobozok}
+\begin{itemize}
+    \item a  \verb|\parbox| környezet:
+    
+     \verb|\parbox[outerpoz][magasság][innerpoz]{szélesség}{szöveg}|
+    
+    csak egy paragrafusból állhat
+    \item a  \verb!minipage! környezet:
+    \begin{verbatim}
+        \begin{minipage}[outerpoz][magasság][innerpoz]{szélesség}
+            szöveg
+        \end{minipage}
+    \end{verbatim}
+    \vspace*{-2em}
+    több paragrafusból is állhat, lábjegyzet is használható, stb. -- olyan, mint egy oldal kicsiben
+\end{itemize}
+
+\subsection*{Példák az \texttt{fbox} használatára}
+
+Mit tehetünk egy keretezett dobozba?
+
+Az \texttt{fbox} LR módban szedi ki a tartalmát, ezért így általában nem alkalmazható:
+
+\fbox{
+Csütörtökön sok felhő lesz felettünk, délután kezd nyugat felől csökkenni a felhőzet. Eső, zápor a nyugati országrész kivételével még több helyen kialakulhat. A Dunántúlon feltámad az északias szél. Délután 15-21 fokot mérhetünk. Pénteken 17-22 fokos maximumokra, több-kevesebb napsütésre van kilátás. Csak néhol fordulhat elő kisebb zápor.
+}
+
+A dobozok „skatulyázhatók”, az \texttt{fbox}-ba egy \texttt{parbox}-ot téve már OK:
+
+\fbox{
+\parbox{0.95\linewidth}{
+Csütörtökön sok felhő lesz felettünk, délután kezd nyugat felől csökkenni a felhőzet. Eső, zápor a nyugati országrész kivételével még több helyen kialakulhat. A Dunántúlon feltámad az északias szél. Délután 15-21 fokot mérhetünk. Pénteken 17-22 fokos maximumokra, több-kevesebb napsütésre van kilátás. Csak néhol fordulhat elő kisebb zápor.
+}
+}
+
+Ugyanez elérhető a \texttt{minipage} környezetbe csomagolással is:
+
+\fbox{
+\begin{minipage}{0.95\linewidth}
+Csütörtökön sok felhő lesz felettünk, délután kezd nyugat felől csökkenni a felhőzet. Eső, zápor a nyugati országrész kivételével még több helyen kialakulhat. A Dunántúlon feltámad az északias szél. Délután 15-21 fokot mérhetünk. Pénteken 17-22 fokos maximumokra, több-kevesebb napsütésre van kilátás. Csak néhol fordulhat elő kisebb zápor.
+\end{minipage}
+}
+
+\subsection*{Példák a \texttt{parbox} parancs  és a \texttt{minipage} környezet használatára}
+
+$\cdots$
+
+A megfelelő parancsokat megtaláljuk a Texstudio \texttt{LaTeX|Dobozok} menüjében is.
+
+További, még fenszibb dobozok készíthetők a \verb!fancybox! csomag parancsaival. Érdemes a \LaTeX\ forrásfájlt tanulmányozni! ;)
+
+\begin{itemize}
+	\item a \LaTeX{} saját \verb!fbox! keretezett dobozával:\\
+	\noindent\fbox{
+		\begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+					A \emph{lehetetlent} azonnal teljesítjük.\\ 
+					A {\itshape csodákra} egy kicsit várni kell!}}
+		\end{minipage}
+	}
+	\item a \verb!fancybox! csomag  \verb!shadowbox! árnyékolt dobozával:\\
+	
+	\noindent\shadowbox{
+		\begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+					A \emph{lehetetlent} azonnal teljesítjük. \\
+					A {\itshape csodákra} egy kicsit várni kell!}}
+		\end{minipage}
+	}
+	\item a \verb!fancybox! csomag  \verb!doublebox! dupla keretes dobozával:\\
+	
+	\noindent\doublebox{
+		\begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+					A \emph{lehetetlent} azonnal teljesítjük.\\ 
+					A \textit{csodákra} egy kicsit várni kell!}}
+		\end{minipage}
+	}
+	\item a \verb!fancybox! csomag  \verb!ovalbox! ovális dobozával:\\
+	
+	\noindent\ovalbox{
+		\begin{minipage}{0.95\linewidth}{\LARGE\bfseries{%
+					A \emph{lehetetlent} azonnal teljesítjük.\\
+					A {\itshape csodákra} egy kicsit várni kell!}}
+		\end{minipage}
+	}
+\end{itemize}
+
+\end{document}

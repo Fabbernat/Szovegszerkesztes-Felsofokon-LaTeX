@@ -1,0 +1,91 @@
+\documentclass[mathserif]{beamer}
+% egyéb opciók:
+%compress, mathserif, handout
+%
+\usetheme{Berkeley}
+% egyéb témák:
+% AnnArbor, Antibes, Bergen, Berkeley, Berlin, Boadilla, CambridgeUS,
+% Copenhagen, Darmstadt, default, Dresden, Frankfurt, Goettingen,
+% Hannover, Ilmenau, JuanLesPins, Luebeck, Madrid, Malmoe, Marburg,
+% Montpellier, PaloAlto, Pittsburgh, Rochester, Singapore, Szeged,
+% Warsaw
+
+\usecolortheme{whale}
+% egyéb színtémák:
+% albatross, beaver, beetle, crane, default, dolphin, dove, fly, lily,
+% orchid, rose, seagull, seahorse, whale, wolverine
+
+\usefonttheme{default}
+% egyéb fonttémák:
+% default, professionalfonts, serif, structurebold,
+% structureitalicserif, structuresmallcapsserif
+%
+% egyéb csomagok:
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+% saját tételszerű környezetek:
+\newtheorem{tet}{Tétel}
+\newtheorem{lem}{Lemma}
+\newtheorem{kov}{Következmény}
+%
+\title{Prezentáció címe}
+\subtitle{Prezentáció alcíme}
+\author{Szerző}
+\institute[SZTE]{Szegedi Tudományegyetem}
+%\date{}
+%
+\begin{document}
+%
+\begin{frame}[plain] % plain stílus: elhagyjuk a körítést
+  \maketitle
+  %titlepage % ezt is használhatnánk helyette
+\end{frame}
+%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%
+\section{Bevezetés}
+%	
+\begin{frame}{Első keret -- szöveg}
+  Valami érdekes szöveg\dots
+\end{frame}
+%
+\section{Tárgyalás}
+%
+\begin{frame}{Második keret -- képlet}
+A matematikában alapvető fontosságú az
+\begin{equation}
+	e^{i\pi} = -1 \tag{Euler--egyenlet}
+\end{equation}
+összefüggés.
+\end{frame}
+%
+\begin{frame}{Harmadik keret -- tétel}
+\begin{tet}[Moivre--képlet]
+Minden $x$ komplex szám és  minden $n$ egész szám esetén fennáll a
+\[ 
+\left(\cos x+i\sin x\right)^{n}=\cos \left(nx\right)+i\sin \left(nx\right)
+\]	
+egyenlőség. 
+\end{tet}
+\end{frame}
+%
+\begin{frame}{Negyedik keret -- grafika}
+Ide jöhetne valami grafika:
+
+\begin{center}
+\fbox{\Huge grafika}
+%\includegraphics[...]{valami képfájl}
+\end{center}
+\end{frame}
+%
+\section{Befejezés}
+%
+\begin{frame}{További keretek}
+	Blabla\dots
+\end{frame}
+\end{document}

@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+
+\title{Belső parancsok, a \texttt{@}-os trükk}
+\author{Virágh János}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{2ex}
+\begin{document}
+
+\maketitle
+A \LaTeX-ben nincsenek olyan világosan elkülönülő globális és lokális környezetek, globális és lokális változók, mint az „igazi” programozási nyelvekben. Egyedi trükkök kellenek ahhoz,
+hogy bizonyos neveket, parancsokat „lokálissá tegyünk”, kívülről elrejtsünk.
+
+Erre a legegyszerűbb eszköz a \verb|\makeatletter ... \makeatother| utasításpár alkalmazása,
+amelyre sok példát találhatunk a \LaTeX{} vagy az egyes csomagok forráskódjában. 
+
+\verb|\makeatletter \newcommand{\val@mi}{Egy kukacos parancsot definiáltunk!}|
+
+\makeatletter
+\newcommand{\val@mi}{Egy kukacos parancsot definiáltunk!}
+Próbáljuk ki:
+
+\verb|\val@mi{} -- és működik!|
+
+\val@mi{} -- és működik!
+
+Ha kivesszük a \% jelet és lefuttatjuk az alábbi \verb|\makeatother| parancsot, onnantól már nem működik a \verb|\val@mi| parancs, hibajelzést kapunk.
+
+%\makeatother
+
+\val@mi{} -- és már nem működik, NEM helyettesíti be a \LaTeX{} a definíciót.	
+
+\pagebreak[4]Az előző trükkök fölhasználhatók a \verb|\valami*| alakú csillagozott parancsok definiálására. Itt a * NEM a parancsnév része!
+\begin{verbatim}
+\makeatletter
+\newcommand{\egbolt@csillagos}[1]{#1 fölött most szép csillagos az ég.}
+\newcommand{\egbolt@nemcsillagos}[1]{#1 fölött most nem csillagos az ég.}
+\newcommand{\egbolt}{\@ifstar{\egbolt@csillagos}{\egbolt@nemcsillagos}}
+\makeatother	
+\end{verbatim}
+
+\makeatletter
+\newcommand{\egbolt@nemcsillagos}[1]{#1 fölött most nem csillagos az ég.}
+\newcommand{\egbolt@csillagos}[1]{#1 fölött most szép csillagos az ég.}
+\newcommand{\egbolt}{\@ifstar{\egbolt@csillagos}{\egbolt@nemcsillagos}}
+\makeatother
+
+A \verb|\egbolt{Szeged}| parancs hatása:
+
+\egbolt{Szeged}
+
+A \verb|\egbolt*{Szeged}| parancs hatása:
+
+\egbolt*{Szeged}
+
+Új környezetek definiálásakor már nincs szükség erre a trükközésre, mert a környezet neve végződhet *-ra, tehát simán írható
+
+\verb|\newenvironment{valami}{...}{...}|
+
+és
+
+\verb|\newenvironment{valami*}{...}{...}|
+\end{document}

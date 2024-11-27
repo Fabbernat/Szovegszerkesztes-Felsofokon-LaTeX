@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Internet explorer thing -->
+    <!-- <META HTTP-EQUIV="refresh" CONTENT="5"> -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- [STYLE SHEET] -->
+
+    <!-- highlightjs.com -->
+    <link rel="stylesheet" href="http://polcz.itk.ppke.hu/css/highlight.default.css">
+
+    <!-- [1] blueim Bootstram Image Gallery style sheet -->
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <!-- <link rel="stylesheet" href="http://polcz.itk.ppke.hu/css/blueimp-gallery.min.css"> -->
+
+    <!-- [2] Webpage's style sheet -->
+    <link rel="stylesheet" href="http://polcz.itk.ppke.hu/css/yeti.css">
+    <link rel="stylesheet" href="http://polcz.itk.ppke.hu/css/ppolcz.css">
+
+    <!-- [JAVASCRIPT] -->
+
+    <!-- highlightjs.com -->
+    <script src="http://polcz.itk.ppke.hu/js/highlight.pack.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) and Bootstrap -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <!-- <script src="http://polcz.itk.ppke.hu/js/jquery.min-1.11.3.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="http://polcz.itk.ppke.hu/js/bootstrap.min.js"></script>
+
+    <!-- jQuery UI elements pl. date picker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- EZT KENYTELEN VAGYOK ONLINE ELINTEZNI, kulonben nem mukodik -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            "HTML-CSS": {
+                preferredFont: "TeX",
+                availableFonts: ["STIX","TeX"],
+                linebreaks: { automatic:true },
+                EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+            },
+            tex2jax: {
+                inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ],
+                displayMath: [ ["$$","$$"], ["\\[", "\\]"] ],
+                processEscapes: true,
+                ignoreClass: "tex2jax_ignore|dno"
+            },
+            TeX: {
+                noUndefined: {
+                    attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" }
+                },
+                Macros: {
+                    href: "{}",
+                    vec: "\\boldsymbol",
+                    blue: "\\color{blue}",
+                    red: "\\color{red}",
+                    wt: "\\tilde",
+                    wh: "\\widehat",
+                    pdv: ['\\frac{\\partial #1}{\\partial #2}',2],
+                    spmqty: ['\\begin{pmatrix} #1 \\end{pmatrix}', 1],
+                    pmqty: ['\\begin{pmatrix} #1 \\end{pmatrix}', 1],
+                }
+            },
+            messageStyle: "none"
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+    <title>Polcz Péter honlapja</title>
+</head>
+<body>
+
+<!-- Navigation BAR [BEGIN] -->
+
+    <!-- <nav class="navbar navbar-inverse"> -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+      <!-- <div class="container"> -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <!-- harom vonalka: a menu -->
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://polcz.itk.ppke.hu/index.php/main/view/main">Polcz Péter <small>honlapja</small></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <!-- <li><a href="#">Link</a></li> -->
+            <!-- <li><a href="#">Link</a></li> -->
+            <li><a href="http://polcz.itk.ppke.hu/index.php/main/view/elerhetosegek" role="button">Elérhetőségek</a></li>
+            <li><a href="http://polcz.itk.ppke.hu/index.php/main/view/terkep" role="button">Honlaptérkép</a></li>
+
+            <!-- vegigmegyek a fomenukon (Projektjeim, Oktatott targyak, Privat, stb...) -->
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Projektjeim<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+
+                        <!-- vegigmegyek az elmenun listazasa -->
+                        <li role='presentation' class='dropdown-header'>Befejezett projektek</li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/lidar'>Virtual city reconstruction from LiDAR (1. OTDK)</a></li><li role='presentation' class='dropdown-header'>Aktuális projektek</li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/stab'>Stability analysis of nonlinear system (2. OTDK)</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/lpv'>LPV Control</a></li><li role='presentation' class='dropdown-header'>Hobby projektek</li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/hrm'>Home resource management</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/honlap'>Ez a honlap</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/tenzor'>Tenzoranalízis, differenciálgeometria</a></li>                    </ul>
+                </li>
+
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Oktatott tantárgyak<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+
+                        <!-- vegigmegyek az elmenun listazasa -->
+                        <li><a href='http://polcz.itk.ppke.hu/index.php/main/view/anal1'>Matematikai analízis I.</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/anal3'>Matematikai analízis III.</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/funkanal'>Funkcionális analízis</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/ccs'>Számítógépvezérelt irányítás (CCS)</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/nonlin'>Advanced nonlinear control theory (Veszprém)</a></li><li role='presentation' class='dropdown-header'>Segédletek</li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/matlab_segedlet'>Matlab segédlet (Szimbolikus Toolbox)</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/lmi'>Lineáris mátrix egyenlőtlenségek</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/infofiz'>Az információtechnológia fizikai alapjai</a></li>                    </ul>
+                </li>
+
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Privát<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+
+                        <!-- vegigmegyek az elmenun listazasa -->
+                        <li><a href='http://polcz.itk.ppke.hu/index.php/main/view/linux'>Linux customization, troubleshooting</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/i3'>Ubuntu with i3 window manager</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/cheatsheet'>Cheat sheets</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/latex'>Important LaTeX tricks</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/bash'>Bash programming</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/java'>Java, Spring and other Java technologies</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/matlab'>Matlab brochure</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/mathematica'>Mathematica brochure</a></li><li><a href='http://polcz.itk.ppke.hu/index.php/main/view/angol'>English brochure</a></li>                    </ul>
+                </li>
+
+            
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    View on other server <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://duende.itk.ppke.hu/~ppolcz/index.php/main/view/latex.php">duende.itk.ppke.hu</a></li>
+                    <li><a href="https://users.itk.ppke.hu/~polpe/index.php/main/view/latex.php">users.itk.ppke.hu</a></li>
+                    <li><a href="http://polcz.itk.ppke.hu/index.php/main/view/latex.php">web.ppke.hu</a></li>
+                    <li><a href="http://localhost/index.php/main/view/latex.php">localhost</a></li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+
+<!-- Navigation BAR [END] -->
+
+
+
+<!-- Bootstrap Image Gallery lightbox [BEGIN] -->
+
+    <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+    <div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
+        <!-- The container for the modal slides -->
+        <div class="slides"></div>
+        <!-- Controls for the borderless lightbox -->
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body next"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left prev">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary next">
+                            Next
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> -->
+
+    <script src="http://polcz.itk.ppke.hu/js/jquery.blueimp-gallery.min.js"></script>
+    <script src="http://polcz.itk.ppke.hu/js/bootstrap-image-gallery.min.js"></script>
+
+    <script type="text/javascript">
+        // document.getElementById("modal-dialog").style.width = window.innerWidth + "px";
+        // document.getElementById("modal-dialog").style.height = window.innerHeight + "px";
+    </script>
+
+<!-- Bootstrap Image Gallery lightbox [END] -->
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript"> function base_url() { return "http://polcz.itk.ppke.hu/"; } </script>
+
+<!-- BEGINNING OF THE CONTAINER -->
+<div class="container-fluid" id="container">
+<!-- <div class="container" id="container-main"> -->
+<div id="body">
+<h1 class="toc-title skip-from-toc">Tartalomjegyzék</h1>
+<div class="toc-placeholder"></div>
+
+<script type="text/javascript">
+
+    // function adaptive_content_controller ()
+    // {
+    //     var w = $( window ).width();
+    //     var wdoc = $( document ).width();
+    //     console.log("Window width = " + w + ", Document width = " + wdoc)
+
+    //     // hide large elements on mobile devices
+    //     if ( 700 < w)
+    //     {
+    //         // http://api.jquery.com/attribute-starts-with-selector/
+    //         // http://api.jquery.com/hide/
+    //         $( '[option^="hideIfMobile"]' ).show();
+    //         $( '[option^="hideIfMobileHarsh"]' ).show();
+    //     }
+
+    //     if ( 500 < w && w < 700)
+    //     {
+    //         // http://api.jquery.com/attribute-starts-with-selector/
+    //         // http://api.jquery.com/hide/
+    //         $( '[option^="hideIfMobile"]' ).hide();
+    //         $( '[option^="hideIfMobileHarsh"]' ).show();
+    //     }
+    //     if ( w < 500)
+    //     {
+    //         // This will not work, because many elements will be present.
+    //         // $( "#hideIfMobile" ).hide();
+
+    //         $( '[option^="hideIfMobile"]' ).hide();
+    //         $( '[option^="hideIfMobileHarsh"]' ).hide();
+    //     }
+    // }
+
+    // // Launch when document is ready.
+    // // Shorthand of $( document ). ready(function () { ... });
+    // // https://learn.jquery.com/using-jquery-core/document-ready/
+    // $(function() {
+    //     console.log( "Document loaded!" );
+    //     adaptive_content_controller();
+    // });
+
+    // $(window).resize(function() {
+    //     console.log('Window was resized!');
+    //     adaptive_content_controller();
+    // });
+</script>
+
+<script type="text/javascript">
+    function guidGenerator() {
+        var S4 = function() {
+           return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+        };
+        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    }
+
+    jQuery.fn.tagNameLowerCase = function() {
+        return this.prop("tagName").toLowerCase();
+    };
+
+    String.prototype.repeat = function( num )
+    {
+       return new Array( Math.max(num + 1,0) ).join( this );
+    }
+
+    function pczResize()
+    {
+        $(".dynamic-float").each(function() {
+            element = $(this);
+            console.log(element.tagNameLowerCase());
+            console.log(element.attr("id"));
+            console.log(element.attr("src"));
+
+
+            // WINDOW
+            var window_width = $( window ).width();
+
+            // PREFERED IMAGE WIDTH
+            var img_width = parseInt(element.attr("size"));
+            if (!img_width)
+            {
+                img_width = 300;
+            }
+
+            // PREFERED TEXT WIDTH
+            var text_width = parseInt(element.attr("text"));
+            if (!text_width)
+            {
+                text_width = 300;
+            }
+
+            // CREATE STATIC IMG (IF NOT EXISTS)
+            var div = $("#" + element.attr("id") + "-static");
+            if (div.children().length == 0)
+            {
+                console.log("NO CHILDREN YET");
+                simg = $("<img>");
+                simg.css("max-width", "100%");
+                simg.attr("src", element.attr("src"));
+
+                div.css("text-align", "center");
+                div.append(simg);
+
+                console.log(simg);
+            }
+
+
+            if (window_width > text_width + img_width)
+            {
+                element.show();
+                div.hide();
+            }
+            else
+            {
+                element.hide();
+                div.show();
+                console.log("HIDE");
+            }
+
+            console.log(img_width);
+            console.log(element[0]);
+        });
+    }
+
+    // function contains(value, searchFor)
+    // {
+    //     return (value || '').indexOf(searchFor) > -1;
+    // }
+
+    $(function () {
+        var ToC = `\n<nav role='navigation' class='table-of-contents'>`;
+                // <h1 class="nocount">Tartalomjegyzék</h1>
+
+        var newline, element, guid, name, title, link, href;
+
+        var count = 0;
+        var stack = 0;
+
+        var manage_oltags = function(depth)
+        {
+            // console.log("depth = " + depth + "    stack = " + stack);
+            newline += "<ol>".repeat(depth - stack);
+            newline += "</ol>".repeat(stack - depth);
+            stack = depth;
+        }
+
+        $("h1, h2, h3, .fontos").each(function() {
+            newline = "";
+            element = $(this);
+
+            if (element.hasClass("skip-from-toc"))
+            {
+                return;
+            }
+
+            // Get title of the element
+            var title = element.attr('title');
+            if (!title) {
+                title = element.text();
+            }
+            if (!title) return;
+            count += 1;
+
+            // Get tagname of the element
+            name = element.tagNameLowerCase();
+
+            // Get or generate a unique id for the element
+            guid = element.attr("id");
+            if (!guid)
+            {
+                element.attr("id", guidGenerator());
+            }
+
+
+            link = "#" + element.attr("id");
+            href = "<a href='" + link + "'>" + title + "</a>";
+
+            // console.log("name = |" + name + "|    stack = " + stack)
+            // console.log(element.attr("class"));
+            // console.log(contains(element.attr("class"), 'nocount'))
+
+            var c = "";
+            c = element.hasClass("nocount") ? c + " nocount" : c;
+
+            if ( name === "h1" )
+            {
+                manage_oltags(0);
+                newline += "<h5 class=\"toc\">" + href + "</h5>"
+            }
+            else if ( name === "h2" )
+            {
+                manage_oltags(1);
+                newline += "<li class=\"" + c + "\">" + href + "</li>";
+            }
+            else if ( name === "h3" )
+            {
+                manage_oltags(2);
+                newline += "<li class=\"" + c + "\">" + href + "</li>";
+            }
+            else
+            {
+                newline += '<ul class="toc"><li><a href="' + link + '"><span class="' + element.attr("class") + '">' + element.attr("title") + "</span></a></li></ul>";
+            }
+
+            // console.log(newline);
+            ToC += "\n" + "    ".repeat(stack) + newline;
+        });
+
+        ToC += "</ol>".repeat(stack);
+        ToC += `\n</nav>`;
+
+        if (count > 1)
+        {
+            $(".toc-placeholder").prepend(ToC);
+        }
+        else
+        {
+            $(".toc-title").hide();
+        }
+        console.log(count + ToC);
+
+
+        pczResize();
+    });
+
+    $(window).resize(pczResize);
+</script>
+
+<span hidden>
+\[
+    \newenvironment{dcases}{\left\{\begin{array}{ll}}{\end{array}\right.}
+\]
+</span>
+
+
+
+
+TODO: float barrier
+
+<h1>Important $\LaTeX$ tricks</h1>
+
+<h2>Files</h2>
+<table><tr><td><a class="" href='http://polcz.itk.ppke.hu//files/targyak/latex/LaTeX_symbols.pdf'>LaTeX_symbols.pdf</a></td><td class="hideIfMobile" style="width:10px"></td><td class="hideIfMobile">1039 days</td><td class="hideIfMobileHarsh" style="width:10px"></td><td class="hideIfMobileHarsh" style="align:right">460.37 KB</td></tr><tr><td><a class="" href='http://polcz.itk.ppke.hu//files/targyak/latex/magyar.ldf'>magyar.ldf</a></td><td class="hideIfMobile" style="width:10px"></td><td class="hideIfMobile">332 days</td><td class="hideIfMobileHarsh" style="width:10px"></td><td class="hideIfMobileHarsh" style="align:right">245.14 KB</td></tr></table>
+<h2>LaTeX Symbols</h2>
+<ul>
+    <li>
+        <a href="http://latex.wikia.com/wiki/List_of_LaTeX_symbols">List of LaTeX symbols</a>
+    </li>
+</ul>
+
+<h2>Left-right</h2>
+<p class="lead"><tt>\updownarrow</tt> with certain length (<a href="https://tex.stackexchange.com/questions/213811/how-to-elongate-down-arrow">source</a>)</p>
+
+<pre><code class="latex">\newcommand{\xdownarrow}[1]{%
+    {\left\downarrow\vbox to #1{}\right.\kern-\nulldelimiterspace}
+}
+
+$\downarrow \big\downarrow \Big\updownarrow \bigg\downarrow \Bigg\downarrow \xdownarrow{2cm}$</code></pre>
+$
+\downarrow
+\big\downarrow
+\Big\updownarrow
+\bigg\downarrow
+\Bigg\downarrow
+$
+
+<h2>hyperref</h2>
+<pre><code class="latex">\usepackage[
+    hyperfootnotes=false,
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    anchorcolor=blue,
+    pagebackref=false,
+    unicode=true]{hyperref}
+</code></pre>
+
+<h1>Spacing, layout</h1>
+
+<h2>Geometry</h2>
+<ul>
+    <li>
+        Use the "geometry" package and write <tt>\newgeometry{left=3cm,bottom=0.1cm}</tt> where you want to change your margins. When you want to reset your margins, you write <tt>\restoregeometry</tt>
+    </li>
+</ul>
+
+<h2><tt>emergencystrech</tt></h2>
+<p>Ha túlságosan a margón kívülre lógnak az el nem választott szavak (<a href="https://tex.stackexchange.com/questions/9107/how-can-i-make-my-text-never-go-over-the-right-margin-by-always-hyphenating-or-b">forrás</a>):</p>
+<pre><code class="latex">\sloppy % vagy
+\emergencystretch 3em</code></pre>
+
+<h2>Keep two paragraphs on the same page</h2>
+<p><a href="https://stackoverflow.com/questions/4003473/make-an-unbreakable-block-in-tex">Source:</a></p>
+<pre><code class="latex">\begin{samepage}
+ This is the first paragraph. This is the first paragraph.
+ This is the first paragraph. This is the first paragraph.
+
+ \nopagebreak
+
+ This the second. This the second. This the second.
+ This the second. This the second. This the second.
+ This the second. This the second.
+\end{samepage}</code></pre>
+
+<h2>Itemize spacing, layout, bullet</h2>
+<pre><code class="latex">\usepackage{enumitem,enumerate}
+\begin{itemize}[label={Step \arabic*.},ref=Step \arabic*,noitemsep,topsep=1pt,leftmargin=0.7cm] % noitemsep != itemsep=0pt
+    \renewcommand\labelitemi{$\triangleright$}
+    \item observed state vector $\hat x(t)$,
+    \item artificial output $y_p(t)$,
+    \item designed control input $v(t)$.
+\end{itemize}
+</code></pre>
+
+<h2>Widetext</h2>
+<p>
+Download <tt>widetext.sty</tt> from the <a href="https://gist.github.com/Liam0205/014661fe1fb0c337bfa0dd3242430015">GitHub</a>.
+</p>
+<pre><code class="latex">\documentclass[twocolumn]{article}
+\usepackage{mwe}
+\usepackage{widetext}
+
+\begin{document}
+\blindtext
+\begin{widetext}
+    \blindtext
+    \[
+        E = mc^2.
+    \]
+    \blindtext
+\end{widetext}
+\blindtext
+\end{document}</code></pre>
+
+
+<h2>Equation spacing</h2>
+<p>In order the decrease the space below and above equations, use
+<pre><code class="latex">\makeatletter
+\g@addto@macro\normalsize{%
+    \setlength\abovedisplayskip{4pt}
+    \setlength\belowdisplayskip{4pt}
+    \setlength\abovedisplayshortskip{4pt}
+    \setlength\belowdisplayshortskip{4pt}
+}
+\makeatother</code></pre></p>
+
+<p>Float equations left and set indent</p>
+<pre><code class="latex">\documentclass[fleqn,...]{article}
+% or
+\usepackage[fleqn]{amsmath}
+\setlength{\mathindent}{0pt}
+</code></pre>
+
+<a href="http://altermundus.com/pages/tkz/ornament/index.html">PDF Ornament - fancy rulers between text</a>
+
+<h3>Stitch equations and paragraph</h3>
+
+In order to stitch two paragraphs or equations with paragraphs, etc..., one can use the <tt>gather</tt> environment as follows: (<a href="https://tex.stackexchange.com/questions/30909/abovedisplayskip-vs-abovedisplayshortskip">source</a>)
+<pre><code class="latex">\begin{gather}
+u_{i,t} = u_{i,t-1} + v_t \\
+u_{i,t-1} = u_{i,t-2} + v_{t-1} \\
+\Delta u_{it} = u_{i,t} - u_{i,t-1} = u_{i,t-1} + v_t - u_{i,t-1} =
+v_t
+\end{gather}</code></pre>
+
+<p>In order to make page breaks inside a display environment, use <tt>\displaybreak</tt>.</p>
+
+<h2>Line separator</h2>
+<a href="https://tex.stackexchange.com/questions/130762/prl-style-horizontal-line-in-latex">source</a>:
+<pre><code class="latex">\documentclass{article}
+\usepackage{graphicx,lipsum}% http://ctan.org/pkg/{graphicx,lipsum}
+\newcommand{\PRLsep}{\noindent\makebox[\linewidth]{\resizebox{0.3333\linewidth}{1pt}{$\bullet$}}\bigskip}
+\begin{document}
+\lipsum[1]
+
+\PRLsep
+
+\lipsum[2]
+\end{document}</code></pre>
+
+
+<h2>Marginal comments</h2>
+<pre><code class="latex">\documentclass{article}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage[status=draft,layout=margin]{fixme}
+
+\fxsetup{marginface=\singlespacing}
+
+\usepackage{lipsum}
+
+\begin{document}
+  \fxnote{
+    Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi.
+    Morbi auctor lorem non justo.  Nam lacus libero, pretium at, lobortis
+    vitae, ultricies et, tellus.}
+  \lipsum[1]
+\end{document}</code></pre>
+
+
+<h1>Fonts</h1>
+
+<h2>Font size</h2>
+
+<table border="1">
+
+<tr><td></td><td colspan="3" align="center">standard font size </td></tr>
+<tr><td>command       </td><td>10pt </td><td>11pt </td><td>12pt </td></tr>
+<tr><td><tt>\tiny</tt>     </td><td>5pt </td><td>6pt </td><td>6pt</td></tr>
+<tr><td><tt>\scriptsize</tt>   </td><td>7pt  </td><td>8pt </td><td>8pt</td></tr>
+
+<tr><td><tt>\footnotesize</tt> </td><td>8pt  </td><td>9pt </td><td>10pt</td></tr>
+<tr><td><tt>\small</tt>    </td><td>9pt </td><td>10pt </td><td>11pt</td></tr>
+<tr><td><tt>\normalsize</tt> </td><td>10pt </td><td>11pt </td><td>12pt</td></tr>
+
+<tr><td><tt>\large</tt>  </td><td>12pt </td><td>12pt </td><td>14pt</td></tr>
+<tr><td><tt>\Large</tt>   </td><td>14pt </td><td>14pt </td><td>17pt</td></tr>
+<tr><td><tt>\LARGE</tt>  </td><td>17pt </td><td>17pt </td><td>20pt</td></tr>
+
+<tr><td><tt>\huge</tt>   </td><td>20pt </td><td>20pt  </td><td>25pt</td></tr>
+<tr><td><tt>\Huge</tt>  </td><td>25pt </td><td>25pt  </td><td>25pt</td></tr></table>
+
+<p>See also: <a href="http://www.sascha-frank.com/latex-font-size.html">LaTeX font size</a></p>
+
+
+<h2>Warnings</h2>
+<p>
+Messages like the following (<a href="https://sites.fct.unl.pt/sites/default/files/nefct/files/sebentalatex.pdf">source</a>)
+<pre><code class="bash">! pdfTeX warning (ext4): destination with the same identifier (name{equation.1.7.7.30}) has been already used, duplicate ignored
+</code></pre>
+appear, when you have made something like
+<pre><code class="latex">\begin{eqnarray}a=b\nonumber\end{eqnarray}
+</code></pre>
+The error disappears, if you use instead this form:
+<pre><code class="latex">\begin{eqnarray*}a=b\end{eqnarray*}
+</code></pre>
+Beware that the shown line number is often completely different from the erroneous line.
+Possible solution: Place the amsmath package before the hyperref package.
+</p>
+
+<h1>Figure caption -- minipage</h1>
+
+<pre><code class="latex">\begin{minipage}{0.39\textwidth}
+    \includegraphics[width=\textwidth]{fig/PS/logicalthm_proof.pdf}
+    \captionsetup{type=figure}
+    \caption{Some figure}
+\end{minipage}
+</code></pre>    </div>
+    <p class="footer">Page rendered in <strong>0.0204</strong> seconds. CodeIgniter Version <strong>3.1.0</strong>, current PHP version: <strong>7.0.33-38+0~20210112.44+debian9~1.gbpab637c</strong></p>
+</div>
+
+</body>
+</html>

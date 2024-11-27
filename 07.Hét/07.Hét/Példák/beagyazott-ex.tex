@@ -1,0 +1,52 @@
+% magyar LaTeX article sablon 
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+
+%opening
+\title{Beágyazott makrók használata}
+\author{Virágh János}
+\parindent 0pt
+\begin{document}
+\maketitle	
+
+Figyeljük meg a következő konstrukciót. 
+\begin{verbatim}
+\newcommand{\kulso}[1]{Külső makró, így hívtak: #1!%
+	\newcommand{\belso}[1]{Belső makró,  így hívtak: #1}%	
+}
+\end{verbatim}
+
+
+\newcommand{\kulso}[1]{Külső makró, így hívtak: #1!%
+	\newcommand{\belso}[1]{Belső makró,  így hívtak: #1}%
+}
+
+A  \verb!\kulso{Helló}! hívás eredménye:
+\kulso{Helló}
+
+A \verb!\belso{Blabla}! hívás eredménye:
+\belso{blabla}
+
+\vspace*{0.1in}
+Ezt vártuk? Javított változat: a belső makró esetében megkettőzzük a \# jeleket.
+\begin{verbatim}
+	\newcommand{\kulso}[1]{Külső makró, így hívtak: #1!%
+		\newcommand{\belso}[1]{Belső makró,  így hívtak: ##1}%	
+	}
+\end{verbatim}
+
+
+\renewcommand{\kulso}[1]{Külső makró, így hívtak: #1!%
+	\renewcommand{\belso}[1]{Belső makró,  így hívtak: ##1}%
+}
+
+A  \verb!\kulso{Helló}! hívás eredménye:
+\kulso{Helló}
+
+A \verb!\belso{Blabla}! hívás eredménye:
+\belso{blabla}
+
+\end{document}

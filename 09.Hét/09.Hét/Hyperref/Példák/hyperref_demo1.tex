@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+\usepackage[dvipsnames]{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\parindent=0pt
+
+%opening
+\title{Különböző típusú URL-ek használata a hyperref csomaggal}
+\author{Virágh János}
+
+\begin{document}
+\maketitle
+A \verb!\href! parancs használata különböző típusú erőforrásokkal.
+\paragraph{Webes URL megnyitása}
+
+A \verb!\href{http://twitter.com/home}{X}! parancs hatása:
+\begin{center} 
+\href{http://twitter.com/home}{X}	
+\end{center}
+Egyszerűbb megoldás a \verb!\url! parancs, például \verb!\url{http://twitter.com/home}!
+\begin{center}
+\url{http://twitter.com/home}
+\end{center}
+\paragraph{Lokális könyvtár megnyitása} 
+
+A \verb!\href{file:./Valami/.}{A \texttt{Valami} alkönyvtár megnyitása}! parancs hatása:
+\begin{center} 
+\href{file:./Valami/.}{A \texttt{Valami} alkönyvtár megnyitása}
+\end{center}
+
+Másik módon: a \verb!\href{Valami/.}{A \texttt{Valami} alkönyvtár megnyitása}! parancs hatása:
+\begin{center} 
+\href{Valami/.}{A \texttt{Valami} alkönyvtár megnyitása}
+\end{center}
+
+\paragraph{Lokális fájl megnyitása} A \verb!\href{file:./Mondóka.txt}{Mondóka megnyitása}! parancs hatása:
+\begin{center} 
+\href{file:./Mondóka.txt}{Mondóka megnyitása}
+\end{center} 
+
+\paragraph{Lokális fájl futtatása} Ha el szeretnénk indítani a PDF dokumentumból gépünkön egy programot, használhatjuk a
+
+\verb!\href{run:!<\textit{a futtatandó program}>\verb!}{!<\textit{a linken megjelenő szöveg}> \verb!}!
+
+parancsot, például így:
+
+\verb!\href{run://usr/bin/texstudio}{texstudio futtatása}!
+
+Ennek hatására az alább megjelenő linkre kattintva elindul az alkalmazás.
+
+\begin{center}
+\href{run: /usr/bin/texstudio}{texstudio futtatása}
+\end{center}
+\paragraph{Megjegyzések.} 
+\begin{itemize}
+	\item A futtatandó programnak (Linuxon) direktben nem adhatjuk meg az opcióit/argumentumait, trükközni kell.
+	\item sok PDF megjelenítő nem engedi meg külső programok futtatását
+	\item néha hiányzik a megfelelő MIME típus hozzárendelés.
+\end{itemize}
+A \verb!\hypertarget{<cimke>}{szöveg}! és a  \verb!\hyperlink{<cimke>}{szöveg}! parancsokat külön demóban mutatjuk be.
+\end{document}

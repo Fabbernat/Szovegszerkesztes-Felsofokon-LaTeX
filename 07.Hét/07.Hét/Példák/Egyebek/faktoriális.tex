@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage[dvipsnames,usenames]{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{mdsymbol}   % 2 szimbólum kell belőle a sortörések jelzésére a kódlistákban
+\usepackage{ifthen} % a ciklus utasításhoz kell
+
+\title{A faktoriális függvény definiálása \LaTeX-ben}
+\author{Virágh János}
+%%%
+% Az eredeti program szerzője:
+% Fakultät by Mirko Rahn <mai99dla@studserv.uni-leipzig.de>
+%
+% A \fakt utasítás a #1 faktoriálisát számolja ki, 
+% a végeredményt a faktertek számlálóban kapjuk
+\newcounter{j}
+\newcounter{faktertek}
+\newcommand{\fakt}[1]{
+	\setcounter{faktertek}{1} 
+	\setcounter{j}{1}
+	\whiledo{\numexpr\value{j} -1 < #1}  % a <= feltételt csak így tudjuk megadni
+		{
+		\multiply\value{faktertek} by \value{j}
+		\stepcounter{j}
+		}
+	\arabic{faktertek} % eredmény kiírása
+}
+%%%
+\begin{document}
+%%%
+% a programlisták alapértelmezett kinézetének megadása:	
+\lstset{% kezdete
+	backgroundcolor=\color{Gray!20},       % háttérszín
+	basicstyle=\small\ttfamily,            % az alapértelmezett betűméret, stílus
+	keywordstyle=\bfseries\color{blue},    % a kulcsszavak stílusa
+	commentstyle=\slshape\color{green},    % a megjegyzések stílusa
+	stringstyle=\color{magenta},           % a sztringek stílusa
+	breaklines,                            % a hosszú programsorok törhetők
+	prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+	postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+	breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+	breaklines,							   % a hosszú programsorok törhetők
+	prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+	postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+	breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+	tabsize=4,							   % tabulátor mérete
+	frame=trbl,                            % nincs keretezés, shadowbox, vagy trblTRBL részhalmaza
+	numbers=left,                          % sorok számozása balról
+	numberstyle=\small,                    % hogy megegyezzen a kód betűméretével
+	numbersep=1em,
+	inputencoding=utf8,
+	extendedchars=true,
+	literate=%
+	{á}{{\'{a}}}1
+	{í}{{\'{i}}}1
+	{ű}{{\H{u}}}1
+	{ő}{{\H{o}}}1
+	{ü}{{\"{u}}}1
+	{ö}{{\"{o}}}1
+	{ú}{{\'{u}}}1
+	{ó}{{\'{o}}}1
+	{é}{{\'{e}}}1
+	{Á}{{\'{A}}}1
+	{Í}{{\'{I}}}1
+	{Ű}{{\H{U}}}1
+	{Ő}{{\H{O}}}1
+	{Ü}{{\"{U}}}1
+	{Ö}{{\"{O}}}1
+	{Ú}{{\"{U}}}1
+	{Ó}{{\'{O}}}1
+	{É}{{\'{E}}}1
+}% lstset vége	
+%%%
+\maketitle
+%
+A faktoriálist kiszámító \LaTeX{} „program”:
+
+\begin{lstlisting}[language={[LaTeX]TeX}]
+% A \fakt utasítás a #1 faktoriálisát számolja ki, 
+% a végeredményt a faktertek számlálóban kapjuk
+\newcounter{j}
+\newcounter{faktertek}
+\newcommand{\fakt}[1]{
+	\setcounter{faktertek}{1} 
+	\setcounter{j}{1}
+	\whiledo{\numexpr\value{j} -1 < #1}  % a <= feltételt csak így tudjuk megadni
+		{
+			\multiply\value{faktertek} by \value{j}
+			\stepcounter{j}
+		}
+	\arabic{faktertek} % eredmény kiírása
+}
+\end{lstlisting}
+
+Teszteljük néhány esetre! Mivel nincs paraméter ellenőrzés, ezért csak ,,szabályos'' eseteket nézünk, vagyis $n$ értéke természetes szám.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|r|r|}
+\hline	
+$\mathbf{n}$ & $\mathbf{n!}$ \\
+\hline 
+$ 0$   &  $\fakt{0}$  \\
+$ 1$   &  $\fakt{1}$  \\
+$ 2$   &  $\fakt{2}$  \\
+$ 3$   &  $\fakt{3}$  \\
+$ 4$   &  $\fakt{4}$  \\
+$ 5 $  &  $\fakt{5}$  \\
+$ 6 $  &  $\fakt{6}$  \\
+\vdots &      \vdots  \\
+$ 10 $ & $\fakt{10}$  \\
+\hline
+\end{tabular}
+\caption{ Az $\mathbf{n!}$ függvény \LaTeX{} implementációjával kapott eredmények}
+\end{center}
+\end{table}
+%
+\end{document}
+
+

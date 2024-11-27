@@ -1,0 +1,29 @@
+Name        : texlive-markdown
+Epoch       : 11
+Version     : svn66257
+Release     : 71.fc40
+Architecture: noarch
+Install Date: 2024. máj. 14., kedd, 17:43:30 CEST
+Group       : Unspecified
+Size        : 353224
+License     : LPPL-1.3c
+Signature   : RSA/SHA256, 2024. jan. 27., szombat, 13:39:36 CET, Key ID 0727707ea15b79cc
+Source RPM  : texlive-2023-71.fc40.src.rpm
+Build Date  : 2024. jan. 27., szombat, 07:31:55 CET
+Build Host  : buildvm-ppc64le-08.iad2.fedoraproject.org
+Packager    : Fedora Project
+Vendor      : Fedora Project
+URL         : http://tug.org/texlive/
+Bug URL     : https://bugz.fedoraproject.org/texlive
+Summary     : A package for converting and rendering markdown documents inside TeX
+Description :
+The package provides facilities for the conversion of markdown
+markup to plain TeX. These are provided both in form of a Lua
+module and in form of plain TeX, LaTeX, and ConTeXt macro
+packages that enable the direct inclusion of markdown documents
+inside TeX documents. Architecturally, the package consists of
+the Lunamark Lua module by John MacFarlane, which was slimmed
+down and rewritten for the needs of the package. Lunamark
+provides speedy markdown parsing for the rest of the package.
+On top of Lunamark sits code for the plain TeX, LaTeX, and
+ConTeXt formats by Vit Novotny.

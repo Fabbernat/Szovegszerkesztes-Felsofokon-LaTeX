@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}frame\PYG{n+nb}{\PYGZcb{}}[fragile,shrink=10]\PYG{n+nb}{\PYGZob{}}Betűtípus változatok\PYG{n+nb}{\PYGZcb{}}
+\PYG{c}{\PYGZpc{}	A támogatott változatok:\PYGZbs{}\PYGZbs{}		}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}\PYGZob{}}c|l|l\PYG{n+nb}{\PYGZcb{}}	
+	Parancsnév\PYG{n+nb}{\PYGZam{}} Leírás\PYG{n+nb}{\PYGZam{}} Példa\PYG{k}{\PYGZbs{}\PYGZbs{}}	
+	\PYG{k}{\PYGZbs{}hline}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textrm}!\PYG{n+nb}{\PYGZam{}} ,,Roman\PYGZsq{}\PYGZsq{} változat \PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textrm}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textit}!\PYG{n+nb}{\PYGZam{}} dőlt változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textit}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textup}!\PYG{n+nb}{\PYGZam{}} álló változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textup}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textsf}!\PYG{n+nb}{\PYGZam{}} talpatlan változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textsf}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textsl}!\PYG{n+nb}{\PYGZam{}} döntött változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textsl}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}texttt}!\PYG{n+nb}{\PYGZam{}} fix szélességű változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}texttt}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textsc}!\PYG{n+nb}{\PYGZam{}} kiskapitális változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textsc}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textmd}!\PYG{n+nb}{\PYGZam{}} közepes vastagságú változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textmd}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+	\PYG{k}{\PYGZbs{}verb}!\PYG{k}{\PYGZbs{}textbf}!\PYG{n+nb}{\PYGZam{}} félkövér   változat\PYG{n+nb}{\PYGZam{}}\PYG{k}{\PYGZbs{}textbf}\PYG{n+nb}{\PYGZob{}}tükörfúrógép\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}\PYGZbs{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}frame\PYG{n+nb}{\PYGZcb{}}
+
+\end{Verbatim}

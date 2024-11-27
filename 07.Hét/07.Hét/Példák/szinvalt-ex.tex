@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{xcolor}
+
+
+
+\begin{document}
+\begin{itemize}
+	\item Az alábbi parancsok kiadása után
+\begin{verbatim}
+\definecolor{mycolor}{rgb}{0.75,0.1,0.75}
+\colorlet{szinvaltozo}{mycolor}
+{\large \textcolor{szinvaltozo}{Milyen színű ez a szöveg?}}		
+\end{verbatim}
+ezt látjuk:	
+\definecolor{mycolor}{rgb}{0.75,0.1,0.75}
+\colorlet{szinvaltozo}{mycolor}
+{\large \textcolor{szinvaltozo}{Milyen színű ez a szöveg?}}
+	
+	\item A \verb|\colorlet{szinvaltozo}{green}| és\\
+	\verb|{\large \textcolor{szinvaltozo}{Milyen színű ez a szöveg?}}|
+	parancs után:
+
+\colorlet{szinvaltozo}{green}
+
+{\large \textcolor{szinvaltozo}{Milyen színű ez a szöveg?}}
+\end{itemize}
+
+\end{document}

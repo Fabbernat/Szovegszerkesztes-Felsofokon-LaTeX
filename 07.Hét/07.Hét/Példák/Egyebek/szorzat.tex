@@ -1,0 +1,116 @@
+% Az eredeti program szerzője:
+% Fakultät by Mirko Rahn <mai99dla@studserv.uni-leipzig.de>
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{ifthen}
+\usepackage[dvipsnames,usenames]{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{mdsymbol}   % 2 szimbólum kell belőle a sortörések jelzésére a kódlistákban
+\title{A szorzat függvény definiálása \LaTeX-ben}
+\author{Virágh János}
+
+% A \mult parancs a #1 * #2 szorzatot számolja ki ismételt összeadásokkal 
+% A  #2 nemnegatív egész lehet csak!
+% A végeredményt a szorzat számlálóban kapjuk.
+\newcounter{i}
+\newcounter{szorzat}
+\newcommand{\mult}[2]{
+	\setcounter{i}{1}
+	\setcounter{szorzat}{#1}
+	\whiledo{\value{i} < #2}
+	{
+		\addtocounter{szorzat}{#1} 
+		\stepcounter{i} 
+	}
+}
+\begin{document}
+%%%
+% a programlisták alapértelmezett kinézetének megadása:	
+\lstset{% kezdete
+	backgroundcolor=\color{Gray!20},       % háttérszín
+	basicstyle=\small\ttfamily,            % az alapértelmezett betűméret, stílus
+	keywordstyle=\bfseries\color{blue},    % a kulcsszavak stílusa
+	commentstyle=\slshape\color{green},    % a megjegyzések stílusa
+	stringstyle=\color{magenta},           % a sztringek stílusa
+	breaklines,                            % a hosszú programsorok törhetők
+	prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+	postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+	breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+	breaklines,							   % a hosszú programsorok törhetők
+	prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+	postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+	breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+	tabsize=4,							   % tabulátor mérete
+	frame=trbl,                            % nincs keretezés, shadowbox, vagy trblTRBL részhalmaza
+	numbers=left,                          % sorok számozása balról
+	numberstyle=\small,                    % hogy megegyezzen a kód betűméretével
+	numbersep=1em,
+	inputencoding=utf8,
+	extendedchars=true,
+	literate=%
+	{á}{{\'{a}}}1
+	{í}{{\'{i}}}1
+	{ű}{{\H{u}}}1
+	{ő}{{\H{o}}}1
+	{ü}{{\"{u}}}1
+	{ö}{{\"{o}}}1
+	{ú}{{\'{u}}}1
+	{ó}{{\'{o}}}1
+	{é}{{\'{e}}}1
+	{Á}{{\'{A}}}1
+	{Í}{{\'{I}}}1
+	{Ű}{{\H{U}}}1
+	{Ő}{{\H{O}}}1
+	{Ü}{{\"{U}}}1
+	{Ö}{{\"{O}}}1
+	{Ú}{{\"{U}}}1
+	{Ó}{{\'{O}}}1
+	{É}{{\'{E}}}1
+}% lstset vége	
+%
+\maketitle
+
+Bár létezik a \verb!\multiply! utasítás számlálók értékének szorzására, gyakorlásul mi is definiálunk egy hasonló utasítást.
+A szorzatot kiszámító \LaTeX{} „program”:
+\begin{lstlisting}
+% A \mult parancs a #1 * #2 szorzatot számolja ki ismételt összeadásokkal 
+% A  #2 nemnegatív egész lehet csak!
+% A végeredményt a szorzat számlálóban kapjuk.
+\newcounter{i}
+\newcounter{szorzat}
+\newcommand{\mult}[2]{
+	\setcounter{i}{1}
+	\setcounter{szorzat}{#1}
+	\whiledo{\value{i} < #2}
+	{
+		\addtocounter{szorzat}{#1} 
+		\stepcounter{i} 
+	}
+}
+\end{lstlisting}
+
+
+Teszteljük néhány esetre! Az utolsó sorban várható a hiba...
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{r|r|r}
+%\hline	
+\verb!#1! &  \verb!#2! &\verb!\mult{\#1}{\#2}!\\
+\hline
+$1$  & $1$ & \mult{1}{1}\arabic{szorzat} \\
+$-1$  & $1$ & \mult{-1}{1}\arabic{szorzat} \\
+$5$  & $5$ & \mult{5}{5}\arabic{szorzat} \\
+$-10$  & $10$ & \mult{-10}{10}\arabic{szorzat} \\
+$-10$  & $-10$ & \mult{-10}{-10}\arabic{szorzat} \\
+%\hline
+\end{tabular}
+\caption{ A \texttt{\textbackslash mult} szorzat függvény \LaTeX{} implementációjával kapott eredmények}
+\end{center}
+\end{table}
+%
+\end{document}
+
+

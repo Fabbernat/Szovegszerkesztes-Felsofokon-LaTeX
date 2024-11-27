@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+
+%%% Különféle fontok megadása a megfelelő csomagokkal
+\usepackage{times}
+%\usepackage{palatino}
+%\usepackage{lmodern}
+
+\begin{document}
+\parindent 0pt
+\section*{Font változatok}
+
+\begin{tabular}{c|l|l}	
+	\textbf{Parancsnév}& \textbf{Leírás}&\textbf{Példa}\\	     
+	\hline
+	\verb!\textrm!& normál (Roman, Upright)   & \textup{tükörfúrógép}\\		
+	\verb!\textit!& dőlt (Italic) &\textit{tükörfúrógép}\\	
+	\verb!\texttt!& fix szélességű (Typewriter) &\texttt{tükörfúrógép}\\	
+	\verb!\textsc!& kiskapitális (Small Caps) &\textsc{tükörfúrógép}\\
+	\verb!\textsf!& talpatlan(Sans Serif) &\textsf{tükörfúrógép}\\
+	\verb!\textup!& álló betűtípus (Upright) &\textup{tükörfúrógép}\\
+	\verb!\textsl!& döntött (Slanted)&\textsl{tükörfúrógép}\\
+	\verb!\textmd!& közepes vastagságú (Medium) &\textmd{tükörfúrógép}\\
+	\verb!\textbf!& félkövér betűtípus (Bold) &\textbf{tükörfúrógép}\\
+	%	\hline
+\end{tabular}
+
+
+\vspace*{0.2in}
+Az előző betűstílusok félkövér megfelelőit a \verb!\textbf! paranccsal kaphatjuk.
+\vspace*{0.2in}
+
+\begin{tabular}{|c|c|}
+\hline	
+\textbf{Példa}  & \textbf{Eredmény} \\
+\hline
+\verb!\textbf{\textrm{árvíztűrő tükörfúrógép}}! & \textbf{\textrm{árvíztűrő tükörfúrógép}} \\
+\verb!\textbf{\textit{árvíztűrő tükörfúrógép}}! &  \textbf{\textit{árvíztűrő  tükörfúrógép}} \\
+\verb!\textbf{\texttt{árvíztűrő tükörfúrógép}}! & \textbf{\texttt{árvíztűrő tükörfúrógép}}  \\
+\verb!\textbf{\textsc{árvíztűrő tükörfúrógép}}! &  \textbf{\textsc{árvíztűrő tükörfúrógép}} \\
+	\hline
+\end{tabular}
+
+\vspace*{0.2in}
+Az előző betűstílusok döntött megfelelőit a \verb!\textsl! paranccsal kaphatjuk. Ehelyett -- ahol csak lehet -- használjunk inkább dőlt szöveget!
+\vspace*{0.2in}
+
+\begin{tabular}{|c|c|}
+	\hline	
+	\textbf{Példa}  & \textbf{Eredmény} \\
+	\hline
+	\verb!\textsl{\textrm{árvíztűrő tükörfúrógép}}! & \textsl{\textrm{árvíztűrő tükörfúrógép}} \\
+	\verb!\textsl{\textit{árvíztűrő tükörfúrógép}}! & \textsl{\textit{árvíztűrő  tükörfúrógép}} \\
+	\verb!\textsl{\texttt{árvíztűrő tükörfúrógép}}! & \textsl{\texttt{árvíztűrő tükörfúrógép}}  \\
+	\verb!\textsl{\textsc{árvíztűrő tükörfúrógép}}! & \textsl{\textsc{árvíztűrő tükörfúrógép}} \\
+	\hline
+\end{tabular}
+
+\vspace*{0.2in} 
+A parancsok sorrendje felcserélhető:
+
+\verb!\textsc{\textbf{Árvíztűrő tükörfúrógép}}! eredménye \\\textsc{\textbf{Árvíztűrő tükörfúrógép}}
+
+\verb!\textbf{\textsc{Árvíztűrő tükörfúrógép}}! eredménye \\\textbf{\textsc{Árvíztűrő tükörfúrógép}}
+%\pagebreak[4]	
+
+Az ismertetett parancsoknak létezik deklaratív változata is:
+
+\begin{itemize}
+\item Normál (álló) -  \LaTeX{} forrás: \verb!Árvíztűrő tükörfúrógép!\\
+Az eredmény: Árvíztűrő tükörfúrógép
+\item Dőlt -  \LaTeX{} forrás: \verb!{\itshape Árvíztűrő tükörfúrógép}!\\
+Az eredmény: {\itshape Árvíztűrő tükörfúrógép}
+\item Írógép -  \LaTeX{} forrás: \verb!{\ttfamily Árvíztűrő tükörfúrógép}!\\
+Az eredmény: {\ttfamily Árvíztűrő tükörfúrógép}
+\item Kiskapitális -  \LaTeX{} forrás: \verb!{\scshape Árvíztűrő tükörfúrógép}!\\
+Az eredmény: {\scshape Árvíztűrő tükörfúrógép}
+\item Döntött -  \LaTeX{} forrás: \verb!{\slshape Árvíztűrő tükörfúrógép}!\\
+Az eredmény: {\slshape Árvíztűrő tükörfúrógép}	
+\end{itemize}
+
+Külön említendő a szöveg kiemelésére használt \verb!emph{}! parancs:\\
+\vspace*{0.1in}
+\LaTeX{} forrás: \verb!\emph{Árvíztűrő tükörfúrógép}!\\
+Az eredmény: \emph{Árvíztűrő tükörfúrógép}\\
+Ennek deklaratív változata:\\
+\vspace*{0.1in}
+\LaTeX{} forrás: \verb! {\em Árvíztűrő tükörfúrógép}!\\
+Az eredmény: {\em Árvíztűrő tükörfúrógép}
+\end{document}

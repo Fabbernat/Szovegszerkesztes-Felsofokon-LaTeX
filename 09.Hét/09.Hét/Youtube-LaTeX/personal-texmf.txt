@@ -1,0 +1,33 @@
+
+Where can I put local latex style files and packages?
+
+Create a folder in your root directory called texmf. Then create the directories inside it: tex/latex.
+You can do it all with one command:
+
+mkdir -p texmf/tex/latex.  
+
+Inside the latex directory, you can put your files (.tex, .sty, etc.) or
+local packages. You can create separate directories to organize your
+files as well.
+
+If custom bibtex style files (extension .bst) have been provided, place
+these into a similar tree of the form
+
+ $HOME/texmf/bibtex/bst/
+
+Inside the texmf/tex directory, you can create other folders for amstex,
+tex, etc. so you can organize the different kinds of tex files you have.
+You can look at the shared localtexmf directory for an example of how to
+structure your files in /usr/ias/localtexmf or /usr/share/texmf
+
+Afterwards, run texhash or mktexlsr so that the programs will know to
+look in your local texmf directory for all your files: 
+
+texhash ~/texmf/
+
+Texhash will create a database of files inside your texmf directory. The database file 
+is called, appropriately enough, "ls-R", and is located in the top level texmf directory,
+i.e., the file is  $HOME/texmf/ls-R . The ls-R file is an ordinary text file
+and can be inspected with an editor or a pager like more or less.
+If the texhash run was successful, this file should contain a listing
+of all files under your private texmf directory.

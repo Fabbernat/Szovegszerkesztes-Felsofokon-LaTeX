@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage[dvipsnames,usenames]{color}
+\usepackage{mathtools}
+\usepackage{fancybox}
+\author{Virágh János}
+\title{Még szebb képletek}
+\begin{document}
+\maketitle
+\section{Képletek keretezése}
+Használhatjuk a korábban megismert keretező parancsokat, például szövegközi matematikai módban 
+\verb!\fbox{$a^2 + b^2 = c^2$}! eredménye: \fbox{$a^2 + b^2 = c^2$}
+Mivel a kiemelt matematikai módú formulákat már \emph{nem} LR-módban értelmezi a \LaTeX, ezek egyből nem keretezhetők, trükközni kell, pl. így:
+\begin{verbatim}
+\begin{center}
+	\fbox{%
+		\parbox{0.4\linewidth}{%
+			\[
+			\int_0^{2\pi} \sin x\, dx = 2
+			\]
+		}
+	}
+\end{center}
+\end{verbatim} \vspace*{-0.5em} Aminek eredménye 
+\begin{center}
+	\fbox{%
+		\parbox{0.4\linewidth}{%
+			\[
+				\int_0^{2\pi} \sin x\, dx = 2
+			\]
+		}
+	}
+\end{center}
+Hasonlóan alkalmazhatók a \texttt{fancybox} csomag különféle keretezései is, így
+például 
+\begin{verbatim}
+	\begin{center}
+		\ovalbox{%
+			\begin{minipage}{2in}{%
+				\[
+				\int_0^{2\pi} \sin x\, dx = 2
+				\]
+			\end{minipage}
+		}
+	\end{center}
+\end{verbatim} 
+\vspace*{-0.5em} Itt a \texttt{minipage} környezetbe csomagoltuk az ovális keretű doboz tartalmát, az eredmény
+	\begin{center}
+	\ovalbox{%
+		\begin{minipage}{2in}%
+				\[
+				\int_0^{2\pi} \sin x\, dx = 2
+				\]
+			\end{minipage}
+		}
+	
+	\end{center}
+	
+Az \AmS-LaTeX\ tartalmaz egy \texttt{boxed} parancsot, ami szintén keretezett dobozt készít, de tartalmát már eleve matematikai módban szedi ki, tehát 
+\begin{verbatim}
+\begin{center}
+	\boxed{%
+		\int_0^{2\pi} \sin x\, dx = 2
+	}	
+\end{center}	
+\end{verbatim}	
+\vspace*{-0.5em}  eredménye 
+\begin{center}
+	\boxed{%
+		\int_0^{2\pi} \sin x\, dx = 2
+	}	
+\end{center}
+
+\section{Képletek színezése}
+Színessé tehetjük vagy a képletekben szereplő jeleket, vagy a hátteret, esetleg mindkettőt ;-)
+\subsection{A képletek részeinek színezése}
+Ehhez magában elegendő a  \verb!color! csomag \verb!\textcolor! parancsa, ami -- némileg meglepő módon -- matematikai módban is működik. Például szövegközi matematikai módban
+\verb!$\textcolor{blue}{a^2 + b^2 = c^2}$! eredménye 
+$\textcolor{blue}{a^2 + b^2 = c^2}$. Kiemelt matematikai módban hasonlóan járhatunk el, így a 
+\begin{verbatim}
+\[
+\int_0^{2\pi}  \textcolor{red}{\sin x}\, dx = \textcolor{blue}{2}
+\]
+\end{verbatim}
+parancsok kiadása után:
+
+\[
+\int_0^{2\pi}  \textcolor{red}{\sin x}\, dx = \textcolor{blue}{2}
+\] 
+\subsection{A képletek hátterének színezése}
+\noindent A  \verb!color! csomag   \verb!\colorbox! parancsával szép színes dobozba helyezhetjük formulánkat, a \verb!\colorbox{OliveGreen}{$f(x)$}! parancs kiadása után ezt kapjuk:  \colorbox{OliveGreen}{$f(x)$}  \par \bigskip
+
+\noindent A \verb!\setlength{\fboxsep}{1pt}! beállítással csökkenthetjük -- itt most éppen 1 pontra -- a formula és a doboz széle közti távolságot, így ezt kapjuk
+\setlength{\fboxsep}{1pt}
+\colorbox{OliveGreen}{$f(x)$} \par \bigskip
+\setlength{\fboxsep}{3pt} %vissza a default értékre
+
+\noindent Ha \emph{keretezett} színes dobozokat szeretnénk, használjuk az előző két példában az \verb!fcolorbox! parancsot a keretszín megadásával.\par \bigskip
+
+\noindent Az \verb!\fcolorbox{black}{OliveGreen}{$f(x)$}! parancs kiadása után ezt kapjuk:  \fcolorbox{black}{OliveGreen}{$f(x)$}  \par \bigskip
+
+\noindent A \verb!\setlength{\fboxsep}{1pt}! beállítással csökkenthetjük -- itt most éppen 1 pontra -- a formula és a doboz kerete közti távolságot, így ezt kapjuk
+\setlength{\fboxsep}{1pt}
+\fcolorbox{black}{OliveGreen}{$f(x)$} \par \bigskip
+\setlength{\fboxsep}{3pt} %vissza a default értékre
+
+\noindent Mivel \emph{kiemelt matematikai módú} formulákat direktben nem lehet a dobozoló parancsoknak odaadni, most is trükközni kell, például így:
+\begin{verbatim}
+\begin{center}
+\colorbox{OliveGreen}{$\displaystyle{\int_0^{2\pi} \sin x\, dx = 2} $}
+\end{center}
+\end{verbatim} \vspace*{-0.5em}
+Ekkor ezt kapjuk:
+
+\begin{center}
+\colorbox{OliveGreen}{$\displaystyle{\int_0^{2\pi} \sin x\, dx = 2} $}
+\end{center}
+
+\noindent Vagy kicsit általánosabban -- és bonyolultabban:
+\begin{verbatim}
+\begin{center}
+ \colorbox{OliveGreen}{%
+   \parbox{0.4\linewidth}{%
+     \begin{equation}
+       \int_0^{2\pi} \sin x\, dx = 2
+     \end{equation}%
+   }
+ }
+\end{center}
+\end{verbatim} \vspace*{-0.5em}
+\begin{center}
+ \colorbox{OliveGreen}{%
+   \parbox{0.4\linewidth}{%
+     \begin{equation}
+       \int_0^{2\pi} \sin x\, dx = 2
+     \end{equation}%
+   }
+ }
+\end{center}
+\noindent Hasonlóan járhatunk el az \verb!\fcolorbox! alkalmazása esetén is.\par \bigskip
+
+\noindent A kimondottan kalandvágyók megpróbálkozhatnak más parancsok kombinálásával is, például a \verb!\colorbox{OliveGreen}{\boxed{$f(x)$}}! kiadása után ezt látjuk:
+\colorbox{OliveGreen}{\boxed{$f(x)$}}
+
+\noindent Ennél is elvadultabb példák találhatók a mellékelt  \verb!mathCol.pdf! nevű fájlban, ami sajnos német nyelvű, de a példákból így is látszik ,,minden''.
+
+\end{document}

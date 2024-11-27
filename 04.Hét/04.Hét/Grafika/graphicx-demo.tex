@@ -1,0 +1,71 @@
+% magyar LaTeX article sablon
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage[dvipsnames,x11names,svgnames]{xcolor}
+\usepackage{fancybox}
+\usepackage{graphicx}
+\title{Grafikus objektumok beágyazása}
+\author{Virágh János}
+\begin{document}
+\parindent=0pt	
+	
+\maketitle
+
+
+Létezik két csomag, a sztenderd \verb!graphics! és a kiterjesztett   \verb!graphicx!, az utóbbit célszerű használni, kényelmesebb, többet tud.
+
+Legfontosabb parancsának általános alakja 
+
+{
+\begin{center}
+	\texttt{\textbackslash includegraphics[opciólista]\{fájlnév\}}
+\end{center}
+Ennek használatára mutatunk példákat.
+\begin{itemize}
+
+\item \verb!\includegraphics{Képek/Lion.png}!
+
+\includegraphics{Képek/Lion.png}
+
+\pagebreak[4]
+
+\item \verb!\includegraphics[width=1in,height=1in]{Képek/Lion.png}!
+
+\includegraphics[width=6cm,height=5cm]{Képek/Lion.png}
+
+
+\item \verb!\includegraphics[scale=0.1]{Képek/tiger.pdf}!
+
+\includegraphics[scale=0.25]{Képek/tiger.pdf}
+\pagebreak[4]
+
+\item \verb!\graphicspath{{Képek/}}!
+
+\graphicspath{{Képek/}}
+
+Ezután a \verb!Képek! alkönyvtárban könyvtárban keresi a grafikus fájlokat, dupla zárójel kell!!
+
+\item \verb!\DeclareGraphicsExtensions{{.eps,.pdf,.jpg,.png}}!
+
+\DeclareGraphicsExtensions{{.eps,.pdf,.jpg,.png}}
+
+A kiterjesztéslista felsorolása után elég csak a kiterjesztés nélküli fájlnevet megadni, dupla zárójel kell!! A használható kiterjesztések (képfájl típusok) függenek attól is, hogy melyik fordítót/drivert használjuk!
+
+\pagebreak[4]
+
+\item \verb!\rotatebox{135}{\includegraphics[scale=0.25]{Lion}}!
+
+\rotatebox{135}{\includegraphics[scale=0.25]{Lion}}
+
+\item \verb!\rotatebox{-45}{\includegraphics[scale=0.1]{tiger}}!
+
+\rotatebox{-45}{\includegraphics[scale=0.25]{tiger}}
+
+\item Forgathatunk bármit: \verb!\rotatebox{25}{\fbox{\Huge Hello World}}!
+
+\rotatebox{25}{\fbox{\Huge Hello World}}
+\end{itemize}
+
+\end{document}

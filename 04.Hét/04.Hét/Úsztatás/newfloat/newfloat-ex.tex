@@ -1,0 +1,89 @@
+% V 2024 10 01
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{alltt} % ezt a csomagot használjuk a programkódok megadására
+\usepackage{hulipsum}
+%%% Itt definiáljuk az új, programkod nevű úsztatott környezetet:
+\usepackage{caption}
+\usepackage{newfloat} % ezt a csomagot használjuk
+\DeclareFloatingEnvironment[%
+name=program,
+listname={Programok jegyzéke},
+fileext=lop,
+placement=htp,
+within=,
+]
+{programkod}
+
+%opening
+\title{új \texttt{float} típus megadása}
+\author{Virágh János}
+%
+\begin{document}
+\maketitle	
+\begin{verbatim}
+	% ezekkel a parancsokkal állítjuk elő az alábbi jegyzékeket
+	\tableofcontents    % tartalomjegyzék
+	\listofprogramkod   % programjegyzék
+\end{verbatim}
+\tableofcontents
+\listofprogramkod
+%
+\section{Új úsztatott környezet definiálása programlisták számára}
+%
+A \verb!newfloat! vagy a \verb!float!  csomagok lehetőséget adnak új úsztatott környezetek bevezetésére. Ebben a példában a  \verb!newfloat! csomagot használjuk, inkább ezt ajánljuk. Alapesetben elég egyetlen parancsát használni egy új úsztatott környezet definiálásához. Mivel a programlistákhoz szeretnénk egy új, \verb!programkod! nevű úsztatott környezetet használni, a preambulumba(!) írjuk ezt:
+\begin{verbatim}
+	\usepackage{caption}
+	\usepackage{newfloat}
+	\DeclareFloatingEnvironment[%
+	name=program,
+	listname={Programok jegyzéke},
+	fileext=lop,
+	placement=htp,
+	within=,
+	]
+	{programkod}
+\end{verbatim}
+%
+\section{Itt következnek a példák}
+%
+ \hulipsum[1]
+
+\begin{programkod}
+\rule{\linewidth}{1pt}	
+\begin{alltt} % Java kód
+    class HelloWorldApp \{
+        public static void main(String[] args) \{
+            //Display the string
+            System.out.println("Hello World!");
+        \}
+    \}
+\end{alltt}
+\rule{\linewidth}{1pt}
+\caption{A Hello World! program  Java nyelvű változata}
+\end{programkod}
+
+\hulipsum[1-2]
+
+\begin{programkod}
+\rule{\linewidth}{1pt}
+\begin{alltt} % kiszínezett LaTeX kód
+    \textcolor{blue}{\textbackslash{}begin\{itemize\}}
+        \textcolor{blue}{\textbackslash{}item} Melyik betűtípust használjuk (alapértelmezett,
+        vagy pl. a preambulumban csomaggal megadott)
+        \textcolor{blue}{\textbackslash{}item} Ennek melyik változatát használjuk (álló, dőlt,
+        döntött, kiskapitális,stb.)
+        \textcolor{blue}{\textbackslash{}item} Milyen betűvastagságot használunk (vékonyított,
+        normál, félkövér, stb.)
+        \textcolor{blue}{\textbackslash{}item} Milyen betűméretet használunk
+    \textcolor{blue}{\textbackslash{}end\{itemize\}}
+\end{alltt}
+\rule{\linewidth}{1pt}
+\caption{A betűtípusok választása a \LaTeX{}-ben}
+\end{programkod}
+\hulipsum[1]
+\end{document}

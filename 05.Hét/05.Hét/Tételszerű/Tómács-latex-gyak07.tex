@@ -1,0 +1,59 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsthm,hulipsum}
+\newtheorem{tetel}{Tétel}[section]
+\newtheorem{lemma}[tetel]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definicio}[tetel]{Definíció}
+\theoremstyle{remark}
+\newtheorem*{megjegyzes}{Megjegyzés}
+%\renewcommand{\qedsymbol}{}
+\begin{document}
+\title{Cikk címe}
+\author{Szerző neve}
+%\date{Eger, \today}
+\maketitle
+
+\begin{abstract}
+\hulipsum[1]
+\end{abstract}
+
+\section{Szakasz címe}
+\subsection{Alszakasz címe}
+\hulipsum
+\begin{tetel}
+Tétel szövege.
+\end{tetel}
+
+\begin{proof}
+Bizonyítás szövege.
+\end{proof}
+
+\begin{definicio}
+Definíció szövege.
+\end{definicio}
+
+\begin{tetel}[Pitagorasz]\label{tetel-Pitagorasz}
+Tétel szövege.
+\end{tetel}
+
+\begin{lemma}
+Lemma szövege.
+\end{lemma}
+
+\begin{proof}[\Az{\ref{tetel-Pitagorasz}}.~tétel bizonyítása]
+Bizonyítás szövege.
+\[
+a^2=b^2+c^2.\qedhere
+\]
+\end{proof}
+
+\begin{megjegyzes}
+Megjegyzés szövege.
+\end{megjegyzes}
+
+\paragraph{Paragrafus címe} Paragrafus szövege.
+
+\end{document}

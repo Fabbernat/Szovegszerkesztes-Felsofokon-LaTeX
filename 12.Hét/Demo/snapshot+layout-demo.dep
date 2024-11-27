@@ -1,0 +1,19 @@
+\RequireVersions{
+  *{application}{pdfTeX}  {0000/00/00 v1.40.25}
+  *{format} {LaTeX2e}     {2022-11-01 v2.e}
+  *{class}  {article}     {2022/07/02 v1.4n}
+  *{file}   {size10.clo}  {2022/07/02 v1.4n}
+  *{package}{snapshot}    {2020/06/17 v2.14}
+  *{package}{inputenc}    {2021/02/14 v1.3d}
+  *{package}{fontenc}     {0000/00/00 v0.0}
+  *{package}{babel}       {2023/02/13 v3.86}
+  *{file}   {magyar.ldf}  {2019/01/14 v1.5c}
+  *{file}   {babel-magyar.tex}{0000/00/00 v0.0}
+  *{package}{layout}      {2021-03-10 v1.2e}
+  *{package}{geometry}    {2020/01/02 v5.9}
+  *{package}{keyval}      {2022/05/29 v1.15}
+  *{package}{ifvtex}      {2019/10/25 v1.7}
+  *{package}{iftex}       {2022/02/03 v1.0f}
+  *{file}   {l3backend-pdftex.def}{2023-01-16 v3}
+  *{file}   {t1cmtt.fd}   {2022/07/10 v2.5l}
+}

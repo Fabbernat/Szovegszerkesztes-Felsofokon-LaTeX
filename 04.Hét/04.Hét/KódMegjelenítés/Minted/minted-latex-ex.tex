@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+\begin{document}
+Ez egy \LaTeX{} forráskód részlet:
+\begin{minted}{TeX}
+
+\begin{frame}[fragile,shrink=10]{Betűtípus változatok}
+%	A támogatott változatok:\\		
+\begin{tabular}{c|l|l}	
+	Parancsnév& Leírás& Példa\\	     
+	\hline
+	\verb!\textrm!& ,,Roman'' változat &\textrm{tükörfúrógép}\\
+	\verb!\textit!& dőlt változat&\textit{tükörfúrógép}\\
+	\verb!\textup!& álló változat&\textup{tükörfúrógép}\\
+	\verb!\textsf!& talpatlan változat&\textsf{tükörfúrógép}\\
+	\verb!\textsl!& döntött változat&\textsl{tükörfúrógép}\\
+	\verb!\texttt!& fix szélességű változat&\texttt{tükörfúrógép}\\
+	\verb!\textsc!& kiskapitális változat&\textsc{tükörfúrógép}\\
+	\verb!\textmd!& közepes vastagságú változat&\textmd{tükörfúrógép}\\
+	\verb!\textbf!& félkövér   változat&\textbf{tükörfúrógép}\\
+\end{tabular}
+\end{frame}
+
+\end{minted}
+
+
+\end{document}

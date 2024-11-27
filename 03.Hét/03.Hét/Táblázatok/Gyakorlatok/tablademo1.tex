@@ -1,0 +1,92 @@
+% V 2024. 09. 23
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\usepackage[magyar]{babel}
+\usepackage[table,dvipsnames,svgnames,x11names]{xcolor}
+
+\author{Virágh János}
+\title{Példák a \texttt{tabular} környezet használatára I.}
+\parindent 0pt
+
+\begin{document}
+\maketitle	
+
+Első példánk egy keretezett két oszlopos táblázat, amelyben az első oszlop jobbra, a második balra igazított. A két oszlop közti elválasztást (kettőspont és szóköz) a \verb!@{: }! módosítóval adjuk meg.
+
+A forráskód:
+
+\begin{verbatim}
+\begin{center}
+\begin{tabular}{|r@{: }l|}
+\hline
+Egy & megérett a meggy \\
+Kettő & csipkebokor vessző \\
+Három & majd haza várom  \\
+Négy  & biz oda nem mégy \\
+Öt & leesett a köd \\
+Hat & hasad a pad \\
+Hét & dörög az ég \\
+Nyolc & üres a polc \\
+Kilenc & kis Ferenc \\
+Tíz & tiszta víz \\
+\hline
+\end{tabular}
+\end{center}
+\end{verbatim}
+
+A kész táblázat:
+
+\begin{center}
+	\begin{tabular}{|r@{: }l|}
+		\hline
+		Egy & megérett a meggy \\
+		Kettő & csipkebokor vessző \\
+		Három & majd haza várom  \\
+		Négy  & biz oda nem mégy \\
+		Öt & leesett a köd \\
+		Hat & hasad a pad \\
+		Hét & dörög az ég \\
+		Nyolc & üres a polc \\
+		Kilenc & kis Ferenc \\
+		Tíz & tiszta víz \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\pagebreak[4]
+
+A második példa logikailag 3 oszlopból áll, hogy a számokat a tizedesvesszőnél tudjuk egymás alá igazítani, ehhez kell a \verb!@{,}! opció. A 2.--3. oszlop fölötti egybefüggő feliratot a \verb!\multicolumn{2}{c}{Érték}! kód adja.
+
+
+A forráskód:
+
+\begin{verbatim}
+\begin{flushleft}
+\begin{tabular}{c|r@{,}l}
+Kifejezés & \multicolumn{2}{c}{Érték} \\
+\hline
+$\pi$ & 3&1415927 \\
+$\pi^\pi$ & 36&46216 \\
+$\pi^{\pi^\pi}$ & 80662&666
+\end{tabular}
+\end{flushleft}
+\end{verbatim}
+
+Így néz ki a táblázat (csúnya, csak hogy ilyen is legyen\dots)
+
+\begin{flushleft} % csak hogy ilyen is legyen
+	\begin{tabular}{c|r@{,}l}
+		Kifejezés & \multicolumn{2}{c}{Érték} \\
+		\hline
+		$\pi$ & 3&1415927 \\
+		$\pi^\pi$ & 36&46216 \\
+		$\pi^{\pi^\pi}$ & 80662&666
+	\end{tabular}
+\end{flushleft}
+
+
+\end{document}
+
+
+

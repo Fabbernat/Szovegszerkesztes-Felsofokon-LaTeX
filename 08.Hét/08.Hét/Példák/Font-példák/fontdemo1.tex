@@ -1,0 +1,42 @@
+%%% Beamer faragás
+\documentclass[12pt, xcolor=dvipsnames,svgnames,x11names]{beamer}
+\usetheme{Warsaw}
+\useoutertheme{split}
+% Színezés
+\definecolor{mygreen}{RGB}{10,140,30}
+\setbeamercolor{structure}{fg=mygreen,bg=white}
+\setbeamercolor{section in head/foot}{fg=white,bg=mygreen}
+\setbeamercolor{author in head/foot}{fg=white,bg=mygreen}
+
+%%% Fonttéma megadása - talpas fontok a diák szövegéhez
+\usefonttheme{serif}
+% ezután  az alábbi talpas fontokat próbáljuk ki egyenként!
+\usepackage{times}
+%\usepackage{lmodern}
+%\usepackage{palatino}
+%\usepackage{utopia}
+
+%%% a többi csomag
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+\author[Virágh János]{dr. Virágh János \\ viragh@inf.u-szeged.hu}
+\title{Beamer fontcsere - 1. változat}
+\institute[SZTE]{SZTE-TTIK Számítógépes Optimalizálás Tanszék}
+
+\begin{document}
+\begin{frame}[plain]
+ \titlepage
+\end{frame}
+\begin{frame}
+\hulipsum[1]
+\end{frame}
+%%%
+\begin{frame}
+Egy fontos matematikai összefüggés:
+\[
+\sin^2 \alpha + \cos^2 \alpha = 1
+\]
+\end{frame}
+
+\end{document}

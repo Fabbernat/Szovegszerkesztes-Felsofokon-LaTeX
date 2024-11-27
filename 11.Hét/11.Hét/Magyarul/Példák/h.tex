@@ -1,0 +1,384 @@
+\documentclass{article}
+%\documentclass{report}
+%\documentclass{book}
+\usepackage{t1enc}
+\usepackage[latin2]{inputenc}
+\usepackage[english,magyar]{babel}
+
+\title{Próba a \LaTeX{} magyar használatához}
+\author{Bérces József}
+
+% Ezekkel el lehet jatszadozni:
+\renewcommand\thefigure{\Roman{figure}}
+%\renewcommand\theequation{\roman{equation}}
+%\pagenumbering{roman}
+%\renewcommand\thepage{\thepart-\arabic{page}}
+
+\newtheorem{tet}{tétel}
+
+\begin{document}
+%\selectlanguage{magyar}
+\pagestyle{headings}
+
+\maketitle
+
+\tableofcontents
+\listoffigures
+%\listoftables
+
+\section{Bevezetés}
+
+Ez a kis dokumentum a \LaTeX-hez készített \textsf{babel} csomag
+magyar nyelvû használatát mutatja be az általam készített
+\texttt{magyar.ldf} fájl betöltése esetén.
+A \textsf{babel} csomag támogatja
+a magyar nyelvet, egyelõre azonban ez csak 
+annyit jelent, hogy magyarítja a Part, Chapter,
+\mbox{stb.} szavakat, a dátumot illetve megjelenik egy
+\verb|\ontoday| nevû makró.
+
+További programozói munka nélkül azonban a \textsf{babel}-lel
+kiegészített \LaTeX{} alkalmatlan marad nagyobb magyar nyelvû
+dokumentumok készítésére!  Az itt bemutatandó \texttt{magyar.ldf}
+olyan kiegészítéseket tartalmaz az eredetihez képest, hogy
+használatával a magyar tipográfiai szabályoknak megfelelõ dokumentumot
+kapunk.
+
+\emph{Nagyon fontos!} Ez a \texttt{magyar.ldf} a 3.6-os
+verziójú \textsf{babel}hez készült!
+
+\section{Telepítés}
+
+A \texttt{magyar.ldf} fájlt abba a könyvtárba kell tenni, amelyikben a
+feldolgozandó dokumentum található. Ekkor a \LaTeX{} az ott lévõ
+\texttt{magyar.ldf}-et fogja használni és így nem kell
+felülírni a \textsf{babel} eredeti \texttt{magyar.ldf}-ét.
+
+Természetesen ha valaki azt szeretné, hogy ne kelljen mindig
+bemásolni ezt a \texttt{magyar.ldf}-et a dokumentum könyvtárába,
+akkor esetleg felülírhatja az eredit ezzel.
+Ebben az esetben azonban fel kell arra készülni, hogy más \LaTeX{}
+telepítéssel egy magyar dokumentum más kimenetet fog eredményezni.
+
+Reméljük hamarosan a hivatalos \textsf{babel} is hasonló tudással fog
+rendelkezni, így e program használóinak a késõbbiekben nem kell
+,,átállniuk'' az új \textsf{babel}-re, csak törölniük kell
+könyvtárukból ezt a fájlt.
+
+A \textsf{babel}-lel kapcsolatos kérdések is megtalálhatók a
+magyar \LaTeX\ honlapon: \textsf{http://www.math.bme.hu/latex/}.
+
+\section{Tipográfiai változtatások}
+
+\subsection{Sorrend}
+
+A rész- és fejezetcímekben megfordítja a szám és a
+rész illetve fejezet szócska sorrendjét. Ugyanezt teszi az
+ábra- és táblázatcímekben.
+
+\subsection{A pontok}
+
+Pontot tesz a rész, fejezet, szakasz
+stb.\ sorszáma után.
+
+Ugyanezt teszi az ábra- és táblázatsorszámokkal.
+Az ábra és a táblázat sorszámokat és címeket
+eredetileg elválasztó kettõspont helyett is pontot rak.
+
+
+\begin{figure}
+\centering
+\fbox{Képzeld azt, hogy ez egy kép!}
+\caption{Ez egy ábra}
+\label{fig:egyabra}
+\end{figure}
+
+
+\paragraph{Ez egy paragrafuscím}
+Pontot tesz a befutó címek után
+(paragrafus és alparagrafus címek).
+
+
+\subsection{Fejlécek}
+
+Mivel a 3.5-ös \textsf{babel} óta a nyelv kiválasztását
+késleltetik a \verb|\begin{document}| végrehajtásáig, ezért
+ahhoz, hogy a heading-ek jók legyenek, a \verb|\pagestyle{headings}|
+parancsot a \verb|\begin{document}| \emph{után} kell kiadni!
+
+\selectlanguage{english}
+\subsection{Más nyelvek}
+
+A \verb|\selectlanguage| paranccsal bármikor át lehet
+kapcsolni egy másik nyelvre, ekkor az idáig ismertetett
+beállítások visszaállnak a \LaTeX{} eredeti
+beállításaira, illetve a kiválasztott új nyelvére.
+
+Ennek bemutatására egy \verb|\selectlanguage{english}|
+parancs lett kiadva a legutóbbi \verb|\subsection|
+elõtt.
+Így aztán az itt következõ ábra
+(egy táblázat van benne, mert azt könnyû a \LaTeX-el készíteni)
+is angol szabályok szerint lesz megcímkézve.
+
+\begin{figure}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+123.45   &  7812.4   &   8989  \\
+\hline
+123.45   &  7812.4   &   8989  \\
+\hline
+123.45   &  7812.4   &   8989  \\
+\hline
+\end{tabular}
+\caption{This is a table}
+\label{fig:angol tablazat}
+\end{figure}
+
+
+\selectlanguage{magyar}
+\section{Névelõk}
+\label{sec:nevelok}
+
+A \LaTeX{} fejlesztõk egyike, David Carlisle, a \LaTeX{}
+magyarítására alakult csoport egyik levelére válaszul
+írt egy kis rutint. Erre alapozva, némileg
+átdolgozva és kiegészítve azt, a \texttt{magyar.ldf}
+névelõs makrói a következõkre képesek:
+\begin{itemize}
+\item Helyes névelõt adnak az egyszerû számokhoz.
+\item Helyes névelõt adnak az összetett számokhoz, mint
+      \mbox{pl.} 1.3.6.
+\item Helyesen kezelik a római számokat.
+\item Helyesen kezelik a betûket, beleértve az ékezetes
+      betûket is.
+      Ez utóbbi szakirodalmi hivatkozások esetén fontos.
+      Ha egy címke csak egy betûbõl áll
+      (vagy a második karakter nem betû), akkor a betû
+      kiejtett neve alapján állapítják meg a névelõt.
+\end{itemize}
+
+Akkor most lássuk a makrókat!
+
+\subsection{\texttt{$\backslash$az}, \texttt{$\backslash$az*},
+\texttt{$\backslash$Az}, \texttt{$\backslash$Az*}}
+
+A csillagosok a paraméterhez tartozó névelõt írják
+be a szövegbe, a csillag nélküliek a névelõ után
+egy \foreignlanguage{english}{nonbreakable space}-szel elválasztva
+beírják magát a paramétert is.
+
+Azt hinné az ember, hogy ezzel minden meg van oldva, azonban a
+\textsf{babel} átdefiniálja a \verb|\ref|, \verb|\pageref|,
+\verb|\cite| \mbox{stb.} makrókat a \verb|\bbl@redefinerobust|
+makróval.
+Szerintem ennek köszönhetõ
+(bár nem látom át teljesen), hogy
+a \verb|\ref|, \mbox{stb.} parancsokat nem lehet paraméterként
+átadni egy másik makrónak.
+Ezenkívül ha ez mûködne is, a római számos címkékhez
+akkor sem tudná minden esetben a
+helyes névelõt megállapítani
+(merthogy szövegnek tekintené õket).
+
+Így ezeket a makrókat leginkább a központi makró
+tesztelésére lehet használni:
+
+\verb|\Az{1.23.4}|$\rightarrow$\Az{1.23.4}, ide írok egy kicsit.
+
+\verb|\Az{V}|$\rightarrow$\Az{V}, ezt ugye v-betûnek tekintette.
+
+\verb|\Az{m}|$\rightarrow$\Az{m}, ezt meg m-betûnek tekintette.
+
+\verb|\Az{Mátra}|$\rightarrow$\Az{Mátra}, ez viszont már szó.
+
+\verb|\Az{M\'atra}|$\rightarrow$\Az{M\'atra}, ez így is szó!
+
+\verb|\az{ólom}|$\rightarrow$\az{ólom}, ez egy tiszta helyzet.
+
+Alkalmasak továbbá egy tetszõleges számláló értékéhez
+tartozó névelõ megállapítására.
+Ehhez elõszöris definiáljunk egy számlálót:\\
+\verb|\newcounter{proba}\setcounter{proba}{5}|%
+\newcounter{proba}\setcounter{proba}{5}%
+
+Ezután:
+\verb|\Az{\the\value{proba}}|$\rightarrow$\Az{\the\value{proba}} vagy
+\verb|\az{\arabic{proba}}|$\rightarrow$\az{\arabic{proba}}.
+
+%\subsection{\texttt{$\backslash$azr}, \texttt{$\backslash$azr*},
+%\texttt{$\backslash$azr(}, \texttt{$\backslash$Azr},
+%\texttt{$\backslash$Azr*}, \texttt{$\backslash$Azr(}}
+\subsection{\texttt{$\backslash$aref}, \texttt{$\backslash$aref*},
+\texttt{$\backslash$aref(}, \texttt{$\backslash$Aref},
+\texttt{$\backslash$Aref*}, \texttt{$\backslash$Aref(}}
+
+Ezeknek egy címkét kell paraméternek adni.
+A csillagosok ugyanúgy csak a névelõt írják bele
+a dokumentumba, míg a nem csillagosok utánaírják
+egy nemtörhetõ szóközzel elválasztva
+azt, hogy \verb|\ref{|\textit{címke}\verb|}|.
+
+A zárójeles alakot kényelmesen lehet képlethivatkozáshoz használni.
+Azt kell írni, hogy
+\verb|\aref({|\textit{képlet címkéje}\verb|})|, amibõl
+\mbox{pl.} az lesz, hogy \azr({eqn:keplet}).
+
+
+\begin{equation}
+  \int_0^{\infty} \exp(-x^2) dx
+\label{eqn:keplet}
+\end{equation}
+
+
+Még néhány példa:
+
+\verb|\Aref{sec:nevelok}|$\rightarrow$\Aref{sec:nevelok},
+ez elég egyszerû.
+Mint látható, a \verb|\ref| után nem raknak pontot a makrók,
+ezért azt bele kell írni a dokumnetumba!
+Arra azonban érdemes figyelni, hogy a \TeX{} egy pont után nagyobb
+szóközt tart mint egyébként
+(kivéve ha a \verb|\frenchspacing| makrót futtattuk).
+Mivel \mbox{pl.} egy ábraszám után a pont nem mondat végét jelöl,
+hanem sorszámnevet képez, ezért valahogy el kell kerülni a
+nagyobb szóközt (\mbox{pl.} \verb|~| vagy \verb|\ |).
+
+\verb|\Aref{fig:egyabra}|$\rightarrow$\Azr{fig:egyabra},
+ez tökéletes.
+
+\verb|\Aref{fig:angol tablazat}|$\rightarrow$\Azr{fig:angol tablazat},
+ez látszólag jó, de igazából nem.
+A nagy római kettes ugyanis \verb|\uppercase{ii}|-ként
+kerül be az .aux fájlba
+(és az \verb|\uppercase| \TeX{} primitív alapján lesz a
+névelõ megállapítva).
+Ez nem lenne baj, mert direkt a római számok miatt van még egy
+bejegyzés az .aux fájlban az arabszámos megfelelõkkel.
+Illetve csak lenne, mert a hivatkozott ábra az angol nyelvûnek
+deklarált részben van, ekkor pedig természetesen nem keletkezik
+plussz címke.
+Persze a magyar részben lévõ római számokra
+tökéletesen mûködik!
+
+%\subsection{\texttt{$\backslash$azp}, \texttt{$\backslash$azp*},
+%\texttt{$\backslash$Azp}, \texttt{$\backslash$Azp*}}
+\subsection{\texttt{$\backslash$apageref}, \texttt{$\backslash$apageref*},
+\texttt{$\backslash$Apageref}, \texttt{$\backslash$Apageref*}}
+
+Ezek ugyanolyanok mint az \verb|\aref|-es makrók, csak
+az oldalszámokkal mûködnek
+(és persze a nem csillagosak a \verb|\pageref|-et használják).
+
+Egy példa: \azr({eqn:keplet}) képlet
+\apageref{eqn:keplet}.\ oldalon
+található.
+
+%\subsection{\texttt{$\backslash$azc}, \texttt{$\backslash$azc*},
+%\texttt{$\backslash$Azc}, \texttt{$\backslash$Azc*}}
+\subsection{\texttt{$\backslash$acite}, \texttt{$\backslash$acite*},
+\texttt{$\backslash$Acite}, \texttt{$\backslash$Acite*}}
+
+%Ezeket szeretem, mert szerintem tök jól megcsináltam.
+Paraméterük egy \textit{vagy több}, vesszõvel elválasztott
+irodalomjegyzékben használt címke.
+De az még nem elég, hogy több címkét is meg lehet nekik
+adni, de a \verb|\cite| parancs opcionális paraméterét is
+lehet használni.
+Természetesen ezt csak a nem csillagos parancsokkal,
+merthát csak akkor van értelme.
+
+\verb|\Acite{babik}|$\rightarrow$\Acite{babik}.
+Hmmmmm, ez igen! ékezetes betûvel is mûködik.
+
+\verb|\Acite{rozsa,euler,babik}|$\rightarrow$\Azc{rozsa,euler,babik},
+tehát több argumentummal is megy. Ilyenkor a legelsõ
+alapján képzõdik a névelõ.
+
+\verb|\Acite{euler,rozsa,babik}|$\rightarrow$\Acite{euler,rozsa,babik}.
+Ugye, én megmondtam, hogy az elsõ alapján megy.
+
+\verb|\Acite[halihó]{matyi}|$\rightarrow$\Azc[halihó]{matyi},
+itt az opcionális paraméter. Látható, hogy a Mátyáshoz
+jó névelõt rakott.
+
+\verb|\Acite[halihó]{fodor,rozsa}|$\rightarrow$\Azc[halihó]{fodor,rozsa},
+még szép, hogy több paraméterrel is megy az opcionális.
+
+\section{Tételek, definíciók,\dots}
+
+Bekerült a stílusfájlba a \LaTeX-könyvben található kód a magyar 
+tételkörnyezetre, így a tételek is automatikusan magyar alakban jelennek meg 
+(sorszám és cím sorrendje, pontok).
+
+\begin{tet}
+$e^{i\pi}+1=0$.
+\end{tet}
+
+\begin{tet}[Euler]
+$e^{i\pi}+1=0$.
+\end{tet}
+
+\section{Elválasztás}
+
+A hosszú kettõs mássalhangzók elválasztásáról
+van szó.
+Ehhez a \verb|`| karaktert aktívvá tettem.
+Hogy miért pont ezt, amikor a \textsf{babel} általában
+a \verb|"| karaktert szokta ilyesmire használni
+(lásd \mbox{pl.} a \verb|germanb.ldf|-et)?
+Hát azért, mert így a kezdõ idézõjel is
+definiálható mint \verb|``|, azaz ugyanúgy kell magyarul
+idézetet kezdeni mintha angolul írna az ember.
+
+Szóval az elválasztáshoz való makrókat úgy kell
+használni, hogy a hosszú kettõs mássalhangzó
+elé be kell tenni egy \verb|`| karaktert.
+\mbox{Pl.} \verb|loccsan| helyett azt kell írni,
+hogy \verb|lo`ccsan|.
+\Azr{fig:elvalaszt}.~ábra tartalmaz egy táblázatot,
+amelyben remélhetõleg lesz egy csomó elválasztás.
+A ddzs kivételével minden hosszú kettõs mássalhangzót
+definiáltam.
+
+
+\begin{figure}
+\centering
+\begin{tabular}{|p{13ex}|p{12ex}|p{16ex}|}
+\hline
+\verb|lo`ccsan| & \verb|vi`ssza| & \verb|po`ggyász| \\\hline
+lo`ccsan lo`ccsan lo`ccsan lo`ccsan lo`ccsan lo`ccsan &
+vi`ssza vi`ssza vi`ssza vi`ssza vi`ssza vi`ssza vi`ssza &
+po`ggyász po`ggyász po`ggyász po`ggyász po`ggyász po`ggyász
+\\\hline
+\end{tabular}
+\caption{Elválasztások}
+\label{fig:elvalaszt}
+\end{figure}
+
+
+
+\section{Idézõjel}
+
+Errõl már volt szó az elõzõ pontban.
+Azért annyit még meg kell említeni róla, hogy
+mivel a \textsf{babel} \verb|\glqq| makróját használja, ezért
+csak OT1 fontkódolással mûködik úgy, hogy az angol
+záró idézõjelet lehúzza az alapvonalra.
+T1-el a fontkészletben lévõ karaktert használja,
+amely nyilván jobb, mint az elõzõ. A T1 kódolás estén továbbra is használható a két vesszõ.
+``Ember küzdj és bízva bízzál!''
+,,Ember küzdj és bízva bízzál!''
+
+\begin{thebibliography}{Matyas}
+\bibitem{fodor} Fodor György: Villamosságtan.
+\bibitem{rozsa} Rózsa Pál: Lineáris algebra és alkalmazásai.
+\bibitem[\t Euler]{euler} \t Euler: Hét híd.
+\bibitem[Örkény]{babik} Örkény István: Babik.
+\bibitem[Mátyás]{matyi} Mátyás Király: Az igazság vagy amit akartok.
+\end{thebibliography}
+
+\end{document}
+
+

@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\begin{document}
+Figyeljük meg a szinusz függvény írásmódját.
+\begin{enumerate}
+% a szabályos LaTeX írásmód:
+\item Ha $\sin x = 0$, \textellipsis
+% a \mathrm{sin}, majdnem jó, csak az x előtti térköz rossz ;-)
+\item Ha $\mathrm{sin} x = 0$, \textellipsis
+% totál rossz:
+\item Ha $sin x = 0$, \textellipsis
+\end{enumerate}
+
+Az \AmS{}-\LaTeX{} \verb!x\mathrel{<}y! és  \verb!x\mathop{<}y! parancsával más-más térközt kapunk.
+
+Reláció:
+{\Huge
+ $$ x\mathrel{<}y  $$
+ }
+Műveleti jel:
+{\Huge$$ x\mathop{<}y  $$
+}
+
+A \verb!\ensuremath! parancs alkalmazásánál óvatosan kell eljárni, például néha nem megfelelő méretű üres helyeket kapunk. Figyeljük meg az alábbi három képletet:
+\begin{enumerate}
+\item $\alpha+\beta+\gamma$
+\item \ensuremath{\alpha+\beta+\gamma}
+\item \ensuremath{\alpha}+\ensuremath{\beta}+\ensuremath{\gamma}
+\end{enumerate}
+\end{document}

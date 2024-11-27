@@ -1,0 +1,534 @@
+% magyar LaTeX article sablon 2
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{srcltx}
+\usepackage{listings}
+\usepackage{mdsymbol}   % 2 szimbólum kell belőle a sortörések jelzésére a kódlistákban
+\usepackage{hulipsum}
+\usepackage[dvipsnames,usenames]{xcolor}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage[colorlinks=true]{hyperref} % Ezzel a jegyzékek elemeiből automatikusan linkek lesznek!
+
+\usepackage{caption}
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[%
+name=program,
+listname={Programok jegyzéke},
+fileext=lop,
+placement=hp,
+within=,
+]
+{programkod}
+%opening
+\title{Programlisták készítése a listings csomaggal}
+\author{Virágh János}
+
+\parindent=0pt
+
+\usepackage[lighttt]{lmodern}  % ezek a fontok tartalmaznak minden szükséges változatot, pl. félkövér vagy döntött írógép font
+
+\begin{document}
+	\maketitle
+	\begin{verbatim}
+		\tableofcontents    % tartalomjegyzék
+		\listoffigures      % ábrajegyzék
+		\listofprogramkod   % programjegyzék
+	\end{verbatim}
+	
+	A fönti parancsokkal legeneráltatjuk a dokumentumunkhoz tartozó különféle jegyzékeket. Figyeljük meg, hogy az alábbi példák közül melyik szerepel a második, és melyik a harmadik jegyzékben.
+	
+	\tableofcontents
+	\listoffigures
+	\listofprogramkod
+
+\section{Bevezetés}
+Az alábbi példák a \verb!listings! csomag használatát mutatják be különféle programlisták elkészítésére. Hasznos lehet Tómács Tibor fóliáiról a vonatkozó részek átolvasása is. Először az \verb!\lstset! parancs segítségével megadjuk a továbbiakhoz szükséges opciókat. Az alkalmazott parancs \LaTeX{} forráskódja:
+{\small
+\begin{verbatim}
+\lstset{% kezdete
+    backgroundcolor=\color{Gray!30},       % háttérszín
+    basicstyle=\scriptsize\ttfamily,       % az alapértelmezett betűméret, stílus
+    keywordstyle=\bfseries\color{blue},    % a kulcsszavak stílusa
+    commentstyle=\slshape\color{green},    % a megjegyzések stílusa
+    stringstyle=\color{magenta},           % a sztringek stílusa
+    breaklines,                            % a hosszú programsorok törhetők
+    prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+    postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+    breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+    tabsize=4,
+   %showspaces,                            % szóközök látható megjelenítése
+   %showtabs,                              % tabulátor karakterek látható megjelenítése
+    frame=none,                            % nincs keretezés, shadowbox, vagy trblTRBL részhalmaza
+    numbers=left,                          % sorok számozása balról
+    numberstyle=\scriptsize,               % hogy megegyezzen a kód betűméretével
+    numbersep=1em,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+    {á}{{\'{a}}}1
+    {í}{{\'{i}}}1
+    {ű}{{\H{u}}}1
+    {ő}{{\H{o}}}1
+    {ü}{{\"{u}}}1
+    {ö}{{\"{o}}}1
+    {ú}{{\'{u}}}1
+    {ó}{{\'{o}}}1
+    {é}{{\'{e}}}1
+    {Á}{{\'{A}}}1
+    {Í}{{\'{I}}}1
+    {Ű}{{\H{U}}}1
+    {Ő}{{\H{O}}}1
+    {Ü}{{\"{U}}}1
+    {Ö}{{\"{O}}}1
+    {Ú}{{\"{U}}}1
+    {Ó}{{\'{O}}}1
+    {É}{{\'{E}}}1
+\end{verbatim}
+}
+% Maga a parancs:
+\lstset{% kezdete
+    backgroundcolor=\color{Gray!30},       % háttérszín
+    basicstyle=\scriptsize\ttfamily,       % az alapértelmezett betűméret, stílus
+    keywordstyle=\bfseries\color{blue},    % a kulcsszavak stílusa
+    commentstyle=\slshape\color{green},    % a megjegyzések stílusa
+    stringstyle=\color{magenta},           % a sztringek stílusa
+    breaklines,                            % a hosszú programsorok törhetők
+    prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+    postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+    breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+    breaklines,							   % a hosszú programsorok törhetők
+    prebreak=\hbox{$\color{red}\Rdsh\ $},  % hosszú sorok törése előtti jel
+    postbreak=\hbox{$\color{red}\Ldsh\ $}, % hosszú sorok törése utáni jel
+    breakindent=10pt,                      % hosszú sorok törése utáni behúzás
+    tabsize=4,
+   %showspaces,							   % szóközök látható megjelenítése
+   %showtabs,                              % tabulátor karakterek látható megjelenítése
+    frame=none,                            % nincs keretezés, shadowbox, vagy trblTRBL részhalmaza
+    numbers=left,                          % sorok számozása balról
+    numberstyle=\scriptsize,               % hogy megegyezzen a kód betűméretével
+    numbersep=1em,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+    {á}{{\'{a}}}1
+    {í}{{\'{i}}}1
+    {ű}{{\H{u}}}1
+    {ő}{{\H{o}}}1
+    {ü}{{\"{u}}}1
+    {ö}{{\"{o}}}1
+    {ú}{{\'{u}}}1
+    {ó}{{\'{o}}}1
+    {é}{{\'{e}}}1
+    {Á}{{\'{A}}}1
+    {Í}{{\'{I}}}1
+    {Ű}{{\H{U}}}1
+    {Ő}{{\H{O}}}1
+    {Ü}{{\"{U}}}1
+    {Ö}{{\"{O}}}1
+    {Ú}{{\"{U}}}1
+    {Ó}{{\'{O}}}1
+    {É}{{\'{E}}}1
+}% lstset vége
+
+\section{Egyszerű (nem-úsztatott) programlisták}
+\subsubsection*{\LaTeX{}   programlista}
+Az első példában az alapértelmezetteken túl (lásd \verb!lstset! parancs) opcióként a \LaTeX{} nyelvet és a dupla keretezést választottuk.
+
+A \LaTeX{} forráskód:
+{\small
+\begin{verbatim}
+\begin{lstlisting}[language={[LaTeX]TeX}, frame=TRBL]
+% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+Egy adott betű (vagy szó, mondat, paragrafus, stb.) megjelenítését sok tényező befolyásolhatja:
+\begin{itemize}
+	\item Melyik betűtípust használjuk (alapértelmezettet,
+		vagy pl. a preambulumban csomaggal megadottat)
+	\item Ennek melyik változatát használjuk (álló, dőlt,
+		döntött, kiskapitális,stb.)
+	\item Milyen betűvastagságot használunk (vékonyított,
+		normál, félkövér, stb.)
+	% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+	\item Milyen betűméretet használunk (a \LaTeX{} tíz beépített mérete, vagy egyedi trükkökkel definiált további méret)
+\end{itemize}
+\end{lstlisting}
+\end{verbatim}
+}
+  A szépen megformázott \LaTeX{} kód:
+\begin{lstlisting}[language={[LaTeX]TeX}, frame=TRBL]
+% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+Egy adott betű (vagy szó, mondat, paragrafus, stb.) megjelenítését sok tényező befolyásolhatja:
+\begin{itemize}
+	\item Melyik betűtípust használjuk (alapértelmezettet,
+		vagy pl. a preambulumban csomaggal megadottat)
+	\item Ennek melyik változatát használjuk (álló, dőlt,
+		döntött, kiskapitális,stb.)
+	\item Milyen betűvastagságot használunk (vékonyított,
+		normál, félkövér, stb.)
+	% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+	\item Milyen betűméretet használunk (a \LaTeX{} tíz beépített mérete, vagy egyedi trükkökkel definiált további méret)
+\end{itemize}
+\end{lstlisting}
+  Ha végre is hajtjuk a fönti \LaTeX{} kódot, ezt látjuk a kiszedett szövegben:\\[1em]
+
+Egy adott betű (vagy szó, mondat, paragrafus, stb.) megjelenítését sok tényező befolyásolhatja:
+\begin{itemize}
+	\item Melyik betűtípust használjuk (alapértelmezettet,
+		vagy pl. a preambulumban csomaggal megadottat)
+	\item Ennek melyik változatát használjuk (álló, dőlt,
+		döntött, kiskapitális,stb.)
+	\item Milyen betűvastagságot használunk (vékonyított,
+		normál, félkövér, stb.)
+	% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+	\item Milyen betűméretet használunk (a \LaTeX{} tíz beépített mérete, vagy egyedi trükkökkel definiált további méret)
+\end{itemize}
+
+\subsubsection*{Java  programlista}
+Az alábbi példában opcióként a Java nyelvet és az árnyékolt keretezést választottuk.
+
+A forrásprogram:
+
+{\small
+\begin{verbatim}
+\begin{lstlisting}[language=Java, frame=shadowbox]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        //Display the string
+        System.out.println("Hello World!");
+    }
+}
+\end
+\end{lstlisting}
+\end{verbatim}
+}
+
+  A megformázott programkód:
+
+\begin{lstlisting}[language=Java, frame=shadowbox]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        //Display the string
+        System.out.println("Hello World!");
+    }
+}
+\end
+\end{lstlisting}
+
+Az alábbiakban egy  C++ demo programot látunk.
+
+A forráskód:
+\begin{verbatim}
+%\lstset{language=C++}
+\begin{lstlisting}[language=C++]
+	/****************************************************************
+	* MODULE     : substitute.cpp
+	* DESCRIPTION: Converts LaTeX to TeXmacs
+	* COPYRIGHT  : (C) 2003  Joris van der Hoeven
+	*****************************************************************
+	* This software falls under the GNU general public license and comes WITHOUT
+	* ANY WARRANTY WHATSOEVER. See the file $TEXMACS_PATH/LICENSE for more details.
+	* If you don't have this file, write to the Free Software Foundation, Inc.,
+	* 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+	****************************************************************/
+	#include <stdio.h>
+	#include <iostream.h>
+	#define DATA_BEGIN   ((char) 2)
+	#define DATA_END     ((char) 5)
+	#define DATA_ESCAPE  ((char) 27)
+	
+	int
+	main () {
+		cout << DATA_BEGIN << "verbatim:";
+		cout << "An interactive LaTeX -> TeXmacs translator\n";
+		cout << "Can also be used outside sessions: select a LaTeX expression\n";
+		cout << "and press C-F12\n";
+		cout << DATA_END;
+		fflush (stdout);
+		
+		while (true) {
+			char buffer[100];
+			cin.getline (buffer, 100, '\n');
+			cout << DATA_BEGIN;
+			cout << "latex:$" << buffer << "$";
+			cout << DATA_END;
+			fflush (stdout);
+		}
+		return 0;
+	}
+\end{lstlisting}
+\end{verbatim}
+
+A megformázott példa:
+
+%\lstset{language=C++}
+\begin{lstlisting}[language=C++]
+	/****************************************************************
+	* MODULE     : substitute.cpp
+	* DESCRIPTION: Converts LaTeX to TeXmacs
+	* COPYRIGHT  : (C) 2003  Joris van der Hoeven
+	*****************************************************************
+	* This software falls under the GNU general public license and comes WITHOUT
+	* ANY WARRANTY WHATSOEVER. See the file $TEXMACS_PATH/LICENSE for more details.
+	* If you don't have this file, write to the Free Software Foundation, Inc.,
+	* 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+	****************************************************************/
+	#include <stdio.h>
+	#include <iostream.h>
+	#define DATA_BEGIN   ((char) 2)
+	#define DATA_END     ((char) 5)
+	#define DATA_ESCAPE  ((char) 27)
+	
+	int
+	main () {
+		cout << DATA_BEGIN << "verbatim:";
+		cout << "An interactive LaTeX -> TeXmacs translator\n";
+		cout << "Can also be used outside sessions: select a LaTeX expression\n";
+		cout << "and press C-F12\n";
+		cout << DATA_END;
+		fflush (stdout);
+		
+		while (true) {
+			char buffer[100];
+			cin.getline (buffer, 100, '\n');
+			cout << DATA_BEGIN;
+			cout << "latex:$" << buffer << "$";
+			cout << DATA_END;
+			fflush (stdout);
+		}
+		return 0;
+	}
+\end{lstlisting}
+
+\pagebreak[4]
+Az alábbiakban egy  Python demo programot látunk.
+
+A forráskód:
+\begin{verbatim}
+\shadowbox{
+	\begin{lstlisting}[language=Python]
+		import numpy as np
+		
+		def incmatrix(genl1,genl2):
+		m = len(genl1)
+		n = len(genl2)
+		M = None #to become the incidence matrix
+		VT = np.zeros((n*m,1), int)  #dummy variable
+		
+		#compute the bitwise xor matrix
+		M1 = bitxormatrix(genl1)
+		M2 = np.triu(bitxormatrix(genl2),1)
+		
+		for i in range(m-1):
+		for j in range(i+1, m):
+		[r,c] = np.where(M2 == M1[i,j])
+		for k in range(len(r)):
+		VT[(i)*n + r[k]] = 1;
+		VT[(i)*n + c[k]] = 1;
+		VT[(j)*n + r[k]] = 1;
+		VT[(j)*n + c[k]] = 1;
+		
+		if M is None:
+		M = np.copy(VT)
+		else:
+		M = np.concatenate((M, VT), 1)
+		
+		VT = np.zeros((n*m,1), int)
+		
+		return M
+	\end{lstlisting}
+	
+}	
+\end{verbatim}
+A megformázott kód:
+
+\shadowbox{
+	\begin{lstlisting}[language=Python]
+		import numpy as np
+		
+		def incmatrix(genl1,genl2):
+		m = len(genl1)
+		n = len(genl2)
+		M = None #to become the incidence matrix
+		VT = np.zeros((n*m,1), int)  #dummy variable
+		
+		#compute the bitwise xor matrix
+		M1 = bitxormatrix(genl1)
+		M2 = np.triu(bitxormatrix(genl2),1)
+		
+		for i in range(m-1):
+		for j in range(i+1, m):
+		[r,c] = np.where(M2 == M1[i,j])
+		for k in range(len(r)):
+		VT[(i)*n + r[k]] = 1;
+		VT[(i)*n + c[k]] = 1;
+		VT[(j)*n + r[k]] = 1;
+		VT[(j)*n + c[k]] = 1;
+		
+		if M is None:
+		M = np.copy(VT)
+		else:
+		M = np.concatenate((M, VT), 1)
+		
+		VT = np.zeros((n*m,1), int)
+		
+		return M
+	\end{lstlisting}	
+}
+\section{Úsztatott programlisták}
+
+Ilyen állatfajt alapból nem ismer a  \LaTeX{}. Bár betehetünk programlistát a beépített úsztatott környezetekbe (\verb!table, figure!), ezzel előbb-utóbb gondok lesznek. Az alábbi ,,programkód-ábra'' (\verb!figure! úsztatott környezet) majd ,,valahol'' megjelenik a szövegben -- ahová a latex fordító be tudja szúrni. A megfelelő sor ugyan megjelenik az ábrák listájában, de praktikusabb lenne a kódpéldákról külön listát készíteni, ami így csak utólag, a \verb!.lof! fájl ,,kézi faragásával'' volna elérhető.
+
+\begin{figure}[!h]
+{\centering
+\begin{lstlisting}[language={[LaTeX]TeX}, frame=TRBL]
+% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+Egy adott betű (vagy szó, mondat,paragrafus, stb.) megjelenítését sok tényező befolyásolhatja:
+\begin{itemize}
+	\item Melyik betűtípust használjuk (alapértelmezettet,
+		vagy pl. a preambulumban csomaggal megadottat)
+	\item Ennek melyik változatát használjuk (álló, dőlt,
+		döntött, kiskapitális,stb.)
+	\item Milyen betűvastagságot használunk (vékonyított,
+		normál, félkövér, stb.)
+	% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+	\item Milyen betűméretet használunk (a \LaTeX{} tíz beépített mérete, vagy egyedi trükkökkel definiált további méret)
+\end{itemize}
+\end{lstlisting}
+\caption{A   \LaTeX{} forráskód példa ábraként úsztatva}
+}
+\end{figure}
+
+  A változatosság kedvéért beillesztünk egy ,,igazi'' ábrát is kedvenc házi oroszlánunkról.
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{Lion.pdf}
+\caption{A mi kis házi oroszlánunk}
+\end{figure}
+
+  Megadjuk a   Java kód úsztatott változatát is.
+
+\begin{figure}[!h]
+{\centering
+\begin{lstlisting}[language=Java, frame=shadowbox]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        //Display the string
+        System.out.println("Hello World!");
+    }
+}
+\end
+\end{lstlisting}
+\caption{A   Java forráskód példa ábraként úsztatva}
+}
+\end{figure}
+
+%A változatosság kedvéért beillesztünk egy ,,igazi'' ábrát is kedvenc házi oroszlánunkról.
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.75]{Képek/Lion.pdf}
+%\caption{A mi kis házi oroszlánunk}
+%\end{figure}
+
+\section{Új úsztatott környezet definiálása programlisták számára}
+A  \verb!newfloat! csomag segítségével definiálunk egy új programkod nevű úsztatott környezetet. A preambulumba(!) írjuk ezt:
+\begin{verbatim}
+	\usepackage{caption}
+	\usepackage{newfloat}
+	\DeclareFloatingEnvironment[%
+	name=program,
+	listname={Programok jegyzéke},
+	fileext=lop,
+	placement=hp,
+	within=,
+	]
+	{programkod}
+\end{verbatim}
+\paragraph{Megjegyzés.}
+Ezt a konstrukciót már láttuk korábban a \texttt{newfloat-ex.tex} példafájlban, csak akkor az \texttt{altt} csomag felhasználásával adtuk meg a forráskódokat.
+
+Ismét beillesztjük a   \LaTeX{} forráskód példát, csak most már az új \verb!programkod! úsztatott környezetet használjuk.
+
+\begin{programkod}[!h]
+{\centering
+\begin{lstlisting}[language={[LaTeX]TeX}, frame=TRBL]
+% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+Egy adott betű (vagy szó, mondat,paragrafus, stb.) megjelenítését sok tényező befolyásolhatja:
+\begin{itemize}
+	\item Melyik betűtípust használjuk (alapértelmezettet,
+		vagy pl. a preambulumban csomaggal megadottat)
+	\item Ennek melyik változatát használjuk (álló, dőlt,
+		döntött, kiskapitális,stb.)
+	\item Milyen betűvastagságot használunk (vékonyított,
+		normál, félkövér, stb.)
+	% most egy hosszú sor következik, amit automatikusan törni fog a LaTeX:
+	\item Milyen betűméretet használunk (a \LaTeX{} tíz beépített mérete, vagy egyedi trükkökkel definiált további méret)
+\end{itemize}
+\end{lstlisting}
+\caption{A \LaTeX{} forráskód példa}
+}
+\end{programkod}
+
+A Java program következik az úsztatott \verb!programkod! környezetben.
+\begin{programkod}[!h]
+{\centering
+\begin{lstlisting}[language=Java, frame=shadowbox]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        //Display the string
+        System.out.println("Hello World!");
+    }
+}
+\end
+\end{lstlisting}
+\caption{A Java forráskód példa}
+}
+\end{programkod}
+
+\pagebreak[4]
+
+A C++ program következik az úsztatott \verb!programkod! környezetben.
+\begin{programkod}[!h]
+	{\centering
+		\begin{lstlisting}[language=C++]
+			/****************************************************************
+			* MODULE     : substitute.cpp
+			* DESCRIPTION: Converts LaTeX to TeXmacs
+			* COPYRIGHT  : (C) 2003  Joris van der Hoeven
+			*****************************************************************
+			* This software falls under the GNU general public license and comes WITHOUT
+			* ANY WARRANTY WHATSOEVER. See the file $TEXMACS_PATH/LICENSE for more details.
+			* If you don't have this file, write to the Free Software Foundation, Inc.,
+			* 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+			****************************************************************/
+			#include <stdio.h>
+			#include <iostream.h>
+			#define DATA_BEGIN   ((char) 2)
+			#define DATA_END     ((char) 5)
+			#define DATA_ESCAPE  ((char) 27)
+			
+			int
+			main () {
+				cout << DATA_BEGIN << "verbatim:";
+				cout << "An interactive LaTeX -> TeXmacs translator\n";
+				cout << "Can also be used outside sessions: select a LaTeX expression\n";
+				cout << "and press C-F12\n";
+				cout << DATA_END;
+				fflush (stdout);
+				
+				while (true) {
+					char buffer[100];
+					cin.getline (buffer, 100, '\n');
+					cout << DATA_BEGIN;
+					cout << "latex:$" << buffer << "$";
+					cout << DATA_END;
+					fflush (stdout);
+				}
+				return 0;
+			}
+		\end{lstlisting}
+		\caption{A C++ forráskód példa}
+	}
+\end{programkod}
+\end{document}

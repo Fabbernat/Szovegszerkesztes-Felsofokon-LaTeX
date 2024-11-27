@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{hulipsum}
+\usepackage{typehtml}
+\usepackage{xr-hyper}
+\usepackage{nameref}
+\usepackage[unicode]{hyperref}
+\hypersetup{
+     colorlinks   = true,
+     linkcolor    = blue,
+     urlcolor     = magenta
+}
+\usepackage{showlabels}
+
+\author{Virágh János \\ viragh@inf.u-szeged.hu}
+\title{HTML kód beágyazása \LaTeX{} dokumentumokba}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Bevezetés} \label{sec:bev}
+
+Ez a dokumentum a \texttt{typehtml} csomag segítségével a mellékelt  \texttt{thinkglob.html}
+HTML forrásfájl tartalmát szedi ki.
+
+\hulipsum[1-3]
+
+\section{A lényeg}\label{sec:lenyeg}
+Itt kezdődik a HTML forrásból kiszedett szöveg.\label{p:HTML kezdete}
+%%%
+\htmlinput{thinkglob.html}
+%%%
+\section{Befejezés}\label{sec:vege}
+És itt van vége a kiszedett HTML kódnak.
+Ha újra az elejét szeretné látni,
+\begin{itemize}
+\item ugorjon \apageref{p:HTML kezdete}.~oldalra;
+\item vagy  \aref{sec:lenyeg}.~szekcióra;
+\item vagy erre a szekcióra: \nameref{sec:lenyeg}.
+\end{itemize}
+\end{document}

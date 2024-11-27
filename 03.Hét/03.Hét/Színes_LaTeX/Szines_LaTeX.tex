@@ -1,0 +1,291 @@
+% V 2024. 09. 23.
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage[dvipsnames,x11names,svgnames]{xcolor}
+\usepackage{fancybox}
+\title{A \LaTeX{} színkezelése, a \texttt{color} és az \texttt{xcolor} csomag}
+\author{Virágh János}
+\parindent 0pt
+\begin{document}
+	\maketitle
+	\tableofcontents
+\section{Színkezelés}
+Látszólag ellentmondásnak tűnik, de a \TeX{}-nek -- és így a \LaTeX{}--nek is -- fogalma sincs a színekről, színkezelésről, csak a szöveg tördelésével foglalkoznak.
+
+De vannak olyan kiegészítő csomagok, a  \verb!color!, illetve a  \verb!xcolor! amelyek mégis lehetővé teszik ,,szép  színes'' dokumentumok készítését. Hogyan?!
+A szokásos munkamenet, pl.
+\begin{itemize}
+	\item \LaTeX{} forrásfájl \ensuremath{\stackrel{\texttt{latex}}{\Longrightarrow}} DVI fájl
+	\item \LaTeX{} forrásfájl \ensuremath{\stackrel{\texttt{latex}}{\Longrightarrow}} DVI fájl %
+	\ensuremath{\stackrel{\texttt{dvips}}{\Longrightarrow}} PS fájl
+	\item \LaTeX{} forrásfájl \ensuremath{\stackrel{\texttt{latex}}{\Longrightarrow}} DVI fájl %
+	\ensuremath{\stackrel{\texttt{dvips}}{\Longrightarrow}} PS fájl \ensuremath{\stackrel{\texttt{ps2pdf}}{\Longrightarrow}} PDF fájl
+	\item \LaTeX{} forrásfájl \ensuremath{\stackrel{\texttt{latex}}{\Longrightarrow}} DVI fájl%
+	\ensuremath{\stackrel{\texttt{dvipdfm}}{\Longrightarrow}} PDF fájl
+	\item \LaTeX{} forrásfájl \ensuremath{\stackrel{\texttt{pdflatex}}{\Longrightarrow}} PDF fájl.
+\end{itemize}
+során a \LaTeX{} ,,fordító'' (a latex vagy a pdflatex program) a fönt említett csomagok parancsainak segítségével az outputban olyan információkat helyez el, amelyek alapján a további feldolgozó programok (az eredeti \TeX{} szleng szerint a ,,DVI driverek'') elvégzik a színek korrekt kezelését, megjelenítését. Ezt látjuk, ha belenézünk pl. a \texttt{szinek.dvi} fájlba.
+\pagebreak[4]
+
+A továbbiakban a \verb!color! csomag betöltési opcióit és parancsait ismertetjük röviden.
+Opcióként megadható
+\begin{itemize}
+	\item a használni kívánt DVI driver, pl. \verb!dvipdfmx, dvips, dvisvgm,  pdftex!
+	\item \verb!dvipsnames! az előre definiált színek használatához
+	\item \verb!monochrome! pl. teszteléshez
+\end{itemize}
+A színek használata a különböző színmodellek segítségével lehetséges. A \verb!color! csomag által támogatottak:
+\begin{itemize}
+	\item \verb!rgb! azaz \verb!red green blue!: három, vesszővel elválasztott 0 és 1 közti érték, pl. $0, 0.3, 1$
+	\item \verb!cmyk! azaz \verb!cyan magenta yellow [k]black!: négy, vesszővel elválasztott 0 és 1 közti érték, pl. $0, 0.3, 0.7, 0.1$
+	Ezt használják a profi nyomdai berendezések.
+	\item \verb!gray! azaz \verb!grey scale!: egyetlen 0 és 1 közti érték, pl. $0.55$
+	\item \verb!named! elnevezett színek: lásd alább.
+\end{itemize}	
+ Színek megadására használhatók a számítógépes grafikából ismerős előre definiált színnevek:
+
+\vspace*{2ex}\shadowbox{%
+      \verb!black, white, red, green, blue, cyan,magenta,yellow!
+}\vspace*{2ex}
+
+Ha az \verb!xcolor! csomag betöltésekor megadjuk a \verb!dvipsnames!, \verb!x11names!, \verb!svgnames! opciókat, akár mindet is, a megfelelő előre definiált színek is elérhetők lesznek. A \verb!dvipsnames!   a 
+\verb!/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def! fájlban definiált alábbi színeket adja meg: 
+
+\vspace*{2ex}\shadowbox{%
+\begin{minipage}{\linewidth}
+{\small
+\begin{verbatim}
+GreenYellow    Yellow         Goldenrod       Dandelion       Apricot
+Peach          Melon          YellowOrange    Orange          BurntOrange
+Bittersweet    RedOrange      Mahogany        Maroon          BrickRed
+Red            OrangeRed      RubineRed       WildStrawberry  Salmon
+CarnationPink  Magenta        VioletRed       Rhodamine       Mulberry
+RedViolet      Fuchsia        Lavender        Thistle         Orchid
+DarkOrchid     Purple         Plum            Violet          RoyalPurple
+BlueViolet     Periwinkle     CadetBlue       CornflowerBlue  MidnightBlue
+NavyBlue       RoyalBlueBlue  Cerulean        Cyan            ProcessBlue
+SkyBlue        Turquoise      TealBlue        Aquamarine      BlueGreen
+Emerald        JungleGreen    SeaGreen        Green           ForestGreen
+PineGreen      LimeGreen      YellowGreen     SpringGreen     OliveGreen
+RawSienna      Sepia          Brown           Tan             Gray
+Black          White
+\end{verbatim}
+}
+\end{minipage}
+}\vspace*{2ex}
+
+Saját színeket így definiálhatunk:
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\definecolor{!\textit{\color{green}színnév}\verb!}{!\textit{\color{green}színmodell}%
+    \verb!}{!\textit{\color{green}színspecifikáció}\verb!}!
+}
+
+\pagebreak[4]
+
+\section{Szövegek színezése}
+
+
+
+ Szövegek színezésére két parancsot használhatunk, ezek a fontválasztó parancsokhoz
+ (pl. \verb!{\bfseries ...}!, illetve  \verb!\textbf{...}!)hasonlóan működnek.
+
+ Az első deklarációs parancs, tehát kiadásától kezdve az aktuális blokk végéig a megadott színű szöveget kapunk (kivéve esetleg a beágyazott blokkokban megváltoztatott színűeket).
+
+\vspace*{2ex}\shadowbox{%
+  \verb!\color{!\textit{\color{green}színnév}\verb!}!
+}\vspace*{2ex}
+
+\begin{itemize}
+\item Első példa:
+
+\texttt{ \{\textbackslash color\{red\} Innen egy darabig piros \{\textbackslash color\{blue\} a beágyazott blokkban kék\} kívül újra piros\} -- a blokk végéig.}
+
+{\color{red} Innen egy darabig piros {\color{blue} a beágyazott blokkban kék} kívül újra piros} -- a blokk végéig.
+
+\item Második példa -- színes lista
+
+\texttt{%
+\textbackslash begin\{itemize\}\\
+    \textbackslash color\{red\} \textbackslash item  piros elem \\   
+   \textbackslash color\{blue\}  \textbackslash item  kék elem \\  
+    \textbackslash color\{black\} \textbackslash item  normális fekete elem \\   
+\textbackslash end\{itemize\}
+}
+
+\begin{itemize}
+\color{red} \item  piros elem
+\color{blue}  \item  kék elem
+\color{black} \item  normális fekete elem
+\end{itemize}
+
+A második parancs csak az argumentumában megadott szöveget színezi ki:
+
+\vspace*{2ex}
+\shadowbox{%
+    \verb!\textcolor{!\textit{\color{green}színnév}\verb!}{!\textit{\color{green}szöveg}\verb!}!
+}
+\vspace*{2ex}
+
+\item Harmadik példa
+
+\verb!\textcolor{red}{innen egy darabig piros {\color{blue} a beágyazott blokkban! \verb!kék} kívül újra piros} -- az argumentum végéig.!
+
+\textcolor{red}{ innen egy darabig piros {\color{blue} a beágyazott blokkban kék} kívül újra piros} -- az argumentum végéig.
+
+\item Negyedik példa -- színes lista
+
+\begin{verbatim} 
+\textcolor{red}{
+\begin{itemize}
+\item  piros elem
+ \textcolor{blue}{\item  kék elem}
+ \item  piros elem
+\end{itemize}
+}
+\end{verbatim}
+\textcolor{red}{
+	\begin{itemize}
+		\item  piros elem
+		\textcolor{blue}{\item  kék elem}
+		\item  piros elem
+	\end{itemize}
+}
+
+\end{itemize}
+Mindkét parancsnak van olyan változata, ahol az előre definiált színnév helyett ott helyben,
+,,röptében'' definiált színezést használunk:
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\color[!\textit{\color{green}színmodell}%
+    \verb!]{!\textit{\color{green}színspecifikáció}\verb!}!
+} \vspace*{2ex}
+
+illetve
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\textcolor[!\textit{\color{green}színmodell}%
+        \verb!]{!\textit{\color{green}színspecifikáció}\verb!}{!\textit{\color{green}szöveg}\verb!}!
+} \vspace*{2ex}
+
+Az oldal \emph{háttérszínét} a
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\pagecolor{!\textit{\color{green}színnév}\verb!}!
+}\vspace*{2ex}
+
+vagy a
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\pagecolor[!\textit{\color{green}színmodell}%
+    \verb!]{!\textit{\color{green}színspecifikáció}\verb!}!
+}\vspace*{2ex}
+
+parancsokkal változtathatjuk. Végül a
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\nopagecolor! vagy a  \verb!\pagecolor{white}!
+}\vspace*{2ex}
+
+parancsokkal állíthatjuk vissza.
+
+Most vezessünk be négy új színt négy különböző színmodell segítségével. Mindjárt ki is próbáljuk őket a 
+\verb!\textcolor{...}! parancs segítségével.
+
+%%% Ha az itemize belsejében lenne, csak lokálisan lenne definiált!
+\definecolor{lila}{named}{Magenta}
+\definecolor{halványzöld}{rgb}{0.25,0.75,0.2}
+\definecolor{ciánkék}{cmyk}{1,0,0,0}
+\definecolor{világosszürke}{gray}{0.5}
+%%%
+
+\begin{itemize}
+	\item A \verb!named! modell: \verb!\definecolor{lila}{named}{Magenta}! Ez csak egy alias egy meglevő színre!
+	
+	A \verb!\textcolor{lila}{szép lila szöveg}! kód eredménye: \textcolor{lila}{szép lila szöveg}
+	\item Az \verb!rgb! modell: \verb!\definecolor{halványzöld}{rgb}{0.2,0.2,1}!
+	
+	A \verb!\textcolor{halványzöld}{szép halványzöld szöveg}!  kód eredménye:
+	\textcolor{halványzöld}{szép halványzöld szöveg}
+	
+	\item A \verb!cmyk! modell: \verb!\definecolor{ciánkék}{cmyk}{1,0,0,0}!
+	
+	A \verb!\textcolor{ciánkék}{szép ciánkék szöveg}!   kód eredménye:
+	\textcolor{ciánkék}{szép ciánkék szöveg}
+	
+	\item A \verb!gray! (szürkeárnyalatos) modell: \verb!\definecolor{világosszürke}{gray}{0.85}!
+	
+	A \verb!\textcolor{világosszürke}{szép világosszürke szöveg}!  kód eredménye:
+	\textcolor{világosszürke}{szép világosszürke szöveg}
+\end{itemize}
+
+\pagebreak[4]
+\section{Színes dobozok}
+
+A  \verb!color! csomag parancsaival szép színes (szöveg)dobozokat is készíthetünk. Erre valók a \LaTeX{}  \verb!fbox! parancsához hasonló alábbi ,,színezett'' parancsok:
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\colorbox{!\textit{\color{green}színnév}\verb!}{!\textit{\color{green}szöveg}\verb!}!
+}\vspace*{2ex}
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\colorbox[!\textit{\color{green}színmodell}%
+    \verb!]{!\textit{\color{green}színspecifikáció}\verb!}{!\textit{\color{green}szöveg}\verb!}!
+} \vspace*{2ex}
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\fcolorbox{!\textit{\color{green}színnév1}\verb!}{!\textit{\color{green}színnév2}\verb!}{!%
+        \textit{\color{green}szöveg}\verb!}!
+}\vspace*{2ex}
+
+\vspace*{2ex}\shadowbox{%
+    \verb!\fcolorbox[!\textit{\color{green}színmodell}%
+     \verb!]{!\textit{\color{green}színspecifikáció1}\verb!}{!\textit{\color{green}színspecifikáció1}\verb!}{!%
+         \textit{\color{green}szöveg}\verb!}!
+ }\vspace*{2ex}
+
+
+\subsubsection*{Példák}
+
+\vspace*{2ex}
+\begin{verbatim}
+\colorbox{yellow}{%
+	\begin{minipage}{0.85\linewidth}{
+			\LARGE\bfseries
+			{%
+				A \textcolor{lila}{\emph{lehetetlent}} azonnal teljesítjük. 
+				A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}
+		}
+	\end{minipage}
+}
+\end{verbatim}
+\colorbox{yellow}{%
+\begin{minipage}{0.85\linewidth}{
+		\LARGE\bfseries
+		{%
+            A \textcolor{lila}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}
+        }
+\end{minipage}
+}\vspace*{2ex}
+
+\begin{verbatim}
+\fcolorbox{green}{yellow}{%
+	\begin{minipage}{0.85\linewidth}{\LARGE\bfseries{%
+				A \textcolor{lila}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}}
+	\end{minipage}
+\end{verbatim}
+\vspace*{2ex}
+\fcolorbox{green}{yellow}{%
+    \begin{minipage}{0.85\linewidth}{\LARGE\bfseries{%
+                A \textcolor{lila}{\emph{lehetetlent}} azonnal teljesítjük. A \textcolor{red}{\itshape csodákra} egy kicsit várni kell!}}
+    \end{minipage}
+}\vspace*{2ex}
+
+Az {\color{blue} \verb!\fcolorbox! }parancsnál az \emph{első} szín a \emph{keret} színe!
+
+A \texttt{fancybox} csomag segítségével még csicsásabb, ,,szép'' dobozokat készíthetünk.
+
+
+\end{document}

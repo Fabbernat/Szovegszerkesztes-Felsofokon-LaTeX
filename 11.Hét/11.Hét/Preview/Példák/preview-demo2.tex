@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[active,tightpage]{preview} 
+%\usepackage[tightpage]{preview} % így betöltve semmi sem változik!
+\begin{document} 
+
+Ha a \verb!preview! csomagot az \verb!active! opcióval töltjük be, a folytatásból csak a \verb!preview! környezetekben megadott kiemelt képletek láthatók az outputban.
+\subsubsection*{Matematikai kifejezések  kiemelt matematikai módban}
+
+Gyök:
+\begin{preview}
+	\[ x_{1,2} = \frac{-b\pm\sqrt{b^2-4ac}}{2a} \]
+\end{preview}
+
+Határérték:	
+\begin{preview}	
+\[ \pi = \sqrt{12}\sum^\infty_{k=0} \frac{ (-3)^{-k} }{ 2k+1 } \]
+\end{preview}
+
+Integrál:
+\begin{preview}
+\[\int_0^{2\pi} \sin(x)dx = \int_0^\pi \sin(x)dx +
+\int_\pi^{2\pi} \sin(x)dx = 2 - 2 = 0 \]
+\end{preview}
+
+Ha a \verb!preview! csomagot az \verb!active! opcióval töltjük be, innen semmi sem látszik.
+\subsubsection*{A fönti példák szövegközi matematikai módban}
+
+Gyökös kifejezés: $ x_{1,2} = \frac{-b\pm\sqrt{b^2-4ac}}{2a} $, majd  egy
+nagyon érdekes határérték: $ \pi=\sqrt{12}\sum^\infty_{k=0}\frac{(-3)^{-k}}{2k+1}$ és
+egy ismert integrál:  $\int_0^{2\pi} \sin(x)dx = \int_0^\pi \sin(x)dx +
+\int_\pi^{2\pi} \sin(x)dx = 2 - 2 = 0$.
+\end{document} 

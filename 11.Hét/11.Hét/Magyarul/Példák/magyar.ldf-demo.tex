@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,magyar]{babel}
+%\usepackage{amsmath}
+% példák tételszerű környezetekre
+\newtheorem{tetel}{tétel}
+\newtheorem{kovet}[tetel]{következmény}
+\newtheorem{defi}[tetel]{definíció}
+\title{\LaTeX{}  magyarabbul -- a magyar.ldf titkos opciói}
+\author{Virágh János}
+\begin{document}
+\maketitle
+\begin{itemize}
+ \item Elválasztási és egyéb trükkök a \verb+`+ (vagyis az Alt Gr 7) aktív karakterrel:\\
+ \verb+\showhyphens{lo`ccsan}+ \showhyphens{lo`ccsan}\\
+ \verb+\showhyphens{lo\shu`ccsan}+ \showhyphens{lo\shu`ccsan}\\
+\verb+\showhyphens{tudja-e tudja`=e} +\showhyphens{tudja-e tudja`=e}\\
+\verb+\showhyphens{nátrium`=klorid}+ \showhyphens{nátrium`=klorid}\\
+\verb+``Kossuth apánk"+ $\longrightarrow$ ``Kossuth apánk''
+\item A/a és Az/az (a megfelelő névelők kirakása):\\
+\verb+\az{5. osztály tanulói}+ $\longrightarrow$ \az{5. osztály tanulói}\\
+\verb+\az*{5. osztály tanulói} 5. osztály tanulói+ $\longrightarrow$ \az*{5. osztály tanulói} 5. osztály tanulói(a \verb+\az*+ csak a névelőt írja ki)\\
+\verb+\Az{1. osztály tanulói}+ $\longrightarrow$ \Az{1. osztály tanulói}\\
+\verb+\Az*{1. osztály tanulói}+ $\longrightarrow$ \Az*{1. osztály tanulói} 1. osztály tanulói\\
+\verb+\apageref{itt}+ $\longrightarrow$ \apageref{itt}. oldal  \\
+\verb+\apageref*{itt}+ $\longrightarrow$ \apageref*{itt} oldal  \\
+\verb+\apageref{ott}+ $\longrightarrow$ \apageref{ott}. oldal  \\
+\verb+\apageref*{ott}+ $\longrightarrow$ \apageref*{ott} oldal  \\
+\\ a föntiek javított váltuzata a \verb+huaz+ csomagban található.
+\item Magyar számok magyarul magyar betűkkel :-)\\
+\makeatletter
+\verb+\@huordinal{1956}+ $\longrightarrow$ \@huordinal{1956}\\
+\verb+\@Huordinal{1956}+ $\longrightarrow$ \@Huordinal{1956}\\
+\verb+\@hunumeral{1956}+ $\longrightarrow$ \@hunumeral{1956}\\
+\verb+\@Hunumeral{1956}+ $\longrightarrow$ \@Hunumeral{1956}\\
+\makeatother
+\verb+\told1956+ban{}+ $\longrightarrow$ \told1956+ban{}\\
+\verb+\told1956+ban{}+ $\longrightarrow$ \told1956+ban{}\\
+\verb+\told2007+ban{}+ $\longrightarrow$ \told2007+ban{}\\
+\verb+\told13+szor{}+ $\longrightarrow$ \told13+szor{}\\
+\verb+\told7+szor{}+ $\longrightarrow$ \told7+szor{}\\
+
+\item Dátumok\label{itt}\\
+magyarul:
+ \verb+\today+ $\longrightarrow$ \today\\
+{angolul:
+\verb+\selectlanguage{english}\today+ $\longrightarrow$\selectlanguage{english}\today} \\
+még mindig magyarul:
+\verb+\emitdate{b}{\today}+ $\longrightarrow$ \emitdate{b}{\today}\\
+még mindig magyarul:
+\verb+\emitdate[e]{g}{\today}+ $\longrightarrow$ \emitdate[e]{g}{\today}\\
+még mindig magyarul:
+\verb+\ondatemagyar+ $\longrightarrow$ \ondatemagyar\\
+még mindig magyarul:
+ \verb+\ontoday+ $\longrightarrow$ \ontoday\\
+ \item Tételszerű környezetek használata
+ 
+ \begin{tetel}[koszinusz-tétel] \label{thm:koszinusz}
+ 	Tetszőleges háromszögben érvényes a
+ 	\begin{equation}
+ 		c^2 = a^2 + b^2 -2ab\cos \gamma
+ 	\end{equation}
+ 	összefüggés, ahol $\gamma$ a $c$ oldallal szemközti szöget jelöli.
+ \end{tetel}
+ 
+ \begin{defi} \label{def:derekszogu}
+ 	A háromszög derékszögű, ha van derékszöge.;-)
+ \end{defi}
+ \begin{kovet}
+ 	Tetszőleges derékszögű háromszögben az átfogó négyzete egyenlő
+ 	a befogók négyzetösszegével, azaz
+ 	\begin{equation}
+ 		c^2 = a^2 + b^2.
+ 	\end{equation}
+ \end{kovet}
+ Bizonyítás. \Aref{def:derekszogu}.~definíció figyelembe vételével \aref{thm:koszinusz}.~tételből azonnal adódik.
+
+\end{itemize}
+\label{ott}
+%
+\end{document}

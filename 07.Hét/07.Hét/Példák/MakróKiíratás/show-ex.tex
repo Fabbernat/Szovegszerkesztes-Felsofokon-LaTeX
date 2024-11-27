@@ -1,0 +1,54 @@
+% magyar LaTeX article sablon 2
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+
+%opening
+\title{Parancsok/makrók kódjának kiíratása}
+\author{Virágh János}
+
+\begin{document}
+
+\maketitle
+
+\noindent Definiáljuk az új \verb|\TTIK| parancsot (valójában csak rövidítést ;)
+
+\verb|\newcommand{\TTIK}{Szegedi Tudományegyetem Természettudományi és Infornatikai Kar}|
+\newcommand{\TTIK}{Szegedi Tudományegyetem Természettudományi és Infornatikai Kar}
+
+\noindent Teszteljük is a \verb|\TTIK| parancsunkat:
+
+\verb|A \TTIK{} programtervező matematikus hallgatói \dots|
+
+A \TTIK{} programtervező matematikus hallgatói \dots
+
+\section{Makródefiníciók kiíratása a \texttt{\textbackslash meaning} paranccsal}
+\verb!\meaning\TTIK! hatása:
+
+ \meaning\TTIK
+ 
+ \noindent \verb!\meaning\section! hatása:
+ 
+ \meaning\section
+ 
+ \section{Makródefiníciók kiíratása a \texttt{\textbackslash show} paranccsal a terminálra}
+ A \verb|\show| parancs kiírja a terminálra, a log fájlba az 
+ utána írt parancs definícióját. Hogy lássuk, futtassuk a
+ 
+ \texttt{\$ pdflatex show-ex.tex}
+ 	
+\noindent parancsot a terminálban. Interaktív módban <ENTER>-rel mehetünk tovább.
+
+\verb!\show\TTIK! hatása:
+
+\show\TTIK
+
+\verb!\show\section! hatása:
+
+\show\section
+ 
+\section{Makródefiníciók kiíratása a \texttt{latexdef} parancssoros programmal}
+
+Lásd a \texttt{latexdef-példák.txt} példáit.
+\end{document}

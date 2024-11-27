@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hulipsum}
+\usepackage[magyar]{babel}
+\usepackage{amsmath,amsthm}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{showlabels}
+\usepackage{nameref}
+\usepackage[unicode]{hyperref}
+\hypersetup{
+	pdftitle={Hyperref demó},       % title
+	pdfauthor={Virágh János},     	% author
+	pdfsubject={a hyperref csomag opcióinak bemutatása},   % subject of the document
+	pdfcreator={Creator},   		% creator of the document
+	pdfproducer={Producer},		 	% producer of the document
+	pdfkeywords={LaTeX, hiperlinkek, hyperref csomag}, % kulcsszavak
+	colorlinks=true,       			% a linkek szövege színes
+    %colorlinks=false,       		% a linkek körül színes keret
+	linkbordercolor=red,    		% a linkek körüli keret színe
+	linkcolor=blue,          		% a belső linkek színe
+	citecolor=green,       			% a hivatkozások linkjének színe
+	filecolor=magenta,         		% a fájl linkek színe
+	urlcolor=cyan,        			% a külső linkek színe
+	%pdfpagemode=FullScreen, 		% teljes képernyőn nyissa meg a PDF megjelenítő
+	%pdffitwindow=false,     		% window fit to page when opened
+	pdfstartview=FitH,    			% fits the width of the page to the window
+	%pdfstartview=FitV,				% fits the height of the page to the window
+	%pdfnewwindow=true      		% links in new PDF window
+}
+
+\title{Hiperlink példák%
+\footnote{a \url{https://www.overleaf.com/learn/latex/Hyperlinks} linken elérhető tutorial alapján}}
+\author{Virágh János}
+
+\parindent=0pt
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+{
+%%% Így is lehet trükközni:
+%%% Itt egy blokkban lokálisan megváltoztatjuk a hyperref beállításait,
+%%% ezért az ábrák linkje piros lesz
+\hypersetup{
+	linkcolor=red         % color of internal links (change box color with
+}
+\listoffigures
+}
+
+\clearpage
+
+\section*{Előszó}
+\hulipsum[1]
+\clearpage
+
+\section{Az első igazi szekció}\label{sec:igazi}
+Ebben a fejezetben  a
+\label{p:kezdet}
+\begin{equation}
+\label{eq:1}
+\sum_{i=0}^{\infty} a_i x^i
+\end{equation}
+végtelen sort fogjuk vizsgálni.
+A képletből látszik, hogy \az{\eqref{eq:1}} sor divergens.
+Ezt később föl fogjuk használni \aref{sec:second}.~szekcióban (amelynek címe \nameref{sec:second}) \apageref{sec:second}.~oldalon.
+
+\label{p:eleje}
+\hyperlink{lb:nemunalmas}{Ugorjon előre} ha nem érdeklik a további részletek.
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{Lion.pdf}
+\caption{Kedvenc oroszlánunk}
+\label{fig:our-lion}
+\end{figure}
+
+\hulipsum[2]
+
+\clearpage
+
+\section{A második fontos szekció} \label{sec:second}
+
+A következő mondat forráskódja így néz ki:
+
+\verb!\hypertarget{lb:nemunalmas}{Innentől} érdekesebb dolgok következnek.!
+
+\hypertarget{lb:nemunalmas}{Innentől} érdekesebb dolgok következnek.
+
+Erre a mondatra ugorhatunk a dokumentumban bárhol elhelyezett
+
+\verb!\hyperlink{lb:nemunalmas}{linkszöveg}!
+
+paranccsal, egy ilyet látunk \apageref{p:eleje}. oldalon. Ott a linkszöveg ez volt: ,,Ugorjon előre''.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.2]{Lion.pdf}
+\caption{Kisoroszlán}
+\label{fig:small-lion}
+\end{figure}
+
+Ha újra a dokumentum elejét szeretné látni,
+\begin{itemize}
+\item ugorjon \apageref{p:kezdet}.~oldalra;
+\item vagy  \aref{sec:igazi}.~szekcióra
+\item vagy erre a szekcióra: \nameref{sec:igazi}.
+\end{itemize}
+%\hulipsum[3]
+
+\begin{thebibliography}{xx}
+\bibitem{ctan-hyperref}
+A \verb!hyperref! csomag elérhetősége a CTAN archívumban:
+\url{https://ctan.org/pkg/hyperref}
+\bibitem{hyperref-manual-online}
+A {\bfseries \verb!hyperref!} kézikönyv  \href{https://mirror.szerverem.hu/ctan/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf}{letölthető változata}
+\bibitem{hyperref-manual-lokal}
+Telepített  \verb!hyperref! csomag esetén a lokálisan elérhető
+\href{run:/usr/share/texlive/texmf-dist/doc/latex/hyperref/hyperref-doc.pdf}{hyperref kézikönyv}
+\bibitem{hyperref-bugz}
+A \verb!hyperref! csomag ismert \href{https://github.com/latex3/hyperref/issues}{hibái}
+\bibitem{wikibooks-hyperref}
+A \LaTeX{} Wiki könyvben a \href{https://en.wikibooks.org/wiki/LaTeX/Hyperlinks}{hiperlinkek használatára} vonatkozó rész
+\bibitem{overleaf-hyperref}
+Az Overleaf online szerkesztőprogram
+\href{https://www.overleaf.com/learn/latex/Hyperlinks}{hiperlink ismertetője}
+\end{thebibliography}
+\end{document}

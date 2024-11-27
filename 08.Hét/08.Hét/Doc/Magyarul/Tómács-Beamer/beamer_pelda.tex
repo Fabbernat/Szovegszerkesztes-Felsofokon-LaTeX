@@ -1,0 +1,109 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\graphicspath{{images/}}
+\hypersetup{unicode,colorlinks,pdfpagemode=FullScreen}
+
+\usetheme{PaloAlto}
+\usecolortheme{sidebartab}
+
+%\setbeamercolor{normal text}{bg=blue!20}
+%\setbeamertemplate{background canvas}[vertical shading][middle=yellow!60,midpoint=0.4]
+\setbeamertemplate{background canvas}[vertical shading][bottom=yellow!50,top=blue!40]
+
+\setbeamertemplate{navigation symbols}{}
+
+% keretszám/összkeretszám megjelenése
+\makeatletter
+\setbeamertemplate{footline}{
+\begin{beamercolorbox}[wd=\beamer@sidebarwidth,ht=2.25ex,dp=1ex,center]{logo}
+\insertframenumber\ / \inserttotalframenumber
+\end{beamercolorbox}}
+
+% rövid cím ne legyen link
+\renewcommand\insertshorttitle[1][]{%
+  \beamer@setupshort{#1}%
+  \let\thanks=\@gobble%
+      \beamer@insertshort{\beamer@shorttitle}}
+\makeatother
+
+\begin{document}
+\title[Cím]{Prezentáció címe}
+\author[Szerző]{Szerző neve}
+\date{\today}
+\institute{Eszterházy Károly Főiskola}
+\logo{\includegraphics[width=13mm]{images/ekf-logo}}
+\maketitle
+
+\section{Szakasz címe}
+
+\begin{frame}{A frame címe}{A frame alcíme}\pause
+\transdissolve[duration=0.2]
+Ez egy lista:\pause
+\begin{itemize}
+  \item első listaelem\pause
+  \item második listaelem\pause
+  \item harmadik listaelem\pause
+\end{itemize}
+\par\medskip Ez egy számozott lista:\pause
+\begin{enumerate}
+  \item első listaelem\pause
+  \item második listaelem\pause
+  \item harmadik listaelem\pause
+\end{enumerate}
+\par\medskip Ismét egy számozott lista:\pause
+\begin{enumerate}[<+>]
+\setbeamercovered{transparent=30}
+  \item első listaelem
+  \item második listaelem
+  \item harmadik listaelem
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Következő frame címe}{}\pause
+\transdissolve[duration=0.2]
+\begin{block}{Ez egy \texttt{block} címe}
+Szöveg
+\end{block}\pause
+\begin{exampleblock}{Ez egy \texttt{exampleblock} címe}
+Szöveg
+\end{exampleblock}\pause
+\begin{alertblock}{Ez egy \texttt{alertblock} címe}
+Szöveg
+\end{alertblock}
+\end{frame}
+
+\section{Következő szakasz címe}
+
+\begin{frame}[fragile]{Harmadik frame címe}{}
+{\color{blue}
+\begin{verbatim}
+Ez egy verbatim szöveg
+\end{verbatim}
+}\pause
+\begin{columns}[t]
+\column{3cm}
+Ez egy 3\,cm széles oszlop, ide szabadon írhatunk, amennyit csak tudunk.
+\column{5cm}\pause
+Ez egy 5\,cm széles oszlop, ide szabadon írhatunk, amennyit csak tudunk.
+\end{columns}
+\pause\bigskip
+\href{run:program.exe}{Ide kattintva elindul a \texttt{program.exe}}\pause\\
+\url{http://www.ektf.hu}\pause\\
+\href{http://www.ektf.hu}{Ide kattintva betölt egy internetes oldalt}
+\end{frame}
+
+\section{Harmadik szakasz címe}
+
+\begin{frame}{Negyedik frame címe}{}
+\transwipe<2->[duration=1,direction=0]
+\begin{center}
+\only<+>{\includegraphics[height=4cm]{figure0}\\[2mm] Alapadatok}
+\only<+>{\includegraphics[height=4cm]{figure1}\\[2mm] Első lépcsőfok}
+\only<+>{\includegraphics[height=4cm]{figure2}\\[2mm] Második lépcsőfok}
+\only<+>{\includegraphics[height=4cm]{figure3}\\[2mm] Elméleti függvény}
+\end{center}
+\end{frame}
+
+\end{document}
